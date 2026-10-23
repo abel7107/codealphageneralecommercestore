@@ -1,4 +1,7 @@
-
+import {
+  authenticateToken,
+  requireAdmin,
+} from "../middleware/authMiddleware.js";
 import { Router } from "express";
 
 export default function productRoutes(prisma) {
@@ -96,7 +99,7 @@ export default function productRoutes(prisma) {
   });
 
   // POST /api/products — create product
-  router.post("/", async (req, res) => {
+  router.post("/", authenticateToken, requireAdmin, async (req, res) => {
     const { name, slug, description, price, stock, imageUrl, categoryId } =
       req.body ?? {};
 
@@ -165,7 +168,7 @@ export default function productRoutes(prisma) {
   });
 
   // PUT /api/products/:id — update product
-  router.put("/:id", async (req, res) => {
+  router.put("/:id", authenticateToken, requireAdmin, async (req, res) => {
     const id = Number(req.params.id);
     const { name, slug, description, price, stock, imageUrl, categoryId } =
       req.body ?? {};
@@ -279,7 +282,7 @@ export default function productRoutes(prisma) {
   });
 
   // DELETE /api/products/:id — remove product
-  router.delete("/:id", async (req, res) => {
+  router.delete("/:id", authenticateToken, requireAdmin, async (req, res) => {
     const id = Number(req.params.id);
 
     if (!Number.isSafeInteger(id) || id < 1) {

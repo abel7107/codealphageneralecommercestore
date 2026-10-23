@@ -4,6 +4,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/prisma/client.ts";
 import "dotenv/config";
 import productRoutes from "./routes/productRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +20,7 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter });
 console.log("Prisma category:", typeof prisma.category);
 console.log("Prisma product:", typeof prisma.product);
+app.use("/api/auth", authRoutes(prisma));
 app.use("/api/products", productRoutes(prisma));
 
 // Health check

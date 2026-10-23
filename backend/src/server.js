@@ -3,11 +3,13 @@ import express from "express";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/prisma/client.ts";
 import "dotenv/config";
+import productRoutes from "./routes/productRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+
 
 // Connect Prisma to PostgreSQL
 const adapter = new PrismaPg({
@@ -15,6 +17,9 @@ const adapter = new PrismaPg({
 });
 
 const prisma = new PrismaClient({ adapter });
+console.log("Prisma category:", typeof prisma.category);
+console.log("Prisma product:", typeof prisma.product);
+app.use("/api/products", productRoutes(prisma));
 
 // Health check
 app.get("/", (req, res) => {

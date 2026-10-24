@@ -5,6 +5,10 @@ import { PrismaClient } from "./generated/prisma/client.ts";
 import "dotenv/config";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import {
+  authenticateToken,
+  requireAdmin,
+} from "./middleware/authMiddleware.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -52,7 +56,11 @@ app.get("/api/categories", async (req, res) => {
 });
 
 // Create a category
-app.post("/api/categories", async (req, res) => {
+    app.post(
+      "/api/categories",
+      authenticateToken,
+      requireAdmin,
+      async (req, res) => {
   try {
     const name =
       typeof req.body.name === "string" ? req.body.name.trim() : "";

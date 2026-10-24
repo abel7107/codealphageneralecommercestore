@@ -1,9 +1,19 @@
-
+import rateLimit from "express-rate-limit";
 import { Router } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { authenticateToken } from "../middleware/authMiddleware.js";
 
+  const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    limit: 10,
+    standardHeaders: "draft-8",
+    legacyHeaders: false,
+    message: {
+      success: false,
+      message: "Too many authentication attempts. Please try again later.",
+    },
+  });
 export default function authRoutes(prisma) {
   const router = Router();
 
@@ -23,7 +33,7 @@ export default function authRoutes(prisma) {
   }
 
   // POST /api/auth/register
-  router.post("/register", async (req, res) => {
+ router.post("/register", authLimiter, async (req, res) => {
     const name =
       typeof req.body?.name === "string" ? req.body.name.trim() : "";
     const email =
@@ -89,7 +99,7 @@ export default function authRoutes(prisma) {
   });
 
   // POST /api/auth/login
-  router.post("/login", async (req, res) => {
+  router.post("/login", authLimiter, async (req, res) => {
     const email =
       typeof req.body?.email === "string"
         ? req.body.email.trim().toLowerCase()

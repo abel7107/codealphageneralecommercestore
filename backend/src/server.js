@@ -1,113 +1,39 @@
 
-import express from "express";
+import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "./generated/prisma/client.ts";
-import "dotenv/config";
-import productRoutes from "./routes/productRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
-import {
-  authenticateToken,
-  requireAdmin,
-} from "./middleware/authMiddleware.js";
+import { createApp } from "./app.js";
 
-const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json());
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is not configured");
+}
 
-
-// Connect Prisma to PostgreSQL
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
 });
 
 const prisma = new PrismaClient({ adapter });
-console.log("Prisma category:", typeof prisma.category);
-console.log("Prisma product:", typeof prisma.product);
-app.use("/api/auth", authRoutes(prisma));
-app.use("/api/products", productRoutes(prisma));
+const app = createApp(prisma);
 
-// Health check
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "SHOPORA API is running!",
-  });
-});
-
-// Get all categories
-app.get("/api/categories", async (req, res) => {
-  try {
-    const categories = await prisma.category.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-
-    res.json({
-      success: true,
-      data: categories,
-    });
-  } catch (error) {
-    console.error("Fetch categories error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to fetch categories",
-    });
-  }
-});
-
-// Create a category
-    app.post(
-      "/api/categories",
-      authenticateToken,
-      requireAdmin,
-      async (req, res) => {
-  try {
-    const name =
-      typeof req.body.name === "string" ? req.body.name.trim() : "";
-
-    if (!name) {
-      return res.status(400).json({
-        success: false,
-        message: "Category name is required",
-      });
-    }
-
-    const category = await prisma.category.create({
-      data: { name },
-    });
-
-    res.status(201).json({
-      success: true,
-      data: category,
-    });
-  } catch (error) {
-    if (error.code === "P2002") {
-      return res.status(409).json({
-        success: false,
-        message: "This category already exists",
-      });
-    }
-
-    console.error("Create category error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to create category",
-    });
-  }
-});
-
-// Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`SHOPORA API running at http://localhost:${PORT}`);
 });
 
-// Close Prisma cleanly when the process exits
-process.on("SIGINT", async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
+async function shutdown(signal) {
+  console.log(`${signal} received. Shutting down...`);
 
-process.on("SIGTERM", async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
+  server.close(async () => {
+    try {
+      await prisma.$disconnect();
+      process.exit(0);
+    } catch (error) {
+      console.error("Error disconnecting Prisma:", error);
+      process.exit(1);
+    }
+  });
+}
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));

@@ -132,6 +132,7 @@ export default function App() {
   const [favorites, setFavorites] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = `${product.name} ${product.category}`
@@ -531,7 +532,7 @@ export default function App() {
       
 {cartOpen && (
   <div className="fixed inset-0 z-50 overflow-y-auto bg-white">
-    <div className="mx-auto min-h-screen max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+   <div className="mx-auto min-h-screen max-w-7xl px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
 
       {/* Cart Header */}
       <div className="flex items-center justify-between border-b border-gray-100 pb-5">
@@ -603,7 +604,7 @@ export default function App() {
               {cart.map((item) => (
                 <article
                   key={item.id}
-                  className="grid grid-cols-1 items-center gap-4 py-5 sm:grid-cols-[minmax(0,1fr)_120px_100px_45px] sm:gap-4"
+                 className="grid grid-cols-1 items-start gap-3 py-5 sm:grid-cols-[minmax(0,1fr)_120px_100px_45px] sm:items-center sm:gap-4"
                 >
                   {/* Product */}
                   <div className="flex min-w-0 items-center gap-4">
@@ -685,7 +686,7 @@ export default function App() {
           </section>
 
           {/* Order Summary */}
-          <aside className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 lg:sticky lg:top-6">
+         <aside className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 lg:sticky lg:top-6">
             <h2 className="text-lg font-bold tracking-tight">
               Order Summary
             </h2>
@@ -734,8 +735,11 @@ export default function App() {
             </div>
 
             <button
-              onClick={() => window.alert("Checkout will be connected after the order API is ready.")}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800 active:scale-[0.99]"
+              onClick={() => {
+                setCartOpen(false);
+                setCheckoutOpen(true);
+              }}
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800 active:scale-[0.99]"
             >
               Checkout Now <ArrowRight size={17} />
             </button>
@@ -749,6 +753,77 @@ export default function App() {
           </aside>
         </div>
       )}
+    </div>
+  </div>
+)}
+{checkoutOpen && (
+  <div className="fixed inset-0 z-50 min-h-screen overflow-y-auto bg-gray-50">
+    <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
+
+      {/* Checkout Header */}
+      <div className="flex items-center justify-between border-b border-gray-200 pb-5">
+        <a href="#home" className="text-2xl font-black tracking-tight">
+          shopora<span className="text-gray-400">.</span>
+        </a>
+
+        <span className="text-sm font-semibold text-gray-500">
+          Secure Checkout
+        </span>
+      </div>
+
+      {/* Checkout Content */}
+      <div className="mx-auto mt-12 max-w-xl rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-10">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+          <UserRound size={30} className="text-gray-700" />
+        </div>
+
+        <h1 className="mt-6 text-center text-2xl font-bold tracking-tight sm:text-3xl">
+          Login Required
+        </h1>
+
+        <p className="mt-3 text-center text-sm leading-6 text-gray-500">
+          Please sign in to your Shopora account before proceeding with checkout.
+          Your shopping cart will be saved while you sign in.
+        </p>
+
+        {/* Order Preview */}
+        <div className="mt-8 rounded-2xl bg-gray-50 p-5">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-500">Items in your cart</span>
+            <span className="font-semibold">{cartCount}</span>
+          </div>
+
+          <div className="mt-3 flex items-center justify-between border-t border-gray-200 pt-3">
+            <span className="font-semibold">Estimated total</span>
+            <span className="text-lg font-bold">{money(cartTotal)}</span>
+          </div>
+        </div>
+
+        {/* Login Action */}
+        <button
+          onClick={() =>
+            window.alert("Login and registration will be connected when authentication is implemented.")
+          }
+          className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800"
+        >
+          <UserRound size={17} />
+          Sign In to Continue
+          <ArrowRight size={17} />
+        </button>
+
+        {/* Back to Cart */}
+        <button
+          onClick={() => {
+            setCheckoutOpen(false);
+            setCartOpen(true);
+          }}
+          className="mt-4 w-full rounded-full border border-gray-200 py-3.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+        >
+          Return to Shopping Cart
+        </button>
+
+      </div>
     </div>
   </div>
 )}

@@ -1,6 +1,9 @@
 
 
 import { useState } from "react";
+import { Routes, Route, Navigate, Link, useNavigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import {
   Headphones,
   Shirt,
@@ -125,7 +128,8 @@ const products = [
 const money = (amount) =>
   `ETB ${amount.toLocaleString("en-US")}`;
 
-export default function App() {
+function HomePage() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [cart, setCart] = useState([]);
@@ -253,24 +257,22 @@ export default function App() {
             >
               <ShoppingBag size={21} />
               {cartCount > 0 && (
-                          
+
           <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white ring-2 ring-white">
             {cartCount}
           </span>
 
               )}
             </button>
-            <a
-              href="#account"
-              onClick={(event) => {
-                event.preventDefault();
-                window.alert("Account and login pages are coming next!");
-              }}
+           <Link
+              to="/login"
               className="hidden rounded-full p-2.5 transition hover:bg-gray-100 sm:block"
               aria-label="Account"
             >
               <UserRound size={21} />
-            </a>
+            </Link>
+
+
           </div>
         </div>
 
@@ -529,7 +531,7 @@ export default function App() {
         </div>
       </footer>
 
-      
+
 {cartOpen && (
   <div className="fixed inset-0 z-50 overflow-y-auto bg-white">
    <div className="mx-auto min-h-screen max-w-7xl px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
@@ -802,9 +804,10 @@ export default function App() {
 
         {/* Login Action */}
         <button
-          onClick={() =>
-            window.alert("Login and registration will be connected when authentication is implemented.")
-          }
+                onClick={() => {
+          setCheckoutOpen(false);
+          navigate("/login");
+        }}
           className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800"
         >
           <UserRound size={17} />
@@ -828,6 +831,16 @@ export default function App() {
   </div>
 )}
     </div>
+
   );
 }
-
+ export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}

@@ -1,5 +1,6 @@
 
 import express from "express";
+import cors from "cors";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import {
@@ -11,15 +12,22 @@ import cartRoutes from "./routes/cartRoutes.js";
 export function createApp(prisma) {
   const app = express();
 
-  app.use(express.json());
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+    })
+  );
 
+  app.use(express.json());
   // Authentication routes
   app.use("/api/auth", authRoutes(prisma));
 
   // Product routes
   app.use("/api/products", productRoutes(prisma)); 
   app.use("/api/cart", cartRoutes(prisma));
-  
+
   // Health check
   app.get("/", (req, res) => {
     res.json({

@@ -15,6 +15,8 @@ const adapter = new PrismaPg({
 });
 
 const prisma = new PrismaClient({ adapter });
+
+
 const app = createApp(prisma);
 
 const server = app.listen(PORT, () => {

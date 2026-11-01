@@ -6,6 +6,7 @@ import {
   authenticateToken,
   requireAdmin,
 } from "./middleware/authMiddleware.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 export function createApp(prisma) {
   const app = express();
@@ -16,8 +17,9 @@ export function createApp(prisma) {
   app.use("/api/auth", authRoutes(prisma));
 
   // Product routes
-  app.use("/api/products", productRoutes(prisma));
-
+  app.use("/api/products", productRoutes(prisma)); 
+  app.use("/api/cart", cartRoutes(prisma));
+  
   // Health check
   app.get("/", (req, res) => {
     res.json({

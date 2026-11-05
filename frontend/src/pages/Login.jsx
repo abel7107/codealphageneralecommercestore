@@ -17,8 +17,13 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await login(email, password);
-      navigate("/");
+     const response = await login(email, password);
+
+if (response.user.role === "ADMIN") {
+  navigate("/admin");
+} else {
+  navigate("/");
+}
     } catch (err) {
       setError(err.message || "Login failed. Please try again.");
     } finally {
@@ -57,7 +62,7 @@ export default function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder="you@gmail.com"
               required
               className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
             />

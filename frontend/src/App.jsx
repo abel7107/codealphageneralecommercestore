@@ -1,9 +1,12 @@
 
-
+import AdminLayout from "./layouts/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import { useState } from "react";
-import { Routes, Route, Navigate, Link, useNavigate } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Routes, Route,Navigate, Link, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Products from "./pages/admin/Products";
 import {
   Headphones,
   Shirt,
@@ -834,13 +837,20 @@ function HomePage() {
 
   );
 }
- export default function App() {
+ 
+export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+
+     <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
+  <Route path="/admin" element={<AdminLayout />}>
+    <Route index element={<AdminDashboard />} />
+    <Route path="products" element={<Products />} />
+  </Route>
+</Route>
     </Routes>
   );
 }

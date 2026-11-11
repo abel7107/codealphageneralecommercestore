@@ -13,6 +13,7 @@ import OrderConfirmation from "./pages/OrderConfirmation";
 import MyOrders from "./pages/MyOrders";
 import OrderDetails from "./pages/OrderDetails";
 import Products from "./pages/admin/Products";
+import AdminOrders from "./pages/admin/AdminOrders";
 import {
   Headphones,
   Shirt,
@@ -696,6 +697,7 @@ export default function App() {
   <Route path="/admin" element={<AdminLayout />}>
     <Route index element={<AdminDashboard />} />
     <Route path="products" element={<Products />} />
+    <Route path="orders" element={<AdminOrders />} />
   </Route>
 </Route>
     </Routes>

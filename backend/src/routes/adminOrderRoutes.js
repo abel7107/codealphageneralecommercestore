@@ -59,15 +59,28 @@ export default function adminOrderRoutes(prisma) {
   // GET /api/admin/orders
   router.get("/", async (req, res) => {
     const status = req.query.status;
+    const paymentStatus = req.query.paymentStatus;
     const userId = req.query.userId === undefined ? undefined : Number(req.query.userId);
+    const search = typeof req.query.search === "string" ? req.query.search.trim() : "";
+    const startDate = req.query.startDate ? new Date(req.query.startDate) : null;
+    const endDate = req.query.endDate ? new Date(req.query.endDate) : null;
     const page = Number(req.query.page ?? 1);
     const limit = Number(req.query.limit ?? 20);
 
     if (status !== undefined && !VALID_STATUSES.includes(status)) {
       return res.status(400).json({ success: false, message: "Invalid order status" });
     }
+    if (paymentStatus !== undefined && !VALID_PAYMENT_STATUSES.includes(paymentStatus)) {
+      return res.status(400).json({ success: false, message: "Invalid payment status" });
+    }
     if (userId !== undefined && (!Number.isSafeInteger(userId) || userId < 1)) {
       return res.status(400).json({ success: false, message: "Invalid user ID" });
+    }
+    if (startDate && Number.isNaN(startDate.getTime())) {
+      return res.status(400).json({ success: false, message: "Invalid start date" });
+    }
+    if (endDate && Number.isNaN(endDate.getTime())) {
+      return res.status(400).json({ success: false, message: "Invalid end date" });
     }
     if (!Number.isSafeInteger(page) || page < 1 || !Number.isSafeInteger(limit) || limit < 1 || limit > 100) {
       return res.status(400).json({ success: false, message: "Invalid pagination parameters" });
@@ -75,7 +88,25 @@ export default function adminOrderRoutes(prisma) {
 
     const where = {
       ...(status ? { status } : {}),
+      ...(paymentStatus ? { paymentStatus } : {}),
       ...(userId !== undefined ? { userId } : {}),
+      ...(startDate || endDate
+        ? {
+            createdAt: {
+              ...(startDate ? { gte: startDate } : {}),
+              ...(endDate ? { lte: new Date(endDate.getTime() + 24 * 60 * 60 * 1000 - 1) } : {}),
+            },
+          }
+        : {}),
+      ...(search
+        ? {
+            OR: [
+              { orderNumber: { contains: search, mode: "insensitive" } },
+              { user: { name: { contains: search, mode: "insensitive" } } },
+              { user: { email: { contains: search, mode: "insensitive" } } },
+            ],
+          }
+        : {}),
     };
 
     try {

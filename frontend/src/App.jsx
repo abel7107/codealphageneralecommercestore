@@ -3,12 +3,15 @@ import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import { useState, useEffect } from "react";
 import { useCart } from "./context/CartContext";
+import { useAuth } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import MyOrders from "./pages/MyOrders";
+import OrderDetails from "./pages/OrderDetails";
 import Products from "./pages/admin/Products";
 import {
   Headphones,
@@ -40,6 +43,7 @@ const money = (amount) =>
 
 function HomePage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { items: cart, cartCount, cartTotal, addToCart: addToCartCtx, updateQuantity, removeItem } = useCart();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
@@ -179,9 +183,9 @@ function HomePage() {
               )}
             </button>
            <Link
-              to="/login"
+              to={user ? "/orders" : "/login"}
               className="hidden rounded-full p-2.5 transition hover:bg-gray-100 sm:block"
-              aria-label="Account"
+              aria-label={user ? "My orders" : "Account"}
             >
               <UserRound size={21} />
             </Link>
@@ -685,6 +689,8 @@ export default function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/order-confirmation/:orderNumber" element={<OrderConfirmation />} />
+      <Route path="/orders" element={<MyOrders />} />
+      <Route path="/orders/:id" element={<OrderDetails />} />
 
      <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
   <Route path="/admin" element={<AdminLayout />}>

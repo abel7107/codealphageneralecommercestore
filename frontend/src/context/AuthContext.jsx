@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
   createContext,
   useContext,
@@ -26,7 +27,7 @@ export function AuthProvider({ children }) {
       try {
         const response = await apiRequest("/api/auth/me");
         setUser(response.data);
-      } catch (error) {
+      } catch {
         localStorage.removeItem("shopora_token");
         setUser(null);
       } finally {

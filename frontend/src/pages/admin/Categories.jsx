@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useCallback, useEffect, useState } from "react";
-import { Plus, Pencil, Trash2, LoaderCircle, X } from "lucide-react";
+import { Pencil, Trash2, LoaderCircle } from "lucide-react";
 import { apiRequest } from "../../services/api";
 
 export default function Categories() {

@@ -8,6 +8,8 @@ import {
   requireAdmin,
 } from "./middleware/authMiddleware.js";
 import cartRoutes from "./routes/cartRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
+import path from "node:path";
 import orderRoutes from "./routes/orderRoutes.js";
 import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 import customerRoutes from "./routes/customerRoutes.js";
@@ -26,6 +28,7 @@ export function createApp(prisma) {
   );
 
   app.use(express.json());
+  app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads")));
   // Authentication routes
   app.use("/api/auth", authRoutes(prisma));
 
@@ -37,6 +40,7 @@ export function createApp(prisma) {
   app.use("/api/admin/customers", customerRoutes(prisma));
   app.use("/api/admin/analytics", adminAnalyticsRoutes(prisma));
   app.use("/api/admin/settings", settingsRoutes(prisma));
+  app.use("/api/uploads", uploadRoutes(prisma));
 
   // Health check
   app.get("/", (req, res) => {

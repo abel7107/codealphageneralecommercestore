@@ -55,6 +55,7 @@ export default function Products() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [form, setForm] = useState(emptyForm);
+  const [imageFile, setImageFile] = useState(null);
 
   const fetchProducts = useCallback(async () => {
     setLoading(true);
@@ -119,6 +120,7 @@ export default function Products() {
   function openCreateModal() {
     setEditingProduct(null);
     setForm(emptyForm);
+    setImageFile(null);
     setError("");
     setSuccess("");
     setModalOpen(true);
@@ -137,6 +139,7 @@ export default function Products() {
       categoryId: String(product.categoryId),
       isActive: product.isActive ?? true,
     });
+    setImageFile(null);
 
     setError("");
     setSuccess("");
@@ -149,6 +152,7 @@ export default function Products() {
     setModalOpen(false);
     setEditingProduct(null);
     setForm(emptyForm);
+    setImageFile(null);
   }
 
   function updateField(event) {
@@ -186,18 +190,41 @@ export default function Products() {
       return;
     }
 
+    setSaving(true);
+
+    let imageUrl = form.imageUrl.trim() || null;
+
+    if (imageFile) {
+      const api = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const token = localStorage.getItem("shopora_token");
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      const uploadResponse = await fetch(`${api}/api/uploads/product-image`, {
+        method: "POST",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        body: formData,
+      });
+
+      const uploadData = await uploadResponse.json();
+
+      if (!uploadResponse.ok) {
+        throw new Error(uploadData.message || "Unable to upload image.");
+      }
+
+      imageUrl = uploadData.data.url;
+    }
+
     const payload = {
       name: form.name.trim(),
       slug: form.slug.trim() || createSlug(form.name),
       description: form.description.trim(),
       price,
       stock,
-      imageUrl: form.imageUrl.trim() || null,
+      imageUrl,
       categoryId: Number(form.categoryId),
       isActive: Boolean(form.isActive),
     };
-
-    setSaving(true);
 
     try {
       if (editingProduct) {
@@ -219,6 +246,7 @@ export default function Products() {
       setModalOpen(false);
       setEditingProduct(null);
       setForm(emptyForm);
+      setImageFile(null);
 
       await fetchProducts();
     } catch (err) {
@@ -618,6 +646,21 @@ export default function Products() {
                     />
                     Product is visible in the store
                   </label>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="mb-2 block text-sm font-semibold text-slate-700">
+                    Upload image
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(event) => setImageFile(event.target.files?.[0] || null)}
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm"
+                  />
+                  {imageFile && (
+                    <p className="mt-1 text-xs text-slate-500">{imageFile.name}</p>
+                  )}
                 </div>
 
                 <div className="sm:col-span-2">

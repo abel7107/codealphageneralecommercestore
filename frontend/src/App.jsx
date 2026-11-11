@@ -14,6 +14,7 @@ import MyOrders from "./pages/MyOrders";
 import OrderDetails from "./pages/OrderDetails";
 import Products from "./pages/admin/Products";
 import AdminOrders from "./pages/admin/AdminOrders";
+import AdminCustomers from "./pages/admin/AdminCustomers";
 import {
   Headphones,
   Shirt,
@@ -698,6 +699,7 @@ export default function App() {
     <Route index element={<AdminDashboard />} />
     <Route path="products" element={<Products />} />
     <Route path="orders" element={<AdminOrders />} />
+    <Route path="customers" element={<AdminCustomers />} />
   </Route>
 </Route>
     </Routes>

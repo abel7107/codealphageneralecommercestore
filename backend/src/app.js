@@ -11,6 +11,7 @@ import cartRoutes from "./routes/cartRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 import customerRoutes from "./routes/customerRoutes.js";
+import adminAnalyticsRoutes from "./routes/adminAnalyticsRoutes.js";
 
 export function createApp(prisma) {
   const app = express();
@@ -33,6 +34,7 @@ export function createApp(prisma) {
   app.use("/api/orders", orderRoutes(prisma));
   app.use("/api/admin/orders", adminOrderRoutes(prisma));
   app.use("/api/admin/customers", customerRoutes(prisma));
+  app.use("/api/admin/analytics", adminAnalyticsRoutes(prisma));
 
   // Health check
   app.get("/", (req, res) => {

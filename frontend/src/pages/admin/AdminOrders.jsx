@@ -6,7 +6,7 @@ import {
   Eye,
   X,
 } from "lucide-react";
-import { apiRequest } from "../../services/api";
+import { apiRequest, getImageUrl } from "../../services/api";
 
 const ORDER_STATUSES = ["PENDING", "CONFIRMED", "PROCESSING", "SHIPPED", "DELIVERED", "CANCELLED"];
 const PAYMENT_STATUSES = ["PENDING", "PAID", "FAILED", "REFUNDED"];
@@ -360,7 +360,7 @@ export default function AdminOrders() {
                           <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg bg-slate-100">
                             {item.product?.imageUrl ? (
                               <img
-                                src={item.product.imageUrl}
+                                src={getImageUrl(item.product?.imageUrl) || "/assets/images/products/headphones.jpg"}
                                 alt={item.productName}
                                 className="h-full w-full object-cover"
                               />

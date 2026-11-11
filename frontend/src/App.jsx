@@ -3,6 +3,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import { useState, useEffect } from "react";
 import { useCart } from "./context/CartContext";
+import { getImageUrl } from "./services/api";
 import { useAuth } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -343,7 +344,7 @@ function HomePage() {
                 <article key={product.id} className="group min-w-0">
                   <div className="relative overflow-hidden rounded-2xl bg-white">
                     <img
-                      src={product.imageUrl || "/assets/images/products/headphones.jpg"}
+                      src={getImageUrl(product.imageUrl) || "/assets/images/products/headphones.jpg"}
                       alt={product.name}
                       className="aspect-[4/4.5] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
@@ -534,7 +535,7 @@ function HomePage() {
                   {/* Product */}
                   <div className="flex min-w-0 items-center gap-4">
                     <img
-                      src={item.imageUrl || item.image || "/assets/images/products/headphones.jpg"}
+                      src={getImageUrl(item.imageUrl || item.image) || "/assets/images/products/headphones.jpg"}
                       alt={item.name}
                       className="h-20 w-20 shrink-0 rounded-xl bg-gray-50 object-cover sm:h-16 sm:w-16"
                     />

@@ -13,7 +13,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
-import { apiRequest } from "../../services/api";
+import { apiRequest, getImageUrl } from "../../services/api";
 
 const emptyForm = {
   name: "",
@@ -444,7 +444,7 @@ export default function Products() {
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100">
                           {product.imageUrl ? (
                             <img
-                              src={product.imageUrl}
+                              src={getImageUrl(product.imageUrl) || "/assets/images/products/headphones.jpg"}
                               alt={product.name}
                               className="h-full w-full object-cover"
                             />

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
-import { apiRequest } from "../services/api";
+import { apiRequest, getImageUrl } from "../services/api";
 
 const emptyShipping = {
   fullName: "",
@@ -263,7 +263,7 @@ export default function Checkout() {
             {items.map((item) => (
               <div key={item.id} className="flex gap-3">
                 <img
-                  src={item.imageUrl || item.image || "/assets/images/products/headphones.jpg"}
+                  src={getImageUrl(item.imageUrl || item.image) || "/assets/images/products/headphones.jpg"}
                   alt={item.name}
                   className="h-14 w-14 rounded-lg object-cover"
                 />

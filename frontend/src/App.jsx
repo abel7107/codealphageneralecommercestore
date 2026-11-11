@@ -13,9 +13,11 @@ import OrderConfirmation from "./pages/OrderConfirmation";
 import MyOrders from "./pages/MyOrders";
 import OrderDetails from "./pages/OrderDetails";
 import Products from "./pages/admin/Products";
+import Categories from "./pages/admin/Categories";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminCustomers from "./pages/admin/AdminCustomers";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import Settings from "./pages/admin/Settings";
 import {
   Headphones,
   Shirt,
@@ -699,9 +701,11 @@ export default function App() {
   <Route path="/admin" element={<AdminLayout />}>
     <Route index element={<AdminDashboard />} />
     <Route path="products" element={<Products />} />
+    <Route path="categories" element={<Categories />} />
     <Route path="orders" element={<AdminOrders />} />
     <Route path="customers" element={<AdminCustomers />} />
     <Route path="analytics" element={<AdminAnalytics />} />
+    <Route path="settings" element={<Settings />} />
   </Route>
 </Route>
     </Routes>

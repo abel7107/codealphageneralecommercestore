@@ -22,6 +22,7 @@ const emptyForm = {
   stock: "0",
   imageUrl: "",
   categoryId: "",
+  isActive: true,
 };
 
 function createSlug(value) {
@@ -63,6 +64,7 @@ export default function Products() {
         limit: "100",
         sortBy: "createdAt",
         order: "desc",
+        includeInactive: "true",
       });
 
       if (search.trim()) {
@@ -132,6 +134,7 @@ export default function Products() {
       stock: String(product.stock ?? 0),
       imageUrl: product.imageUrl || "",
       categoryId: String(product.categoryId),
+      isActive: product.isActive ?? true,
     });
 
     setError("");
@@ -190,6 +193,7 @@ export default function Products() {
       stock,
       imageUrl: form.imageUrl.trim() || null,
       categoryId: Number(form.categoryId),
+      isActive: Boolean(form.isActive),
     };
 
     setSaving(true);
@@ -597,6 +601,22 @@ export default function Products() {
                       </option>
                     ))}
                   </select>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="mb-2 block text-sm font-semibold text-slate-700">
+                    Active
+                  </label>
+                  <label className="flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(form.isActive)}
+                      onChange={(e) =>
+                        setForm((current) => ({ ...current, isActive: e.target.checked }))
+                      }
+                    />
+                    Product is visible in the store
+                  </label>
                 </div>
 
                 <div className="sm:col-span-2">

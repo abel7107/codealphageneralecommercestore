@@ -14,6 +14,7 @@ import {
 const navigation = [
   { name: "Dashboard", path: "/admin", Icon: LayoutDashboard },
   { name: "Products", path: "/admin/products", Icon: Package },
+  { name: "Categories", path: "/admin/categories", Icon: Package },
   { name: "Orders", path: "/admin/orders", Icon: ShoppingCart },
   { name: "Customers", path: "/admin/customers", Icon: Users },
   { name: "Analytics", path: "/admin/analytics", Icon: ChartNoAxesCombined },

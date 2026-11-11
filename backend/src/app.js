@@ -12,6 +12,7 @@ import orderRoutes from "./routes/orderRoutes.js";
 import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 import customerRoutes from "./routes/customerRoutes.js";
 import adminAnalyticsRoutes from "./routes/adminAnalyticsRoutes.js";
+import settingsRoutes from "./routes/settingsRoutes.js";
 
 export function createApp(prisma) {
   const app = express();
@@ -35,6 +36,7 @@ export function createApp(prisma) {
   app.use("/api/admin/orders", adminOrderRoutes(prisma));
   app.use("/api/admin/customers", customerRoutes(prisma));
   app.use("/api/admin/analytics", adminAnalyticsRoutes(prisma));
+  app.use("/api/admin/settings", settingsRoutes(prisma));
 
   // Health check
   app.get("/", (req, res) => {
@@ -48,6 +50,7 @@ export function createApp(prisma) {
   app.get("/api/categories", async (req, res) => {
     try {
       const categories = await prisma.category.findMany({
+        include: { _count: { select: { products: true } } },
         orderBy: { createdAt: "desc" },
       });
 
@@ -64,6 +67,70 @@ export function createApp(prisma) {
       });
     }
   });
+
+  // Update a category (admin only)
+  app.put(
+    "/api/categories/:id",
+    authenticateToken,
+    requireAdmin,
+    async (req, res) => {
+      const id = Number(req.params.id);
+      const name = typeof req.body?.name === "string" ? req.body.name.trim() : "";
+      if (!Number.isSafeInteger(id) || id < 1) {
+        return res.status(400).json({ success: false, message: "Invalid category ID" });
+      }
+      if (!name) {
+        return res.status(400).json({ success: false, message: "Category name is required" });
+      }
+      try {
+        const category = await prisma.category.update({
+          where: { id },
+          data: { name },
+          include: { _count: { select: { products: true } } },
+        });
+        return res.json({ success: true, data: category });
+      } catch (error) {
+        if (error.code === "P2002") {
+          return res.status(409).json({ success: false, message: "This category already exists" });
+        }
+        if (error.code === "P2025") {
+          return res.status(404).json({ success: false, message: "Category not found" });
+        }
+        console.error("Update category error:", error);
+        return res.status(500).json({ success: false, message: "Failed to update category" });
+      }
+    }
+  );
+
+  // Delete a category (admin only)
+  app.delete(
+    "/api/categories/:id",
+    authenticateToken,
+    requireAdmin,
+    async (req, res) => {
+      const id = Number(req.params.id);
+      if (!Number.isSafeInteger(id) || id < 1) {
+        return res.status(400).json({ success: false, message: "Invalid category ID" });
+      }
+      try {
+        const category = await prisma.category.findUnique({
+          where: { id },
+          include: { _count: { select: { products: true } } },
+        });
+        if (!category) {
+          return res.status(404).json({ success: false, message: "Category not found" });
+        }
+        if (category._count.products > 0) {
+          return res.status(409).json({ success: false, message: "Category is in use by products" });
+        }
+        await prisma.category.delete({ where: { id } });
+        return res.status(204).end();
+      } catch (error) {
+        console.error("Delete category error:", error);
+        return res.status(500).json({ success: false, message: "Failed to delete category" });
+      }
+    }
+  );
 
   // Create a category (admin only)
   app.post(

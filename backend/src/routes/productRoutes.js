@@ -16,6 +16,8 @@ export default function productRoutes(prisma) {
           ? req.query.search.trim()
           : "";
 
+      const includeInactive = req.query.includeInactive === "true";
+
       const categoryId =
         req.query.categoryId === undefined
           ? undefined
@@ -48,7 +50,7 @@ export default function productRoutes(prisma) {
       }
 
       const where = {
-        isActive: true,
+        ...(includeInactive ? {} : { isActive: true }),
         ...(categoryId !== undefined ? { categoryId } : {}),
         ...(search
           ? {
@@ -100,7 +102,7 @@ export default function productRoutes(prisma) {
 
   // POST /api/products — create product
   router.post("/", authenticateToken, requireAdmin, async (req, res) => {
-    const { name, slug, description, price, stock, imageUrl, categoryId } =
+    const { name, slug, description, price, stock, imageUrl, categoryId, isActive } =
       req.body ?? {};
 
     if (
@@ -115,6 +117,7 @@ export default function productRoutes(prisma) {
       Number(categoryId) < 1 ||
       (stock !== undefined &&
         (!Number.isSafeInteger(stock) || stock < 0)) ||
+      (isActive !== undefined && typeof isActive !== "boolean") ||
       (description !== undefined && typeof description !== "string") ||
       (imageUrl !== undefined &&
         imageUrl !== null &&
@@ -136,6 +139,7 @@ export default function productRoutes(prisma) {
           stock: stock ?? 0,
           imageUrl: imageUrl || null,
           categoryId: Number(categoryId),
+          ...(isActive !== undefined ? { isActive } : {}),
         },
         include: { category: true },
       });
@@ -170,7 +174,7 @@ export default function productRoutes(prisma) {
   // PUT /api/products/:id — update product
   router.put("/:id", authenticateToken, requireAdmin, async (req, res) => {
     const id = Number(req.params.id);
-    const { name, slug, description, price, stock, imageUrl, categoryId } =
+    const { name, slug, description, price, stock, imageUrl, categoryId, isActive } =
       req.body ?? {};
 
     if (!Number.isSafeInteger(id) || id < 1) {
@@ -221,6 +225,13 @@ export default function productRoutes(prisma) {
         return res.status(400).json({ success: false, message: "Invalid stock" });
       }
       data.stock = stock;
+    }
+
+    if (isActive !== undefined) {
+      if (typeof isActive !== "boolean") {
+        return res.status(400).json({ success: false, message: "Invalid active status" });
+      }
+      data.isActive = isActive;
     }
 
     if (imageUrl !== undefined) {

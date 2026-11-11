@@ -8,6 +8,8 @@ import {
   requireAdmin,
 } from "./middleware/authMiddleware.js";
 import cartRoutes from "./routes/cartRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 
 export function createApp(prisma) {
   const app = express();
@@ -27,6 +29,8 @@ export function createApp(prisma) {
   // Product routes
   app.use("/api/products", productRoutes(prisma)); 
   app.use("/api/cart", cartRoutes(prisma));
+  app.use("/api/orders", orderRoutes(prisma));
+  app.use("/api/admin/orders", adminOrderRoutes(prisma));
 
   // Health check
   app.get("/", (req, res) => {

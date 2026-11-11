@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
@@ -19,10 +20,12 @@ export default function Login() {
     try {
      const response = await login(email, password);
 
-if (response.user.role === "ADMIN") {
+const from = location.state?.from || (response.user.role === "ADMIN" ? "/admin" : "/");
+
+if (response.user.role === "ADMIN" && !location.state?.from) {
   navigate("/admin");
 } else {
-  navigate("/");
+  navigate(from);
 }
     } catch (err) {
       setError(err.message || "Login failed. Please try again.");

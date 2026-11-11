@@ -1,11 +1,14 @@
 
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useCart } from "./context/CartContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { Routes, Route,Navigate, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Checkout from "./pages/Checkout";
+import OrderConfirmation from "./pages/OrderConfirmation";
 import Products from "./pages/admin/Products";
 import {
   Headphones,
@@ -31,177 +34,85 @@ import {
 } from "lucide-react";
 
 
-const categories = [
-  { name: "Electronics", Icon: Headphones, color: "bg-gray-100" },
-  { name: "Fashion", Icon: Shirt, color: "bg-gray-100" },
-  { name: "Home & Living", Icon: House, color: "bg-gray-100" },
-  { name: "Accessories", Icon: Watch, color: "bg-gray-100" },
-];
-
-const products = [
-  {
-    id: 1,
-    name: "Wireless Noise-Canceling Headphones",
-    category: "Electronics",
-    price: 2499,
-    oldPrice: 3200,
-    rating: 4.8,
-    badge: "BESTSELLER",
-    image:
-      "/assets/images/products/headphones.jpg",
-  },
-  {
-    id: 2,
-    name: "Everyday Minimal Sneakers",
-    category: "Fashion",
-    price: 1899,
-    oldPrice: 2400,
-    rating: 4.6,
-    badge: "POPULAR",
-    image:
-      "/assets/images/products/sneakers.jpg",
-  },
-  {
-    id: 3,
-    name: "Modern Everyday Watch",
-    category: "Accessories",
-    price: 3299,
-    oldPrice: null,
-    rating: 4.9,
-    badge: "NEW",
-    image:
-      "/assets/images/products/watch.jpg",
-  },
-  {
-    id: 4,
-    name: "Essential Travel Backpack",
-    category: "Accessories",
-    price: 1599,
-    oldPrice: 1999,
-    rating: 4.7,
-    badge: null,
-    image:
-      "/assets/images/products/backpack.jpg",
-  },
-  {
-    id: 5,
-    name: "Premium Everyday Camera",
-    category: "Electronics",
-    price: 4799,
-    oldPrice: null,
-    rating: 4.8,
-    badge: "FEATURED",
-    image:
-      "/assets/images/products/camera.jpg",
-  },
-  {
-    id: 6,
-    name: "Minimal Ceramic Home Set",
-    category: "Home & Living",
-    price: 999,
-    oldPrice: 1299,
-    rating: 4.5,
-    badge: null,
-    image:
-      "/assets/images/products/home-decor.jpg",
-  },
-  {
-    id: 7,
-    name: "Classic Everyday Sunglasses",
-    category: "Accessories",
-    price: 799,
-    oldPrice: null,
-    rating: 4.6,
-    badge: null,
-    image:
-      "/assets/images/products/sunglasses.jpg",
-  },
-  {
-    id: 8,
-    name: "Modern Running Shoes",
-    category: "Fashion",
-    price: 2199,
-    oldPrice: 2700,
-    rating: 4.7,
-    badge: "TRENDING",
-    image: "/assets/images/products/running-shoes.jpg",
-  },
-];
 
 const money = (amount) =>
   `ETB ${amount.toLocaleString("en-US")}`;
 
 function HomePage() {
   const navigate = useNavigate();
+  const { items: cart, cartCount, cartTotal, addToCart: addToCartCtx, updateQuantity, removeItem } = useCart();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const api = import.meta.env.VITE_API_URL || "http://localhost:5000";
+        const [productsRes, categoriesRes] = await Promise.all([
+          fetch(`${api}/api/products?limit=100`).then((r) => r.json()),
+          fetch(`${api}/api/categories`).then((r) => r.json()),
+        ]);
+        setProducts(productsRes.data || []);
+        setCategories(categoriesRes.data || []);
+      } catch {
+        setProducts([]);
+        setCategories([]);
+      }
+    })();
+  }, []);
+
+  const uiCategories = categories.length
+    ? categories.map((c) => {
+        const iconMap = { Electronics: Headphones, Fashion: Shirt, "Home & Living": House, Accessories: Watch };
+        return { name: c.name, Icon: iconMap[c.name] || ShoppingBag, color: "bg-gray-100" };
+      })
+    : [
+        { name: "Electronics", Icon: Headphones, color: "bg-gray-100" },
+        { name: "Fashion", Icon: Shirt, color: "bg-gray-100" },
+        { name: "Home & Living", Icon: House, color: "bg-gray-100" },
+        { name: "Accessories", Icon: Watch, color: "bg-gray-100" },
+      ];
 
   const filteredProducts = products.filter((product) => {
-    const matchesSearch = `${product.name} ${product.category}`
+    const matchesSearch = `${product.name} ${product.category?.name || ""}`
       .toLowerCase()
       .includes(search.toLowerCase());
 
     const matchesCategory =
       activeCategory === "All" ||
-      product.category === activeCategory;
+      product.category?.name === activeCategory;
 
     return matchesSearch && matchesCategory;
   });
 
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-  const cartTotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-
   function addToCart(product) {
-    setCart((current) => {
-      const existing = current.find((item) => item.id === product.id);
-
-      if (existing) {
-        return current.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-
-      return [...current, { ...product, quantity: 1 }];
-    });
+    addToCartCtx(product, 1);
   }
 
   function changeQuantity(id, amount) {
-  setCart((current) =>
-    current.map((item) =>
-      item.id === id
-        ? {
-            ...item,
-            quantity: Math.max(1, item.quantity + amount),
-          }
-        : item
-    )
-  );
-}
-      function removeFromCart(id) {
-        setCart((current) =>
-          current.filter((item) => item.id !== id)
-        );
-      }
-          function continueShopping() {
-        setCartOpen(false);
+    const item = cart.find((i) => i.id === id);
+    if (!item) return;
+    updateQuantity(id, Math.max(1, item.quantity + amount));
+  }
 
-        document.getElementById("products")?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+  function removeFromCart(id) {
+    removeItem(id);
+  }
 
-        function toggleFavorite(id) {
+  function continueShopping() {
+    setCartOpen(false);
+    document.getElementById("products")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
+  function toggleFavorite(id) {
     setFavorites((current) =>
       current.includes(id)
         ? current.filter((item) => item !== id)
@@ -362,7 +273,7 @@ function HomePage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
-            {categories.map((category) => (
+            {uiCategories.map((category) => (
               <button
                 key={category.name}
                 onClick={() => {
@@ -402,7 +313,7 @@ function HomePage() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {["All", ...categories.map((item) => item.name)].map((category) => (
+                {["All", ...uiCategories.map((item) => item.name)].map((category) => (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
@@ -423,7 +334,7 @@ function HomePage() {
                 <article key={product.id} className="group min-w-0">
                   <div className="relative overflow-hidden rounded-2xl bg-white">
                     <img
-                      src={product.image}
+                      src={product.imageUrl || "/assets/images/products/headphones.jpg"}
                       alt={product.name}
                       className="aspect-[4/4.5] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
@@ -451,7 +362,7 @@ function HomePage() {
                   </div>
                   <div className="pt-4">
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">
-                      {product.category}
+                      {product.category?.name}
                     </p>
                     <h3 className="mt-1 line-clamp-2 min-h-10 text-sm font-semibold leading-5 sm:text-[15px]">
                       {product.name}
@@ -462,7 +373,7 @@ function HomePage() {
                       <span className="text-xs text-gray-400">(Customer rating)</span>
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <span className="text-sm font-bold">{money(product.price)}</span>
+                      <span className="text-sm font-bold">{money(Number(product.price))}</span>
                       {product.oldPrice && (
                         <span className="text-xs text-gray-400 line-through">
                           {money(product.oldPrice)}
@@ -614,14 +525,14 @@ function HomePage() {
                   {/* Product */}
                   <div className="flex min-w-0 items-center gap-4">
                     <img
-                      src={item.image}
+                      src={item.imageUrl || item.image || "/assets/images/products/headphones.jpg"}
                       alt={item.name}
                       className="h-20 w-20 shrink-0 rounded-xl bg-gray-50 object-cover sm:h-16 sm:w-16"
                     />
 
                     <div className="min-w-0">
                       <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">
-                        {item.category}
+                        {item.category?.name || item.category}
                       </p>
 
                       <h3 className="mt-1 text-sm font-bold text-gray-900">
@@ -629,7 +540,7 @@ function HomePage() {
                       </h3>
 
                       <p className="mt-1 text-xs text-gray-500">
-                        {money(item.price)} each
+                        {money(Number(item.price))} each
                       </p>
                     </div>
                   </div>
@@ -671,7 +582,7 @@ function HomePage() {
                     </span>
 
                     <span className="text-sm font-bold">
-                      {money(item.price * item.quantity)}
+                      {money(Number(item.price) * item.quantity)}
                     </span>
                   </div>
 
@@ -742,7 +653,7 @@ function HomePage() {
             <button
               onClick={() => {
                 setCartOpen(false);
-                setCheckoutOpen(true);
+                navigate("/checkout");
               }}
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800 active:scale-[0.99]"
             >
@@ -761,78 +672,6 @@ function HomePage() {
     </div>
   </div>
 )}
-{checkoutOpen && (
-  <div className="fixed inset-0 z-50 min-h-screen overflow-y-auto bg-gray-50">
-    <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
-
-      {/* Checkout Header */}
-      <div className="flex items-center justify-between border-b border-gray-200 pb-5">
-        <a href="#home" className="text-2xl font-black tracking-tight">
-          shopora<span className="text-gray-400">.</span>
-        </a>
-
-        <span className="text-sm font-semibold text-gray-500">
-          Secure Checkout
-        </span>
-      </div>
-
-      {/* Checkout Content */}
-      <div className="mx-auto mt-12 max-w-xl rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-10">
-
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
-          <UserRound size={30} className="text-gray-700" />
-        </div>
-
-        <h1 className="mt-6 text-center text-2xl font-bold tracking-tight sm:text-3xl">
-          Login Required
-        </h1>
-
-        <p className="mt-3 text-center text-sm leading-6 text-gray-500">
-          Please sign in to your Shopora account before proceeding with checkout.
-          Your shopping cart will be saved while you sign in.
-        </p>
-
-        {/* Order Preview */}
-        <div className="mt-8 rounded-2xl bg-gray-50 p-5">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-500">Items in your cart</span>
-            <span className="font-semibold">{cartCount}</span>
-          </div>
-
-          <div className="mt-3 flex items-center justify-between border-t border-gray-200 pt-3">
-            <span className="font-semibold">Estimated total</span>
-            <span className="text-lg font-bold">{money(cartTotal)}</span>
-          </div>
-        </div>
-
-        {/* Login Action */}
-        <button
-                onClick={() => {
-          setCheckoutOpen(false);
-          navigate("/login");
-        }}
-          className="mt-7 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800"
-        >
-          <UserRound size={17} />
-          Sign In to Continue
-          <ArrowRight size={17} />
-        </button>
-
-        {/* Back to Cart */}
-        <button
-          onClick={() => {
-            setCheckoutOpen(false);
-            setCartOpen(true);
-          }}
-          className="mt-4 w-full rounded-full border border-gray-200 py-3.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
-        >
-          Return to Shopping Cart
-        </button>
-
-      </div>
-    </div>
-  </div>
-)}
     </div>
 
   );
@@ -844,6 +683,8 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/order-confirmation/:orderNumber" element={<OrderConfirmation />} />
 
      <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
   <Route path="/admin" element={<AdminLayout />}>

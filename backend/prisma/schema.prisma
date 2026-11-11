@@ -30,6 +30,7 @@ model Product {
   categoryId  Int
   category    Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
   cartItems   CartItem[]
+  orderItems  OrderItem[]
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -54,6 +55,7 @@ model User {
   updatedAt    DateTime @updatedAt
 
   cart         Cart?
+  orders       Order[]
 
   @@index([role])
 }
@@ -80,5 +82,74 @@ model CartItem {
   updatedAt DateTime @updatedAt
 
   @@unique([cartId, productId])
+  @@index([productId])
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  COD
+  CARD
+  BANK_TRANSFER
+}
+
+model Order {
+  id               Int            @id @default(autoincrement())
+  orderNumber      String         @unique
+  userId           Int
+  user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status           OrderStatus    @default(PENDING)
+  paymentMethod    PaymentMethod  @default(COD)
+  paymentStatus    PaymentStatus  @default(PENDING)
+  subtotal         Decimal        @db.Decimal(10, 2)
+  shippingCost     Decimal        @db.Decimal(10, 2) @default(0)
+  total            Decimal        @db.Decimal(10, 2)
+  shippingFullName String
+  shippingPhone    String
+  shippingEmail    String?
+  shippingAddress  String
+  shippingCity     String
+  shippingPostalCode String?
+  shippingCountry  String         @default("Ethiopia")
+  notes            String?
+  items            OrderItem[]
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([paymentStatus])
+  @@index([createdAt])
+  @@index([orderNumber])
+}
+
+model OrderItem {
+  id          Int      @id @default(autoincrement())
+  orderId     Int
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   Int
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+  productName String
+  productSlug String?
+  unitPrice   Decimal  @db.Decimal(10, 2)
+  quantity    Int
+  subtotal    Decimal  @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+
+  @@index([orderId])
   @@index([productId])
 }

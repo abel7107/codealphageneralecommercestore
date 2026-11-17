@@ -326,7 +326,7 @@ export default function Products() {
             </div>
             <div>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Products displayed</p>
-              <h2 className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white">
                 {filteredCount}
               </h2>
             </div>
@@ -340,7 +340,7 @@ export default function Products() {
             </div>
             <div>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Stock in displayed products</p>
-              <h2 className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white">
                 {totalStock.toLocaleString()}
               </h2>
             </div>
@@ -517,7 +517,7 @@ export default function Products() {
           <div className="my-auto w-full max-w-2xl rounded-2xl bg-white dark:bg-slate-800 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 px-6 py-5">
               <div>
-                <h2 className="text-base sm:text-lg sm:text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
                   {editingProduct ? "Edit Product" : "Add New Product"}
                 </h2>
                 <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">

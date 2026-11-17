@@ -50,7 +50,7 @@ export default function OrderDetails() {
   if (error || !order) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{error || "Order not found"}</h1>
+        <h1 className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white">{error || "Order not found"}</h1>
         <Link to="/orders" className="mt-6 inline-block rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3 text-xs sm:text-sm font-semibold text-white">
           Back to orders
         </Link>
@@ -67,7 +67,7 @@ export default function OrderDetails() {
       <div className="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Order details</h1>
+            <h1 className="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white">Order details</h1>
             <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">{order.orderNumber}</p>
           </div>
           <div className="flex gap-2">

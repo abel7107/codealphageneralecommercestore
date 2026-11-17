@@ -70,7 +70,7 @@ export default function MyOrders() {
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">My orders</h1>
+          <h1 className="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white">My orders</h1>
           <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">Track and review your previous orders.</p>
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function MyOrders() {
           Array.from({ length: 3 }).map((_, index) => <SkeletonRow key={index} />)
         ) : pagedOrders.length === 0 ? (
           <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-10 text-center">
-            <h2 className="text-base sm:text-lg sm:text-lg sm:text-xl font-bold text-slate-900 dark:text-white">No orders found</h2>
+            <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">No orders found</h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               {orders.length === 0
                 ? "You have not placed any orders yet."

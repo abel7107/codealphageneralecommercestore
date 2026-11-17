@@ -36,12 +36,12 @@ if (response.user.role === "ADMIN" && !location.state?.from) {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-lg">
-        <Link to="/" className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+      <div className="w-full max-w-sm rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-lg">
+        <Link to="/" className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white">
           Shopora
         </Link>
 
-        <h1 className="mt-8 text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+        <h1 className="mt-6 text-lg sm:text-2xl font-bold text-slate-900 dark:text-white">
           Welcome back
         </h1>
 
@@ -55,7 +55,7 @@ if (response.user.role === "ADMIN" && !location.state?.from) {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+        <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           <div>
             <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
               Email address

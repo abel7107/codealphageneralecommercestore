@@ -32,7 +32,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
             </svg>
           </button>
           <div className="min-w-0">
-            <h2 className="truncate text-sm sm:text-base font-bold text-slate-900 dark:text-white sm:text-base sm:text-lg">{title || "Admin workspace"}</h2>
+            <h2 className="truncate text-sm sm:text-base font-bold text-slate-900 dark:text-white sm:text-lg">{title || "Admin workspace"}</h2>
             {description && (
               <p className="hidden truncate text-xs text-slate-500 dark:text-slate-400 sm:block">{description}</p>
             )}

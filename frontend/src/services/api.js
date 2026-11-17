@@ -23,7 +23,14 @@ export async function apiRequest(endpoint, options = {}) {
     return null;
   }
 
-  const data = await response.json();
+  const data = await response.json().catch(() => ({}));
+
+  if (response.status === 401 && localStorage.getItem("shopora_token")) {
+    localStorage.removeItem("shopora_token");
+    if (typeof window !== "undefined" && !window.location.pathname.startsWith("/login")) {
+      window.location.href = "/login";
+    }
+  }
 
   if (!response.ok) {
     throw new Error(data.message || "Something went wrong");

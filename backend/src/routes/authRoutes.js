@@ -27,7 +27,7 @@ export default function authRoutes(prisma) {
       process.env.JWT_SECRET,
       {
         algorithm: "HS256",
-        expiresIn: "1h",
+         expiresIn: "7d",
       }
     );
   }

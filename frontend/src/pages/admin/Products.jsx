@@ -411,7 +411,7 @@ export default function Products() {
             </p>
             <button
               onClick={openCreateModal}
-              className="mt-5 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white"
+              className="mt-5 rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white"
             >
               Add Product
             </button>
@@ -489,7 +489,7 @@ export default function Products() {
                         <button
                           onClick={() => openEditModal(product)}
                           title="Edit product"
-                          className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950"
+                          className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-violet-700"
                         >
                           <Pencil size={18} />
                         </button>
@@ -703,7 +703,7 @@ export default function Products() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-violet-700 px-6 py-3 text-sm font-semibold text-white hover:bg-violet-800 disabled:opacity-60"
                 >
                   {saving && <LoaderCircle size={17} className="animate-spin" />}
                   {saving

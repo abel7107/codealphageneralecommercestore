@@ -79,13 +79,13 @@ function HomePage() {
   const uiCategories = categories.length
     ? categories.map((c) => {
         const iconMap = { Electronics: Headphones, Fashion: Shirt, "Home & Living": House, Accessories: Watch };
-        return { name: c.name, Icon: iconMap[c.name] || ShoppingBag, color: "bg-gray-100" };
+        return { name: c.name, Icon: iconMap[c.name] || ShoppingBag, color: "bg-slate-100" };
       })
     : [
-        { name: "Electronics", Icon: Headphones, color: "bg-gray-100" },
-        { name: "Fashion", Icon: Shirt, color: "bg-gray-100" },
-        { name: "Home & Living", Icon: House, color: "bg-gray-100" },
-        { name: "Accessories", Icon: Watch, color: "bg-gray-100" },
+        { name: "Electronics", Icon: Headphones, color: "bg-slate-100" },
+        { name: "Fashion", Icon: Shirt, color: "bg-slate-100" },
+        { name: "Home & Living", Icon: House, color: "bg-slate-100" },
+        { name: "Accessories", Icon: Watch, color: "bg-slate-100" },
       ];
 
   const filteredProducts = products.filter((product) => {
@@ -131,12 +131,12 @@ function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <div className="bg-gray-950 px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
+    <div className="min-h-screen bg-white text-slate-900">
+      <div className="bg-slate-950 px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
         Your next favorite find is waiting. Discover something special.
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-gray-100 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b border-slate-100 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <button
             className="rounded-lg p-2 lg:hidden"
@@ -150,24 +150,24 @@ function HomePage() {
             href="#home"
             className="text-2xl font-black tracking-tight sm:text-3xl"
           >
-            shopora<span className="text-gray-950">.</span>
+            shopora<span className="text-slate-950">.</span>
           </a>
 
-          <nav className="hidden items-center gap-8 text-sm font-medium text-gray-600 lg:flex">
-            <a href="#home" className="text-gray-950">Home</a>
-            <a href="#products" className="transition hover:text-gray-950">Shop</a>
-            <a href="#categories" className="transition hover:text-gray-950">Categories</a>
-            <a href="#benefits" className="transition hover:text-gray-950">Why Shopora?</a>
+          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex">
+            <a href="#home" className="text-slate-950">Home</a>
+            <a href="#products" className="transition hover:text-slate-950">Shop</a>
+            <a href="#categories" className="transition hover:text-slate-950">Categories</a>
+            <a href="#benefits" className="transition hover:text-slate-950">Why Shopora?</a>
           </nav>
 
           <div className="hidden max-w-sm flex-1 md:flex lg:max-w-xs">
-            <div className="flex w-full items-center gap-2 rounded-full bg-gray-100 px-4 py-2.5 focus-within:ring-2 focus-within:ring-gray-300">
-              <Search size={18} className="shrink-0 text-gray-400" />
+            <div className="flex w-full items-center gap-2 rounded-full bg-slate-100 px-4 py-2.5 focus-within:ring-2 focus-within:ring-slate-300">
+              <Search size={18} className="shrink-0 text-slate-400" />
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search products..."
-                className="w-full bg-transparent text-sm outline-none placeholder:text-gray-400"
+                className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
                 aria-label="Search products"
               />
             </div>
@@ -175,7 +175,7 @@ function HomePage() {
 
           <div className="flex items-center gap-1 sm:gap-3">
             <button
-              className="relative rounded-full p-2.5 transition hover:bg-gray-100"
+              className="relative rounded-full p-2.5 transition hover:bg-slate-100"
               onClick={() => setCartOpen(true)}
               aria-label="Open shopping cart"
             >
@@ -190,7 +190,7 @@ function HomePage() {
             </button>
            <Link
               to={user ? "/orders" : "/login"}
-              className="hidden rounded-full p-2.5 transition hover:bg-gray-100 sm:block"
+              className="hidden rounded-full p-2.5 transition hover:bg-slate-100 sm:block"
               aria-label={user ? "My orders" : "Account"}
             >
               <UserRound size={21} />
@@ -201,7 +201,7 @@ function HomePage() {
         </div>
 
         {menuOpen && (
-          <nav className="flex flex-col gap-4 border-t border-gray-100 px-6 py-5 text-sm lg:hidden">
+          <nav className="flex flex-col gap-4 border-t border-slate-100 px-6 py-5 text-sm lg:hidden">
             <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
             <a href="#products" onClick={() => setMenuOpen(false)}>Shop</a>
             <a href="#categories" onClick={() => setMenuOpen(false)}>Categories</a>
@@ -210,7 +210,7 @@ function HomePage() {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search products..."
-              className="rounded-lg border border-gray-200 px-3 py-2 outline-gray-500"
+              className="rounded-lg border border-slate-200 px-3 py-2 outline-slate-500"
             />
           </nav>
         )}
@@ -218,28 +218,28 @@ function HomePage() {
 
       <main>
         <section id="home" className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8 lg:pt-10">
-          <div className="relative overflow-hidden rounded-3xl bg-gray-100">
+          <div className="relative overflow-hidden rounded-3xl bg-slate-100">
             <div className="grid min-h-[420px] items-center md:grid-cols-2">
               <div className="relative z-10 px-6 py-12 sm:px-10 sm:py-16 lg:px-14">
-                <span className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-gray-950">
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-slate-950">
                   Discover your style
                 </span>
                 <h1 className="mt-6 max-w-xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
                   Good finds.
                   <br />
-                  <span className="text-gray-950">Better living.</span>
+                  <span className="text-slate-950">Better living.</span>
                 </h1>
-                <p className="mt-5 max-w-md text-base leading-7 text-gray-600 sm:text-lg">
+                <p className="mt-5 max-w-md text-base leading-7 text-slate-600 sm:text-lg">
                   Discover everyday essentials, thoughtful design, and things
                   you will love — all in one place.
                 </p>
                 <a
                   href="#products"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-gray-950 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-gray-1000"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-1000"
                 >
                   Explore the collection <ArrowRight size={18} />
                 </a>
-                <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-medium text-gray-500 sm:gap-6">
+                <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-500 sm:gap-6">
                   <span>✦ Curated finds</span>
                   <span>✦ Everyday essentials</span>
                 </div>
@@ -251,9 +251,9 @@ function HomePage() {
                   alt="Beautiful modern retail store"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/20 to-transparent md:bg-gradient-to-r md:from-gray-100/30 md:via-transparent md:to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-100/20 to-transparent md:bg-gradient-to-r md:from-slate-100/30 md:via-transparent md:to-transparent" />
                 <div className="absolute bottom-5 right-5 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur sm:bottom-8 sm:right-8">
-                  <p className="text-xs text-gray-500">Your everyday destination</p>
+                  <p className="text-xs text-slate-500">Your everyday destination</p>
                   <p className="mt-1 text-lg font-bold">Find your something.</p>
                 </div>
               </div>
@@ -264,7 +264,7 @@ function HomePage() {
         <section id="categories" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="mb-7 flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-950">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-950">
                 Browse your way
               </p>
               <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
@@ -276,7 +276,7 @@ function HomePage() {
                 setActiveCategory("All");
                 document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="hidden items-center gap-2 text-sm font-semibold text-gray-600 hover:text-gray-950 sm:flex"
+              className="hidden items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-950 sm:flex"
             >
               All products <ArrowRight size={16} />
             </button>
@@ -291,33 +291,33 @@ function HomePage() {
                   document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className={`group rounded-2xl ${category.color} p-5 text-left transition hover:-translate-y-1 hover:shadow-md sm:p-7 ${
-                  activeCategory === category.name ? "ring-2 ring-gray-800" : ""
+                  activeCategory === category.name ? "ring-2 ring-slate-800" : ""
                 }`}
               >
                 <category.Icon
                     size={44}
                     strokeWidth={1.5}
-                    className="text-gray-900"
+                    className="text-slate-900"
                     aria-hidden="true"
                   />
                                   <p className="mt-5 font-bold">{category.name}</p>
-                <p className="mt-1 text-xs text-gray-500">Explore collection ↗</p>
+                <p className="mt-1 text-xs text-slate-500">Explore collection ↗</p>
               </button>
             ))}
           </div>
         </section>
 
-        <section id="products" className="bg-gray-50 py-14 sm:py-16">
+        <section id="products" className="bg-slate-50 py-14 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-950">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-950">
                   The good stuff
                 </p>
                 <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
                   {search ? "Search results" : activeCategory === "All" ? "Featured products" : activeCategory}
                 </h2>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-slate-500">
                   Thoughtful picks for everyday life.
                 </p>
               </div>
@@ -329,8 +329,8 @@ function HomePage() {
                     onClick={() => setActiveCategory(category)}
                     className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
                       activeCategory === category
-                        ? "bg-gray-950 text-white"
-                        : "border border-gray-200 bg-white text-gray-600 hover:border-gray-400"
+                        ? "bg-slate-950 text-white"
+                        : "border border-slate-200 bg-white text-slate-600 hover:border-slate-400"
                     }`}
                   >
                     {category}
@@ -355,44 +355,44 @@ function HomePage() {
                     )}
                     <button
                       onClick={() => toggleFavorite(product.id)}
-                      className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 transition hover:bg-gray-100 sm:right-3 sm:top-3"
+                      className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 transition hover:bg-slate-100 sm:right-3 sm:top-3"
                       aria-label={`Toggle favorite for ${product.name}`}
                     >
                       <Heart
                         size={17}
-                        className={favorites.includes(product.id) ? "fill-red-500 text-red-500" : "text-gray-700"}
+                        className={favorites.includes(product.id) ? "fill-red-500 text-red-500" : "text-slate-700"}
                       />
                     </button>
                     <button
                       onClick={() => addToCart(product)}
-                      className="absolute bottom-3 left-3 right-3 flex items-center justify-center gap-2 rounded-full bg-white py-3 text-xs font-bold shadow-sm transition hover:bg-gray-950 hover:text-white sm:translate-y-16 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100"
+                      className="absolute bottom-3 left-3 right-3 flex items-center justify-center gap-2 rounded-full bg-white py-3 text-xs font-bold shadow-sm transition hover:bg-slate-950 hover:text-white sm:translate-y-16 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100"
                     >
                       <ShoppingBag size={15} /> Add to bag
                     </button>
                   </div>
                   <div className="pt-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                       {product.category?.name}
                     </p>
                     <h3 className="mt-1 line-clamp-2 min-h-10 text-sm font-semibold leading-5 sm:text-[15px]">
                       {product.name}
                     </h3>
                     <div className="mt-2 flex items-center gap-1">
-                      <Star size={13} className="fill-gray-700 text-gray-700" />
+                      <Star size={13} className="fill-slate-700 text-slate-700" />
                       <span className="text-xs font-semibold">{product.rating}</span>
-                      <span className="text-xs text-gray-400">(Customer rating)</span>
+                      <span className="text-xs text-slate-400">(Customer rating)</span>
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <span className="text-sm font-bold">{money(Number(product.price))}</span>
                       {product.oldPrice && (
-                        <span className="text-xs text-gray-400 line-through">
+                        <span className="text-xs text-slate-400 line-through">
                           {money(product.oldPrice)}
                         </span>
                       )}
                     </div>
                     <button
                       onClick={() => addToCart(product)}
-                      className="mt-3 w-full rounded-full border border-gray-200 bg-white py-2.5 text-xs font-semibold transition hover:border-gray-950 hover:bg-gray-950 hover:text-white sm:hidden"
+                      className="mt-3 w-full rounded-full border border-slate-200 bg-white py-2.5 text-xs font-semibold transition hover:border-slate-950 hover:bg-slate-950 hover:text-white sm:hidden"
                     >
                       Add to bag
                     </button>
@@ -403,9 +403,9 @@ function HomePage() {
 
             {filteredProducts.length === 0 && (
               <div className="py-16 text-center">
-                <Search className="mx-auto text-gray-300" size={36} />
+                <Search className="mx-auto text-slate-300" size={36} />
                 <h3 className="mt-4 text-lg font-bold">No products found</h3>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-slate-500">
                   Try another search or browse all products.
                 </p>
                 <button
@@ -413,7 +413,7 @@ function HomePage() {
                     setSearch("");
                     setActiveCategory("All");
                   }}
-                  className="mt-5 rounded-full bg-gray-950 px-5 py-3 text-sm font-semibold text-white"
+                  className="mt-5 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white"
                 >
                   Clear filters
                 </button>
@@ -429,27 +429,27 @@ function HomePage() {
             { icon: RotateCcw, title: "Here to help", description: "Clear support when you need a hand." },
           ].map(({ icon: Icon, title, description }) => (
             <div key={title} className="flex gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gray-100 text-gray-950">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-slate-950">
                 <Icon size={23} />
               </div>
               <div>
                 <h3 className="font-bold">{title}</h3>
-                <p className="mt-1 text-sm leading-6 text-gray-500">{description}</p>
+                <p className="mt-1 text-sm leading-6 text-slate-500">{description}</p>
               </div>
             </div>
           ))}
         </section>
       </main>
 
-      <footer className="bg-gray-950 text-white">
+      <footer className="bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-9 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <a href="#home" className="text-2xl font-black tracking-tight">
-            shopora<span className="text-gray-950">.</span>
+            shopora<span className="text-slate-950">.</span>
           </a>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-slate-400">
             Find your something. © {new Date().getFullYear()} Shopora.
           </p>
-          <a href="#products" className="text-sm text-gray-300 hover:text-white">
+          <a href="#products" className="text-sm text-slate-300 hover:text-white">
             Explore products ↑
           </a>
         </div>
@@ -461,14 +461,14 @@ function HomePage() {
    <div className="mx-auto min-h-screen max-w-7xl px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
 
       {/* Cart Header */}
-      <div className="flex items-center justify-between border-b border-gray-100 pb-5">
+      <div className="flex items-center justify-between border-b border-slate-100 pb-5">
         <a href="#home" className="text-2xl font-black tracking-tight">
-          shopora<span className="text-gray-400">.</span>
+          shopora<span className="text-slate-400">.</span>
         </a>
 
         <button
          onClick={continueShopping}
-          className="flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-medium transition hover:bg-gray-100"
+          className="flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium transition hover:bg-slate-100"
         >
           <X size={16} />
           Continue shopping
@@ -477,7 +477,7 @@ function HomePage() {
 
       {/* Page Title */}
       <div className="mb-8 mt-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Your selection
         </p>
 
@@ -485,28 +485,28 @@ function HomePage() {
           Shopping Cart
         </h1>
 
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-2 text-sm text-slate-500">
           {cartCount} {cartCount === 1 ? "item" : "items"} in your shopping bag
         </p>
       </div>
 
       {cart.length === 0 ? (
-        <div className="flex min-h-[400px] flex-col items-center justify-center rounded-3xl border border-gray-200 px-5 text-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
-            <ShoppingBag size={34} className="text-gray-400" />
+        <div className="flex min-h-[400px] flex-col items-center justify-center rounded-3xl border border-slate-200 px-5 text-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-slate-100">
+            <ShoppingBag size={34} className="text-slate-400" />
           </div>
 
           <h2 className="mt-5 text-xl font-bold">
             Your shopping bag is empty
           </h2>
 
-          <p className="mt-2 max-w-sm text-sm leading-6 text-gray-500">
+          <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500">
             Looks like you haven't discovered your next favorite item yet.
           </p>
 
           <button
             onClick={continueShopping}
-            className="mt-6 rounded-full bg-gray-950 px-7 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
+            className="mt-6 rounded-full bg-slate-950 px-7 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Start shopping
           </button>
@@ -515,10 +515,10 @@ function HomePage() {
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.8fr)_minmax(280px,0.8fr)]">
 
           {/* Product List */}
-          <section className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
 
             {/* Table Heading */}
-            <div className="hidden grid-cols-[minmax(0,1fr)_120px_100px_45px] items-center gap-4 border-b border-gray-200 bg-gray-50 px-5 py-4 text-xs font-semibold uppercase tracking-wider text-gray-500 sm:grid">
+            <div className="hidden grid-cols-[minmax(0,1fr)_120px_100px_45px] items-center gap-4 border-b border-slate-200 bg-slate-50 px-5 py-4 text-xs font-semibold uppercase tracking-wider text-slate-500 sm:grid">
               <span>Product</span>
               <span className="text-center">Quantity</span>
               <span className="text-right">Total</span>
@@ -526,7 +526,7 @@ function HomePage() {
             </div>
 
             {/* Product Rows */}
-            <div className="divide-y divide-gray-100 px-4 sm:px-5">
+            <div className="divide-y divide-slate-100 px-4 sm:px-5">
               {cart.map((item) => (
                 <article
                   key={item.id}
@@ -537,19 +537,19 @@ function HomePage() {
                     <img
                       src={getImageUrl(item.imageUrl || item.image) || "/assets/images/products/headphones.jpg"}
                       alt={item.name}
-                      className="h-20 w-20 shrink-0 rounded-xl bg-gray-50 object-cover sm:h-16 sm:w-16"
+                      className="h-20 w-20 shrink-0 rounded-xl bg-slate-50 object-cover sm:h-16 sm:w-16"
                     />
 
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                         {item.category?.name || item.category}
                       </p>
 
-                      <h3 className="mt-1 text-sm font-bold text-gray-900">
+                      <h3 className="mt-1 text-sm font-bold text-slate-900">
                         {item.name}
                       </h3>
 
-                      <p className="mt-1 text-xs text-gray-500">
+                      <p className="mt-1 text-xs text-slate-500">
                         {money(Number(item.price))} each
                       </p>
                     </div>
@@ -557,15 +557,15 @@ function HomePage() {
 
                   {/* Quantity */}
                   <div className="flex items-center justify-between sm:justify-center">
-                    <span className="text-xs text-gray-400 sm:hidden">
+                    <span className="text-xs text-slate-400 sm:hidden">
                       Quantity
                     </span>
 
-                    <div className="flex items-center gap-3 rounded-full border border-gray-200 px-2 py-1.5">
+                    <div className="flex items-center gap-3 rounded-full border border-slate-200 px-2 py-1.5">
                       <button
                         onClick={() => changeQuantity(item.id, -1)}
                         disabled={item.quantity <= 1}
-                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-gray-100 disabled:opacity-30"
+                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 disabled:opacity-30"
                         aria-label={`Decrease ${item.name}`}
                       >
                         <Minus size={13} />
@@ -577,7 +577,7 @@ function HomePage() {
 
                       <button
                         onClick={() => changeQuantity(item.id, 1)}
-                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-gray-100"
+                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100"
                         aria-label={`Increase ${item.name}`}
                       >
                         <Plus size={13} />
@@ -587,7 +587,7 @@ function HomePage() {
 
                   {/* Line Total */}
                   <div className="flex items-center justify-between sm:justify-end">
-                    <span className="text-xs text-gray-400 sm:hidden">
+                    <span className="text-xs text-slate-400 sm:hidden">
                       Total
                     </span>
 
@@ -600,7 +600,7 @@ function HomePage() {
                   <div className="flex justify-end sm:justify-center">
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition hover:bg-red-50 hover:text-red-600"
+                      className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition hover:bg-red-50 hover:text-red-600"
                       aria-label={`Remove ${item.name}`}
                     >
                       <Trash2 size={16} />
@@ -612,28 +612,28 @@ function HomePage() {
           </section>
 
           {/* Order Summary */}
-         <aside className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 lg:sticky lg:top-6">
+         <aside className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 lg:sticky lg:top-6">
             <h2 className="text-lg font-bold tracking-tight">
               Order Summary
             </h2>
 
             <div className="mt-6 space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500">Subtotal ({cartCount} items)</span>
+                <span className="text-slate-500">Subtotal ({cartCount} items)</span>
                 <span className="font-semibold">{money(cartTotal)}</span>
               </div>
 
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500">Discount</span>
-                <span className="text-gray-400">Not applied</span>
+                <span className="text-slate-500">Discount</span>
+                <span className="text-slate-400">Not applied</span>
               </div>
 
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500">Delivery fee</span>
-                <span className="text-gray-400">Calculated later</span>
+                <span className="text-slate-500">Delivery fee</span>
+                <span className="text-slate-400">Calculated later</span>
               </div>
 
-              <div className="border-t border-gray-200 pt-5">
+              <div className="border-t border-slate-200 pt-5">
                 <div className="flex items-center justify-between">
                   <span className="font-bold">Estimated Total</span>
                   <span className="text-xl font-bold">
@@ -641,21 +641,21 @@ function HomePage() {
                   </span>
                 </div>
 
-                <p className="mt-2 text-[11px] leading-5 text-gray-400">
+                <p className="mt-2 text-[11px] leading-5 text-slate-400">
                   Final delivery charges will be calculated at checkout.
                 </p>
               </div>
             </div>
 
-            <div className="mt-6 rounded-xl bg-gray-50 p-4">
+            <div className="mt-6 rounded-xl bg-slate-50 p-4">
               <div className="flex items-center gap-2">
-                <ShieldCheck size={17} className="text-gray-600" />
+                <ShieldCheck size={17} className="text-slate-600" />
                 <span className="text-xs font-semibold">
                   Shop with confidence
                 </span>
               </div>
 
-              <p className="mt-1 pl-6 text-[11px] leading-5 text-gray-500">
+              <p className="mt-1 pl-6 text-[11px] leading-5 text-slate-500">
                 Your order details will be reviewed before confirmation.
               </p>
             </div>
@@ -665,14 +665,14 @@ function HomePage() {
                 setCartOpen(false);
                 navigate("/checkout");
               }}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gray-950 py-4 text-sm font-bold text-white transition hover:bg-gray-800 active:scale-[0.99]"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 py-4 text-sm font-bold text-white transition hover:bg-slate-800 active:scale-[0.99]"
             >
               Checkout Now <ArrowRight size={17} />
             </button>
 
             <button
               onClick={() => setCartOpen(false)}
-              className="mt-3 w-full py-2 text-xs font-semibold text-gray-500 transition hover:text-gray-950"
+              className="mt-3 w-full py-2 text-xs font-semibold text-slate-500 transition hover:text-slate-950"
             >
               Continue shopping
             </button>

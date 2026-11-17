@@ -94,7 +94,7 @@ export default function Categories() {
           placeholder="Category name"
           className="flex-1 rounded-xl border border-slate-200 px-4 py-3 text-sm"
         />
-        <button type="submit" className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white">
+        <button type="submit" className="rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white">
           {editing ? "Update" : "Add"}
         </button>
         {editing && (

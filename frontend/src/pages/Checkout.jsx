@@ -125,9 +125,9 @@ export default function Checkout() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold text-gray-900">Your cart is empty</h1>
-        <p className="mt-3 text-gray-500">Add products before checking out.</p>
-        <Link to="/" className="mt-6 inline-block rounded-full bg-gray-950 px-6 py-3 text-sm font-semibold text-white">
+        <h1 className="text-3xl font-bold text-slate-900">Your cart is empty</h1>
+        <p className="mt-3 text-slate-500">Add products before checking out.</p>
+        <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 px-6 py-3 text-sm font-semibold text-white">
           Continue shopping
         </Link>
       </div>
@@ -136,13 +136,13 @@ export default function Checkout() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-gray-900">Checkout</h1>
-      <p className="mt-2 text-sm text-gray-500">Complete your shipping details to place your order.</p>
+      <h1 className="text-3xl font-bold text-slate-900">Checkout</h1>
+      <p className="mt-2 text-sm text-slate-500">Complete your shipping details to place your order.</p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.8fr)]">
-        <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div>
-            <h2 className="text-lg font-bold text-gray-900">Customer information</h2>
+            <h2 className="text-lg font-bold text-slate-900">Customer information</h2>
           </div>
 
           {submitError && (
@@ -153,112 +153,112 @@ export default function Checkout() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Full name *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Full name *</label>
               <input
                 name="fullName"
                 value={form.fullName}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
               {errors.fullName && <p className="mt-1 text-xs text-red-600">{errors.fullName}</p>}
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Email *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Email *</label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
               {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Phone *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Phone *</label>
               <input
                 name="phone"
                 value={form.phone}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
               {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">City *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">City *</label>
               <input
                 name="city"
                 value={form.city}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
               {errors.city && <p className="mt-1 text-xs text-red-600">{errors.city}</p>}
             </div>
 
             <div className="sm:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-gray-700">Shipping address *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Shipping address *</label>
               <input
                 name="address"
                 value={form.address}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
               {errors.address && <p className="mt-1 text-xs text-red-600">{errors.address}</p>}
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Postal code</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Postal code</label>
               <input
                 name="postalCode"
                 value={form.postalCode}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Country</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Country</label>
               <input
                 name="country"
                 value={form.country}
                 onChange={updateField}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
             </div>
 
             <div className="sm:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-gray-700">Delivery instructions</label>
+              <label className="mb-2 block text-sm font-medium text-slate-700">Delivery instructions</label>
               <textarea
                 name="notes"
                 value={form.notes}
                 onChange={updateField}
                 rows={3}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-gray-900"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
               />
             </div>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-gray-900">Payment method</h2>
-            <label className="mt-3 flex items-center gap-3 rounded-lg border border-gray-200 p-4">
+            <h2 className="text-lg font-bold text-slate-900">Payment method</h2>
+            <label className="mt-3 flex items-center gap-3 rounded-lg border border-slate-200 p-4">
               <input type="radio" checked readOnly />
-              <span className="text-sm font-medium text-gray-900">Cash on Delivery</span>
+              <span className="text-sm font-medium text-slate-900">Cash on Delivery</span>
             </label>
           </div>
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-lg bg-gray-900 py-3 font-semibold text-white transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-lg bg-violet-700 py-3 font-semibold text-white transition hover:bg-violet-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitting ? "Placing order..." : "Place order"}
           </button>
         </form>
 
-        <aside className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-bold text-gray-900">Order summary</h2>
+        <aside className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-lg font-bold text-slate-900">Order summary</h2>
           <div className="mt-4 space-y-4">
             {items.map((item) => (
               <div key={item.id} className="flex gap-3">
@@ -268,25 +268,25 @@ export default function Checkout() {
                   className="h-14 w-14 rounded-lg object-cover"
                 />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">{item.name}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-sm font-semibold text-slate-900">{item.name}</p>
+                  <p className="text-xs text-slate-500">
                     {item.quantity} × {money(item.price)}
                   </p>
                 </div>
-                <p className="text-sm font-semibold text-gray-900">
+                <p className="text-sm font-semibold text-slate-900">
                   {money(Number(item.price) * item.quantity)}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 border-t border-gray-200 pt-4">
+          <div className="mt-6 border-t border-slate-200 pt-4">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-500">Items</span>
+              <span className="text-slate-500">Items</span>
               <span className="font-semibold">{cartCount}</span>
             </div>
             <div className="mt-2 flex justify-between text-sm">
-              <span className="text-gray-500">Total</span>
+              <span className="text-slate-500">Total</span>
               <span className="text-lg font-bold">{money(cartTotal)}</span>
             </div>
           </div>

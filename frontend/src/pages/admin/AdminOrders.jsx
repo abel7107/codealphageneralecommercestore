@@ -276,7 +276,7 @@ export default function AdminOrders() {
                     <td className="px-5 py-3 text-right">
                       <button
                         onClick={() => openDetails(order.id)}
-                        className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950"
+                        className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-violet-700"
                         title="View details"
                       >
                         <Eye size={18} />
@@ -442,7 +442,7 @@ export default function AdminOrders() {
                           (nextStatus === selectedOrder.status &&
                             nextPaymentStatus === selectedOrder.paymentStatus)
                         }
-                        className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+                        className="rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
                       >
                         {updating ? "Updating..." : "Update order"}
                       </button>

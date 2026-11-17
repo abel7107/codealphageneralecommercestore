@@ -161,7 +161,7 @@ export default function Settings() {
         <button
           type="submit"
           disabled={saving}
-          className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
+          className="rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
         >
           {saving ? "Saving..." : "Save settings"}
         </button>

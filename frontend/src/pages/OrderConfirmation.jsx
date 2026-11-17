@@ -37,7 +37,7 @@ export default function OrderConfirmation() {
   if (loading) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-sm text-gray-500">Loading order...</p>
+        <p className="text-sm text-slate-500">Loading order...</p>
       </div>
     );
   }
@@ -45,8 +45,8 @@ export default function OrderConfirmation() {
   if (error || !order) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">{error || "Order not found"}</h1>
-        <Link to="/" className="mt-6 inline-block rounded-full bg-gray-950 px-6 py-3 text-sm font-semibold text-white">
+        <h1 className="text-2xl font-bold text-slate-900">{error || "Order not found"}</h1>
+        <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 px-6 py-3 text-sm font-semibold text-white">
           Back to store
         </Link>
       </div>
@@ -62,8 +62,8 @@ export default function OrderConfirmation() {
         </p>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h2 className="text-lg font-bold text-gray-900">Order details</h2>
+      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-slate-900">Order details</h2>
         <div className="mt-4 space-y-3">
           {order.items.map((item) => (
             <div key={item.id} className="flex justify-between text-sm">
@@ -75,13 +75,13 @@ export default function OrderConfirmation() {
           ))}
         </div>
 
-        <div className="mt-6 border-t border-gray-200 pt-4">
+        <div className="mt-6 border-t border-slate-200 pt-4">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Subtotal</span>
+            <span className="text-slate-500">Subtotal</span>
             <span className="font-semibold">{money(order.subtotal)}</span>
           </div>
           <div className="mt-2 flex justify-between text-sm">
-            <span className="text-gray-500">Shipping</span>
+            <span className="text-slate-500">Shipping</span>
             <span className="font-semibold">{money(order.shippingCost)}</span>
           </div>
           <div className="mt-2 flex justify-between text-lg font-bold">
@@ -90,7 +90,7 @@ export default function OrderConfirmation() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-xl bg-gray-50 p-4 text-sm text-gray-600">
+        <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">
           <p>Status: {order.status}</p>
           <p>Payment: {order.paymentMethod} ({order.paymentStatus})</p>
           <p className="mt-2">
@@ -100,7 +100,7 @@ export default function OrderConfirmation() {
       </div>
 
       <div className="mt-8 flex justify-center">
-        <Link to="/" className="rounded-full bg-gray-950 px-6 py-3 text-sm font-semibold text-white">
+        <Link to="/" className="rounded-full bg-violet-700 px-6 py-3 text-sm font-semibold text-white">
           Continue shopping
         </Link>
       </div>

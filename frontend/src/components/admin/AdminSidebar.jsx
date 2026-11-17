@@ -105,7 +105,8 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                     onClick={onClose}
                     title={collapsed ? name : undefined}
                     className={({ isActive }) => {
-                      const active = isActive && name === "Settings";
+                      const isSettingsGroup = name === "Settings" || name === "Notifications" || name === "Profile";
+                      const active = isSettingsGroup ? (isActive && name === "Settings") : isActive;
                       return `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-sm font-medium transition ${
                         active
                           ? "bg-violet-50 text-violet-700"
@@ -114,7 +115,8 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                     }}
                   >
                     {({ isActive }) => {
-                      const active = isActive && name === "Settings";
+                      const isSettingsGroup = name === "Settings" || name === "Notifications" || name === "Profile";
+                      const active = isSettingsGroup ? (isActive && name === "Settings") : isActive;
                       return (
                         <>
                           <Icon size={19} className={active ? "text-violet-700" : "text-slate-400 group-hover:text-slate-700"} />

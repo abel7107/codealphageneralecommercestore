@@ -73,14 +73,14 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-slate-400 dark:text-slate-500 hover:bg-slate-100 dark:bg-slate-700 lg:hidden"
+            className="rounded-lg p-1.5 text-slate-400 dark:text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 lg:hidden"
             aria-label="Close menu"
           >
             <X size={20} />
           </button>
           <button
             onClick={onToggleCollapse}
-            className="hidden rounded-lg p-1.5 text-slate-400 dark:text-slate-500 hover:bg-slate-100 dark:bg-slate-700 lg:block"
+            className="hidden rounded-lg p-1.5 text-slate-400 dark:text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 lg:block"
             aria-label="Collapse sidebar"
           >
             {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}

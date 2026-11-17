@@ -377,7 +377,7 @@ export default function Products() {
         <button
           onClick={fetchProducts}
           disabled={loading}
-          className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900 disabled:opacity-50"
+          className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50"
         >
           <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
           Refresh
@@ -432,7 +432,7 @@ export default function Products() {
 
               <tbody className="divide-y divide-slate-100">
                 {products.map((product) => (
-                  <tr key={product.id} className="transition hover:bg-slate-50 dark:bg-slate-900">
+                  <tr key={product.id} className="transition hover:bg-slate-50 dark:hover:bg-slate-900">
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-3">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-700">
@@ -489,7 +489,7 @@ export default function Products() {
                         <button
                           onClick={() => openEditModal(product)}
                           title="Edit product"
-                          className="rounded-lg p-2 text-slate-500 dark:text-slate-400 transition hover:bg-slate-100 dark:bg-slate-700 hover:text-violet-700 dark:text-violet-400"
+                          className="rounded-lg p-2 text-slate-500 dark:text-slate-400 transition hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-violet-700 dark:text-violet-400"
                         >
                           <Pencil size={18} />
                         </button>
@@ -528,7 +528,7 @@ export default function Products() {
               <button
                 onClick={closeModal}
                 disabled={saving}
-                className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700"
+                className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
                 aria-label="Close form"
               >
                 <X size={21} />
@@ -695,7 +695,7 @@ export default function Products() {
                   type="button"
                   onClick={closeModal}
                   disabled={saving}
-                  className="rounded-xl border border-slate-200 dark:border-slate-700 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900 disabled:opacity-50"
+                  className="rounded-xl border border-slate-200 dark:border-slate-700 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50"
                 >
                   Cancel
                 </button>

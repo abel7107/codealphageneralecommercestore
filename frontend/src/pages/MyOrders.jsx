@@ -143,7 +143,7 @@ export default function MyOrders() {
                   <span className="text-sm font-bold text-slate-900 dark:text-white">{money(order.total)}</span>
                   <Link
                     to={`/orders/${order.id}`}
-                    className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2 text-xs font-semibold text-slate-900 dark:text-white transition hover:bg-slate-50 dark:bg-slate-900"
+                    className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2 text-xs font-semibold text-slate-900 dark:text-white transition hover:bg-slate-50 dark:hover:bg-slate-900"
                   >
                     View details
                   </Link>

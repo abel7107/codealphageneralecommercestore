@@ -186,7 +186,7 @@ function HomePage() {
               {theme === "dark" ? <Sun size={21} /> : <Moon size={21} />}
             </button>
             <button
-              className="relative rounded-full p-2.5 transition hover:bg-slate-100 dark:bg-slate-700"
+              className="relative rounded-full p-2.5 transition hover:bg-slate-100 dark:hover:bg-slate-700"
               onClick={() => setCartOpen(true)}
               aria-label="Open shopping cart"
             >
@@ -201,7 +201,7 @@ function HomePage() {
             </button>
            <Link
               to={user ? "/orders" : "/login"}
-              className="hidden rounded-full p-2.5 transition hover:bg-slate-100 dark:bg-slate-700 sm:block"
+              className="hidden rounded-full p-2.5 transition hover:bg-slate-100 dark:hover:bg-slate-700 sm:block"
               aria-label={user ? "My orders" : "Account"}
             >
               <UserRound size={21} />
@@ -246,7 +246,7 @@ function HomePage() {
                 </p>
                 <a
                   href="#products"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-100 dark:bg-slate-7000"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-100 dark:hover:bg-slate-7000"
                 >
                   Explore the collection <ArrowRight size={18} />
                 </a>
@@ -366,7 +366,7 @@ function HomePage() {
                     )}
                     <button
                       onClick={() => toggleFavorite(product.id)}
-                      className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800/95 transition hover:bg-slate-100 dark:bg-slate-700 sm:right-3 sm:top-3"
+                      className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800/95 transition hover:bg-slate-100 dark:hover:bg-slate-700 sm:right-3 sm:top-3"
                       aria-label={`Toggle favorite for ${product.name}`}
                     >
                       <Heart
@@ -479,7 +479,7 @@ function HomePage() {
 
         <button
          onClick={continueShopping}
-          className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium transition hover:bg-slate-100 dark:bg-slate-700"
+          className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium transition hover:bg-slate-100 dark:hover:bg-slate-700"
         >
           <X size={16} />
           Continue shopping
@@ -576,7 +576,7 @@ function HomePage() {
                       <button
                         onClick={() => changeQuantity(item.id, -1)}
                         disabled={item.quantity <= 1}
-                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:bg-slate-700 disabled:opacity-30"
+                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30"
                         aria-label={`Decrease ${item.name}`}
                       >
                         <Minus size={13} />
@@ -588,7 +588,7 @@ function HomePage() {
 
                       <button
                         onClick={() => changeQuantity(item.id, 1)}
-                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:bg-slate-700"
+                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:hover:bg-slate-700"
                         aria-label={`Increase ${item.name}`}
                       >
                         <Plus size={13} />

@@ -140,7 +140,7 @@ export default function Categories() {
                     <div className="flex justify-end gap-2">
                       <button
                         onClick={() => { setEditing(category); setName(category.name); }}
-                        className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700"
+                        className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
                       >
                         <Pencil size={18} />
                       </button>

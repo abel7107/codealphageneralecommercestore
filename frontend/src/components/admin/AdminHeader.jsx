@@ -22,7 +22,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
         <div className="flex min-w-0 items-center gap-3">
           <button
             onClick={onMenuClick}
-            className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700 lg:hidden"
+            className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 lg:hidden"
             aria-label="Open navigation"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -52,18 +52,18 @@ export default function AdminHeader({ title, description, onMenuClick }) {
         <div className="flex items-center gap-1 sm:gap-2">
           <button
             onClick={toggleTheme}
-            className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700"
+            className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <button className="relative rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700" aria-label="Notifications">
+          <button className="relative rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="Notifications">
             <Bell size={18} />
             <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-violet-600" />
           </button>
           <button
             onClick={() => navigate("/admin/settings")}
-            className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700"
+            className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
             aria-label="Settings"
           >
             <Settings size={18} />
@@ -72,7 +72,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
           <div className="relative">
             <button
               onClick={() => setProfileOpen((v) => !v)}
-              className="flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-1.5 hover:bg-slate-50 dark:bg-slate-900"
+              className="flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-900"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-100 text-violet-700 dark:text-violet-400">
                 <UserRound size={16} />
@@ -97,7 +97,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
                       setProfileOpen(false);
                       navigate("/admin/settings");
                     }}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900"
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
                   >
                     <Settings size={16} /> Settings
                   </button>

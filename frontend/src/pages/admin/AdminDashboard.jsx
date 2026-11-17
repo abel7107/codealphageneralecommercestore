@@ -109,7 +109,7 @@ export default function AdminDashboard() {
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {data.recentOrders.map((order) => (
-                    <tr key={order.id} className="transition hover:bg-slate-50 dark:bg-slate-900">
+                    <tr key={order.id} className="transition hover:bg-slate-50 dark:hover:bg-slate-900">
                       <td className="py-3 text-sm font-semibold text-slate-900 dark:text-white">{order.orderNumber}</td>
                       <td className="py-3 text-sm text-slate-600 dark:text-slate-300">{order.customer}</td>
                       <td className="py-3 text-sm text-slate-500 dark:text-slate-400">

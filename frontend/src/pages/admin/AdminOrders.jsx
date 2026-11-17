@@ -256,7 +256,7 @@ export default function AdminOrders() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {orders.map((order) => (
-                  <tr key={order.id} className="transition hover:bg-slate-50 dark:bg-slate-900">
+                  <tr key={order.id} className="transition hover:bg-slate-50 dark:hover:bg-slate-900">
                     <td className="px-5 py-3 font-semibold text-slate-900 dark:text-white">{shortOrderNumber(order.orderNumber)}</td>
                     <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
                       {order.user?.name || "Unknown"}
@@ -276,7 +276,7 @@ export default function AdminOrders() {
                     <td className="px-5 py-3 text-right">
                       <button
                         onClick={() => openDetails(order.id)}
-                        className="rounded-lg p-2 text-slate-500 dark:text-slate-400 transition hover:bg-slate-100 dark:bg-slate-700 hover:text-violet-700 dark:text-violet-400"
+                        className="rounded-lg p-2 text-slate-500 dark:text-slate-400 transition hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-violet-700 dark:text-violet-400"
                         title="View details"
                       >
                         <Eye size={18} />
@@ -324,7 +324,7 @@ export default function AdminOrders() {
                   {selectedOrder.user?.name} · {new Date(selectedOrder.createdAt).toLocaleString()}
                 </p>
               </div>
-              <button onClick={closeDetails} disabled={updating} className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700">
+              <button onClick={closeDetails} disabled={updating} className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700">
                 <X size={21} />
               </button>
             </div>

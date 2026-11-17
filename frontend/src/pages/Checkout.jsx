@@ -125,7 +125,7 @@ export default function Checkout() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Your cart is empty</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Your cart is empty</h1>
         <p className="mt-3 text-slate-500 dark:text-slate-400">Add products before checking out.</p>
         <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3 text-sm font-semibold text-white">
           Continue shopping
@@ -136,7 +136,7 @@ export default function Checkout() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Checkout</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Checkout</h1>
       <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Complete your shipping details to place your order.</p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.8fr)]">

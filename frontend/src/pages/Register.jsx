@@ -44,11 +44,11 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-lg">
-        <Link to="/" className="text-2xl font-bold text-slate-900 dark:text-white">
+        <Link to="/" className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
           Shopora
         </Link>
 
-        <h1 className="mt-8 text-3xl font-bold text-slate-900 dark:text-white">
+        <h1 className="mt-8 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
           Create your account
         </h1>
 

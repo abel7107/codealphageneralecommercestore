@@ -45,7 +45,7 @@ export default function OrderConfirmation() {
   if (error || !order) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{error || "Order not found"}</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{error || "Order not found"}</h1>
         <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3 text-sm font-semibold text-white">
           Back to store
         </Link>
@@ -56,7 +56,7 @@ export default function OrderConfirmation() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="rounded-3xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-8 text-center">
-        <h1 className="text-3xl font-bold text-green-800">Order placed successfully</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-green-800">Order placed successfully</h1>
         <p className="mt-3 text-sm text-green-700 dark:text-green-400">
           Your order number is <strong>{order.orderNumber}</strong>.
         </p>

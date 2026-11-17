@@ -319,7 +319,7 @@ export default function AdminOrders() {
           <div className="my-auto w-full max-w-4xl rounded-2xl bg-white dark:bg-slate-800 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 px-6 py-5">
               <div>
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Order {selectedOrder.orderNumber}</h2>
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Order {selectedOrder.orderNumber}</h2>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                   {selectedOrder.user?.name} · {new Date(selectedOrder.createdAt).toLocaleString()}
                 </p>

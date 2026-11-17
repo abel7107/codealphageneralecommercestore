@@ -5,7 +5,7 @@ export default function PageHeader({ eyebrow, title, description, actions }) {
         {eyebrow && (
           <p className="text-sm font-medium text-violet-700 dark:text-violet-400">{eyebrow}</p>
         )}
-        <h1 className="mt-1 text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
+        <h1 className="mt-1 text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-xl sm:text-2xl">
           {title}
         </h1>
         {description && (

@@ -151,7 +151,7 @@ function HomePage() {
 
           <a
             href="#home"
-            className="text-2xl font-black tracking-tight sm:text-3xl"
+            className="text-xl sm:text-2xl font-black tracking-tight sm:text-2xl sm:text-3xl"
           >
             shopora<span className="text-slate-950 dark:text-white">.</span>
           </a>
@@ -234,7 +234,7 @@ function HomePage() {
                 <span className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-slate-950 dark:text-white">
                   Discover your style
                 </span>
-                <h1 className="mt-6 max-w-xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+                <h1 className="mt-6 max-w-xl text-3xl sm:text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
                   Good finds.
                   <br />
                   <span className="text-slate-950 dark:text-white">Better living.</span>
@@ -277,7 +277,7 @@ function HomePage() {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-950 dark:text-white">
                 Browse your way
               </p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+              <h2 className="mt-2 text-xl sm:text-2xl font-bold tracking-tight sm:text-2xl sm:text-3xl">
                 Shop by category
               </h2>
             </div>
@@ -324,7 +324,7 @@ function HomePage() {
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-950 dark:text-white">
                   The good stuff
                 </p>
-                <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+                <h2 className="mt-2 text-xl sm:text-2xl font-bold tracking-tight sm:text-2xl sm:text-3xl">
                   {search ? "Search results" : activeCategory === "All" ? "Featured products" : activeCategory}
                 </h2>
                 <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
@@ -453,7 +453,7 @@ function HomePage() {
 
       <footer className="bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-9 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <a href="#home" className="text-2xl font-black tracking-tight">
+          <a href="#home" className="text-xl sm:text-2xl font-black tracking-tight">
             shopora<span className="text-slate-950 dark:text-white">.</span>
           </a>
           <p className="text-sm text-slate-400 dark:text-slate-500">
@@ -472,7 +472,7 @@ function HomePage() {
 
       {/* Cart Header */}
       <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-5">
-        <a href="#home" className="text-2xl font-black tracking-tight">
+        <a href="#home" className="text-xl sm:text-2xl font-black tracking-tight">
           shopora<span className="text-slate-400 dark:text-slate-500">.</span>
         </a>
 
@@ -491,7 +491,7 @@ function HomePage() {
           Your selection
         </p>
 
-        <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight sm:text-3xl sm:text-4xl">
           Shopping Cart
         </h1>
 
@@ -506,7 +506,7 @@ function HomePage() {
             <ShoppingBag size={34} className="text-slate-400 dark:text-slate-500" />
           </div>
 
-          <h2 className="mt-5 text-xl font-bold">
+          <h2 className="mt-5 text-lg sm:text-xl font-bold">
             Your shopping bag is empty
           </h2>
 
@@ -646,7 +646,7 @@ function HomePage() {
               <div className="border-t border-slate-200 dark:border-slate-700 pt-5">
                 <div className="flex items-center justify-between">
                   <span className="font-bold">Estimated Total</span>
-                  <span className="text-xl font-bold">
+                  <span className="text-lg sm:text-xl font-bold">
                     {money(cartTotal)}
                   </span>
                 </div>

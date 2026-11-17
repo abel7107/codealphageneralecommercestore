@@ -554,7 +554,7 @@ export default function Products() {
                     required
                     maxLength={120}
                     placeholder="e.g. Wireless Headphones"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
@@ -570,7 +570,7 @@ export default function Products() {
                     pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
                     title="Use lowercase letters, numbers, and hyphens only."
                     placeholder="wireless-headphones"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   />
                   <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
                     Used in product URLs. Lowercase letters and hyphens only.
@@ -590,7 +590,7 @@ export default function Products() {
                     step="0.01"
                     required
                     placeholder="1499.99"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
@@ -606,7 +606,7 @@ export default function Products() {
                     min="0"
                     step="1"
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
@@ -619,7 +619,7 @@ export default function Products() {
                     value={form.categoryId}
                     onChange={updateField}
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   >
                     <option value="">Select a category</option>
                     {categories.map((category) => (
@@ -671,7 +671,7 @@ export default function Products() {
                     value={form.imageUrl}
                     onChange={updateField}
                     placeholder="https://example.com/product.jpg"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
@@ -685,7 +685,7 @@ export default function Products() {
                     onChange={updateField}
                     rows={4}
                     placeholder="Describe the product..."
-                    className="w-full resize-y rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-slate-500"
+                    className="w-full resize-y rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
                   />
                 </div>
               </div>

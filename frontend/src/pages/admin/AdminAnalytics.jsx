@@ -149,7 +149,7 @@ export default function AdminAnalytics() {
             <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Monthly revenue</h2>
               <div className="mt-4">
-                <BarChart items={data?.monthlyRevenue || []} valueKey="revenue" labelKey="month" color="bg-emerald-600" />
+                <BarChart items={data?.monthlyRevenue || []} valueKey="revenue" labelKey="month" color="bg-green-600" />
               </div>
             </div>
 

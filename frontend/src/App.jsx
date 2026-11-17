@@ -136,9 +136,8 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-800 text-slate-900 dark:text-white">
-      <div className="bg-violet-700 dark:bg-violet-600 px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
-        Your next favorite find is waiting. Discover something special.
-      </div>
+        
+        
 
       <header className="sticky top-0 z-30 border-b border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
@@ -186,7 +185,7 @@ function HomePage() {
               {theme === "dark" ? <Sun size={21} /> : <Moon size={21} />}
             </button>
             <button
-              className="relative rounded-full p-2.5 transition hover:bg-slate-100 dark:hover:bg-slate-700"
+              className="relative rounded-full p-2.5 transition hover:bg-slate-100 dark:bg-slate-700"
               onClick={() => setCartOpen(true)}
               aria-label="Open shopping cart"
             >
@@ -201,7 +200,7 @@ function HomePage() {
             </button>
            <Link
               to={user ? "/orders" : "/login"}
-              className="hidden rounded-full p-2.5 transition hover:bg-slate-100 dark:hover:bg-slate-700 sm:block"
+              className="hidden rounded-full p-2.5 transition hover:bg-slate-100 dark:bg-slate-700 sm:block"
               aria-label={user ? "My orders" : "Account"}
             >
               <UserRound size={21} />
@@ -246,7 +245,7 @@ function HomePage() {
                 </p>
                 <a
                   href="#products"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-100 dark:hover:bg-slate-7000"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-100 dark:bg-slate-700"
                 >
                   Explore the collection <ArrowRight size={18} />
                 </a>
@@ -302,7 +301,7 @@ function HomePage() {
                   document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className={`group rounded-2xl ${category.color} p-5 text-left transition hover:-translate-y-1 hover:shadow-md sm:p-7 ${
-                  activeCategory === category.name ? "ring-2 ring-slate-800" : ""
+                  activeCategory === category.name ? "ring-2 ring-violet-700" : ""
                 }`}
               >
                 <category.Icon
@@ -366,7 +365,7 @@ function HomePage() {
                     )}
                     <button
                       onClick={() => toggleFavorite(product.id)}
-                      className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800/95 transition hover:bg-slate-100 dark:hover:bg-slate-700 sm:right-3 sm:top-3"
+                      className="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-slate-800/95 transition hover:bg-slate-100 dark:bg-slate-700 sm:right-3 sm:top-3"
                       aria-label={`Toggle favorite for ${product.name}`}
                     >
                       <Heart
@@ -479,7 +478,7 @@ function HomePage() {
 
         <button
          onClick={continueShopping}
-          className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium transition hover:bg-slate-100 dark:hover:bg-slate-700"
+          className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium transition hover:bg-slate-100 dark:bg-slate-700"
         >
           <X size={16} />
           Continue shopping
@@ -576,7 +575,7 @@ function HomePage() {
                       <button
                         onClick={() => changeQuantity(item.id, -1)}
                         disabled={item.quantity <= 1}
-                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30"
+                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:bg-slate-700 disabled:opacity-30"
                         aria-label={`Decrease ${item.name}`}
                       >
                         <Minus size={13} />
@@ -588,7 +587,7 @@ function HomePage() {
 
                       <button
                         onClick={() => changeQuantity(item.id, 1)}
-                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:hover:bg-slate-700"
+                        className="flex h-6 w-6 items-center justify-center rounded-full transition hover:bg-slate-100 dark:bg-slate-700"
                         aria-label={`Increase ${item.name}`}
                       >
                         <Plus size={13} />

@@ -155,9 +155,9 @@ function HomePage() {
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex">
             <a href="#home" className="text-slate-950">Home</a>
-            <a href="#products" className="transition hover:text-slate-950">Shop</a>
-            <a href="#categories" className="transition hover:text-slate-950">Categories</a>
-            <a href="#benefits" className="transition hover:text-slate-950">Why Shopora?</a>
+            <a href="#products" className="transition hover:text-violet-700">Shop</a>
+            <a href="#categories" className="transition hover:text-violet-700">Categories</a>
+            <a href="#benefits" className="transition hover:text-violet-700">Why Shopora?</a>
           </nav>
 
           <div className="hidden max-w-sm flex-1 md:flex lg:max-w-xs">
@@ -276,7 +276,7 @@ function HomePage() {
                 setActiveCategory("All");
                 document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="hidden items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-950 sm:flex"
+              className="hidden items-center gap-2 text-sm font-semibold text-slate-600 hover:text-violet-700 sm:flex"
             >
               All products <ArrowRight size={16} />
             </button>
@@ -672,7 +672,7 @@ function HomePage() {
 
             <button
               onClick={() => setCartOpen(false)}
-              className="mt-3 w-full py-2 text-xs font-semibold text-slate-500 transition hover:text-slate-950"
+              className="mt-3 w-full py-2 text-xs font-semibold text-slate-500 transition hover:text-violet-700"
             >
               Continue shopping
             </button>

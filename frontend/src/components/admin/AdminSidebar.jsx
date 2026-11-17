@@ -110,7 +110,7 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                       return `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-sm font-medium transition ${
                         active
                           ? "bg-violet-50 text-violet-700"
-                          : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                          : "text-slate-500 hover:bg-white hover:text-violet-700 hover:shadow-sm"
                       } ${collapsed ? "justify-center" : ""}`;
                     }}
                   >
@@ -119,7 +119,7 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                       const active = isSettingsGroup ? (isActive && name === "Settings") : isActive;
                       return (
                         <>
-                          <Icon size={19} className={active ? "text-violet-700" : "text-slate-400 group-hover:text-slate-700"} />
+                          <Icon size={19} className={active ? "text-violet-700" : "text-slate-400 group-hover:text-violet-700"} />
                           {!collapsed && <span className="truncate">{name}</span>}
                           {active && !collapsed && (
                             <span className="ml-auto h-1.5 w-1.5 rounded-full bg-violet-700" />

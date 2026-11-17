@@ -77,7 +77,7 @@ export default function Categories() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <PageHeader
         eyebrow="Store management"
         title="Categories"
@@ -124,19 +124,19 @@ export default function Categories() {
           <table className="w-full min-w-[480px] text-left">
             <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
               <tr>
-                <th className="px-5 py-4">Name</th>
-                <th className="px-5 py-4">Products</th>
-                <th className="px-5 py-4 text-right">Actions</th>
+                <th className="px-5 py-3">Name</th>
+                <th className="px-5 py-3">Products</th>
+                <th className="px-5 py-3 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {filtered.map((category) => (
                 <tr key={category.id}>
-                  <td className="px-5 py-4 font-semibold text-slate-900">{category.name}</td>
-                  <td className="px-5 py-4 text-sm text-slate-600">
+                  <td className="px-5 py-3 font-semibold text-slate-900">{category.name}</td>
+                  <td className="px-5 py-3 text-sm text-slate-600">
                     {category._count?.products ?? 0}
                   </td>
-                  <td className="px-5 py-4">
+                  <td className="px-5 py-3">
                     <div className="flex justify-end gap-2">
                       <button
                         onClick={() => { setEditing(category); setName(category.name); }}

@@ -69,7 +69,7 @@ export default function AdminAnalytics() {
   const maxDailyOrders = Math.max(...(data?.dailyRevenue || []).map((item) => item.orders || 0), 1);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <PageHeader
         eyebrow="Store insights"
         title="Analytics"
@@ -94,13 +94,13 @@ export default function AdminAnalytics() {
       )}
 
       {loading ? (
-        <div className="flex min-h-60 items-center justify-center gap-3 text-sm text-slate-500">
+        <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500">
           <LoaderCircle className="animate-spin" size={22} />
           Loading analytics...
         </div>
       ) : (
         <>
-          <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {[
               { label: "Revenue", value: money(data?.summary?.totalRevenue ?? 0) },
               { label: "Orders", value: data?.summary?.totalOrders ?? 0 },
@@ -114,15 +114,15 @@ export default function AdminAnalytics() {
             ))}
           </section>
 
-          <section className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <section className="grid gap-4 lg:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-lg font-bold text-slate-900">Daily revenue</h2>
               <div className="mt-4">
                 <BarChart items={data?.dailyRevenue || []} valueKey="revenue" labelKey="date" />
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-lg font-bold text-slate-900">Orders over time</h2>
               <div className="mt-4 space-y-3">
                 {(data?.dailyRevenue || []).length === 0 ? (
@@ -145,15 +145,15 @@ export default function AdminAnalytics() {
             </div>
           </section>
 
-          <section className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <section className="grid gap-4 lg:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-lg font-bold text-slate-900">Monthly revenue</h2>
               <div className="mt-4">
                 <BarChart items={data?.monthlyRevenue || []} valueKey="revenue" labelKey="month" color="bg-emerald-600" />
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-lg font-bold text-slate-900">Top categories</h2>
               <div className="mt-4">
                 <BarChart items={data?.topCategories || []} valueKey="revenue" labelKey="name" color="bg-violet-600" />
@@ -161,7 +161,7 @@ export default function AdminAnalytics() {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-bold text-slate-900">Best-selling products</h2>
             {(data?.bestSellingProducts || []).length === 0 ? (
               <p className="mt-4 text-sm text-slate-500">No sales data yet.</p>

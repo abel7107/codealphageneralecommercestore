@@ -8,7 +8,7 @@ export default function AdminLayout() {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 lg:flex">
+    <div className="h-screen overflow-hidden bg-slate-50">
       <AdminSidebar
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
@@ -16,14 +16,20 @@ export default function AdminLayout() {
         onToggleCollapse={() => setCollapsed((v) => !v)}
       />
 
-      <div className="min-w-0 flex-1">
+      <div
+        className={`flex h-full flex-col transition-all duration-300 ${
+          collapsed ? "lg:ml-16" : "lg:ml-60"
+        }`}
+      >
         <AdminHeader
           title="Admin workspace"
           description="Manage your Shopora store"
           onMenuClick={() => setSidebarOpen(true)}
         />
-        <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-          <Outlet />
+        <main className="flex-1 overflow-y-auto px-4 py-5 sm:px-5 sm:py-6">
+          <div className="mx-auto max-w-7xl">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

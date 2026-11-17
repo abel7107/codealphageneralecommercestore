@@ -72,7 +72,7 @@ export default function Settings() {
 
   if (loading) {
     return (
-      <div className="flex min-h-60 items-center justify-center gap-3 text-sm text-slate-500">
+      <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500">
         <LoaderCircle className="animate-spin" size={22} />
         Loading settings...
       </div>
@@ -80,7 +80,7 @@ export default function Settings() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <PageHeader
         eyebrow="Store configuration"
         title="Settings"
@@ -90,7 +90,7 @@ export default function Settings() {
       {error && <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</div>}
       {success && <div className="rounded-xl border border-green-200 bg-green-50 p-3 text-sm text-green-700">{success}</div>}
 
-      <form onSubmit={handleSubmit} className="max-w-2xl space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <form onSubmit={handleSubmit} className="max-w-2xl space-y-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <div>
           <label className="mb-2 block text-sm font-semibold text-slate-700">Store name</label>
           <input

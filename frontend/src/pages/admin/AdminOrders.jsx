@@ -134,7 +134,7 @@ export default function AdminOrders() {
     : [];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <PageHeader
         eyebrow="Store management"
         title="Orders"
@@ -230,12 +230,12 @@ export default function AdminOrders() {
       {/* Table */}
       <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         {loading ? (
-          <div className="flex min-h-60 items-center justify-center gap-3 text-sm text-slate-500">
+          <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500">
             <LoaderCircle className="animate-spin" size={22} />
             Loading orders...
           </div>
         ) : orders.length === 0 ? (
-          <div className="flex min-h-60 flex-col items-center justify-center px-5 text-center">
+          <div className="flex min-h-48 flex-col items-center justify-center px-5 text-center">
             <p className="font-semibold text-slate-800">No orders found</p>
             <p className="mt-2 text-sm text-slate-500">Try adjusting your filters.</p>
           </div>
@@ -244,36 +244,36 @@ export default function AdminOrders() {
             <table className="w-full min-w-[900px] text-left">
               <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
                 <tr>
-                  <th className="px-5 py-4 font-semibold">Order</th>
-                  <th className="px-5 py-4 font-semibold">Customer</th>
-                  <th className="px-5 py-4 font-semibold">Date</th>
-                  <th className="px-5 py-4 font-semibold">Items</th>
-                  <th className="px-5 py-4 font-semibold">Total</th>
-                  <th className="px-5 py-4 font-semibold">Payment</th>
-                  <th className="px-5 py-4 font-semibold">Status</th>
-                  <th className="px-5 py-4 text-right font-semibold">Action</th>
+                  <th className="px-5 py-3 font-semibold">Order</th>
+                  <th className="px-5 py-3 font-semibold">Customer</th>
+                  <th className="px-5 py-3 font-semibold">Date</th>
+                  <th className="px-5 py-3 font-semibold">Items</th>
+                  <th className="px-5 py-3 font-semibold">Total</th>
+                  <th className="px-5 py-3 font-semibold">Payment</th>
+                  <th className="px-5 py-3 font-semibold">Status</th>
+                  <th className="px-5 py-3 text-right font-semibold">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {orders.map((order) => (
                   <tr key={order.id} className="transition hover:bg-slate-50">
-                    <td className="px-5 py-4 font-semibold text-slate-900">{shortOrderNumber(order.orderNumber)}</td>
-                    <td className="px-5 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-3 font-semibold text-slate-900">{shortOrderNumber(order.orderNumber)}</td>
+                    <td className="px-5 py-3 text-sm text-slate-600">
                       {order.user?.name || "Unknown"}
                       <p className="text-xs text-slate-400">{order.user?.email}</p>
                     </td>
-                    <td className="px-5 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-3 text-sm text-slate-600">
                       {new Date(order.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-5 py-4 text-sm text-slate-600">{order.items?.length ?? 0}</td>
-                    <td className="px-5 py-4 text-sm font-semibold text-slate-900">{money(order.total)}</td>
-                      <td className="px-5 py-4">
+                    <td className="px-5 py-3 text-sm text-slate-600">{order.items?.length ?? 0}</td>
+                    <td className="px-5 py-3 text-sm font-semibold text-slate-900">{money(order.total)}</td>
+                      <td className="px-5 py-3">
                         <StatusBadge status={order.paymentStatus} />
                       </td>
-                      <td className="px-5 py-4">
+                      <td className="px-5 py-3">
                         <StatusBadge status={order.status} />
                       </td>
-                    <td className="px-5 py-4 text-right">
+                    <td className="px-5 py-3 text-right">
                       <button
                         onClick={() => openDetails(order.id)}
                         className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950"
@@ -329,14 +329,14 @@ export default function AdminOrders() {
               </button>
             </div>
 
-            <div className="max-h-[75vh] overflow-y-auto p-6">
+            <div className="max-h-[75vh] overflow-y-auto p-5">
               {detailsLoading ? (
                 <div className="flex items-center gap-2 text-slate-500">
                   <LoaderCircle className="animate-spin" size={20} />
                   Loading details...
                 </div>
               ) : (
-                <div className="space-y-6">
+                <div className="space-y-5">
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-xl bg-slate-50 p-4">
                       <h3 className="text-sm font-semibold text-slate-700">Shipping address</h3>

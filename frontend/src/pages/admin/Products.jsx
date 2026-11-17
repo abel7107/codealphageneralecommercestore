@@ -386,7 +386,7 @@ export default function Products() {
 
       {/* Products table */}
       <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3">
           <div>
             <h2 className="font-bold text-slate-900">All Products</h2>
             <p className="mt-1 text-xs text-slate-500">
@@ -396,12 +396,12 @@ export default function Products() {
         </div>
 
         {loading ? (
-          <div className="flex min-h-60 items-center justify-center gap-3 text-sm text-slate-500">
+          <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500">
             <LoaderCircle className="animate-spin" size={22} />
             Loading products...
           </div>
         ) : products.length === 0 ? (
-          <div className="flex min-h-64 flex-col items-center justify-center px-5 text-center">
+          <div className="flex min-h-52 flex-col items-center justify-center px-5 text-center">
             <Package size={35} className="text-slate-300" />
             <h3 className="mt-4 font-semibold text-slate-800">
               No products found
@@ -421,19 +421,19 @@ export default function Products() {
             <table className="w-full min-w-[760px] text-left">
               <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
                 <tr>
-                  <th className="px-5 py-4 font-semibold">Product</th>
-                  <th className="px-5 py-4 font-semibold">Category</th>
-                  <th className="px-5 py-4 font-semibold">Price</th>
-                  <th className="px-5 py-4 font-semibold">Stock</th>
-                  <th className="px-5 py-4 font-semibold">Status</th>
-                  <th className="px-5 py-4 text-right font-semibold">Actions</th>
+                  <th className="px-5 py-3 font-semibold">Product</th>
+                  <th className="px-5 py-3 font-semibold">Category</th>
+                  <th className="px-5 py-3 font-semibold">Price</th>
+                  <th className="px-5 py-3 font-semibold">Stock</th>
+                  <th className="px-5 py-3 font-semibold">Status</th>
+                  <th className="px-5 py-3 text-right font-semibold">Actions</th>
                 </tr>
               </thead>
 
               <tbody className="divide-y divide-slate-100">
                 {products.map((product) => (
                   <tr key={product.id} className="transition hover:bg-slate-50">
-                    <td className="px-5 py-4">
+                    <td className="px-5 py-3">
                       <div className="flex items-center gap-3">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100">
                           {product.imageUrl ? (
@@ -458,15 +458,15 @@ export default function Products() {
                       </div>
                     </td>
 
-                    <td className="px-5 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-3 text-sm text-slate-600">
                       {product.category?.name || "Uncategorized"}
                     </td>
 
-                    <td className="px-5 py-4 text-sm font-semibold text-slate-900">
+                    <td className="px-5 py-3 text-sm font-semibold text-slate-900">
                       {formatMoney(product.price)}
                     </td>
 
-                    <td className="px-5 py-4">
+                    <td className="px-5 py-3">
                       <span
                         className={`rounded-full px-3 py-1 text-xs font-semibold ${
                           product.stock === 0
@@ -480,11 +480,11 @@ export default function Products() {
                       </span>
                     </td>
 
-                    <td className="px-5 py-4">
+                    <td className="px-5 py-3">
                       <StatusBadge status={product.isActive ? "Active" : "Inactive"} />
                     </td>
 
-                    <td className="px-5 py-4">
+                    <td className="px-5 py-3">
                       <div className="flex justify-end gap-2">
                         <button
                           onClick={() => openEditModal(product)}
@@ -535,14 +535,14 @@ export default function Products() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 p-6">
+            <form onSubmit={handleSubmit} className="space-y-5 p-5">
               {error && (
                 <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
                   {error}
                 </div>
               )}
 
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                   <label className="mb-2 block text-sm font-semibold text-slate-700">
                     Product Name *

@@ -8,10 +8,10 @@ export default function StatCard({ title, value, description, Icon, trend, trend
     amber: "bg-amber-50 text-amber-700",
   };
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+    <article className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md">
       <div className="flex items-start justify-between">
-        <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${accents[accent] || accents.purple}`}>
-          {Icon && <Icon size={22} />}
+        <div className={`flex h-9 w-9 items-center justify-center rounded-xl ${accents[accent] || accents.purple}`}>
+          {Icon && <Icon size={18} />}
         </div>
         {trend !== undefined && (
           <span
@@ -24,8 +24,8 @@ export default function StatCard({ title, value, description, Icon, trend, trend
           </span>
         )}
       </div>
-      <p className="mt-4 text-sm font-medium text-slate-500">{title}</p>
-      <h2 className="mt-1 text-2xl font-bold text-slate-900">{value}</h2>
+      <p className="mt-3 text-sm font-medium text-slate-500">{title}</p>
+      <h2 className="mt-1 text-xl font-bold text-slate-900">{value}</h2>
       {description && <p className="mt-1 text-xs text-slate-400">{description}</p>}
       {trendLabel && <p className="mt-1 text-xs text-slate-400">{trendLabel}</p>}
     </article>

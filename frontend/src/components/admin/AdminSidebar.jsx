@@ -54,19 +54,19 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex flex-col border-r border-slate-200 bg-white transition-all duration-300 lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex flex-col border-r border-slate-200 bg-white transition-all duration-300 lg:translate-x-0 ${
           open ? "translate-x-0" : "-translate-x-full"
-        } ${collapsed ? "lg:w-20" : "lg:w-64"} w-64`}
+        } ${collapsed ? "w-16" : "w-60"} lg:h-screen`}
       >
         {/* Brand */}
-        <div className="flex h-16 items-center justify-between border-b border-slate-100 px-4">
-          <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-700 text-white">
-              <Store size={20} />
+        <div className="flex h-14 items-center justify-between border-b border-slate-100 px-3">
+          <div className="flex items-center gap-2.5 overflow-hidden">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-700 text-white">
+              <Store size={18} />
             </div>
             {!collapsed && (
               <div className="min-w-0">
-                <h1 className="truncate text-lg font-black tracking-tight text-slate-900">shopora.</h1>
+                <h1 className="truncate text-base font-black tracking-tight text-slate-900">shopora.</h1>
                 <p className="truncate text-xs text-slate-400">Administration</p>
               </div>
             )}
@@ -88,9 +88,9 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
         </div>
 
         {/* Nav */}
-        <div className="flex-1 overflow-y-auto px-3 py-4">
+        <div className="flex-1 overflow-y-auto px-2.5 py-3">
           {sections.map((section) => (
-            <div key={section.title} className="mb-6">
+            <div key={section.title} className="mb-4">
               {!collapsed && (
                 <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-slate-400">
                   {section.title}
@@ -105,7 +105,7 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                     onClick={onClose}
                     title={collapsed ? name : undefined}
                     className={({ isActive }) =>
-                      `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                      `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-sm font-medium transition ${
                         isActive
                           ? "bg-violet-50 text-violet-700"
                           : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"

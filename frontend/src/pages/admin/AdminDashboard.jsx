@@ -40,7 +40,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <PageHeader
         eyebrow="Overview"
         title="Dashboard"
@@ -82,9 +82,9 @@ export default function AdminDashboard() {
         />
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-3">
+      <section className="grid gap-4 lg:grid-cols-3">
         {/* Recent orders */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm lg:col-span-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:col-span-2">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-bold text-slate-900">Recent orders</h2>
             <a href="/admin/orders" className="text-sm font-semibold text-violet-700 hover:text-violet-800">
@@ -128,8 +128,8 @@ export default function AdminDashboard() {
         </div>
 
         {/* Right panel */}
-        <div className="space-y-6">
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="space-y-5">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-bold text-slate-900">Best-selling products</h2>
             {loading ? (
               <p className="mt-4 text-sm text-slate-500">Loading...</p>
@@ -150,7 +150,7 @@ export default function AdminDashboard() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-bold text-slate-900">Quick info</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex items-center justify-between">

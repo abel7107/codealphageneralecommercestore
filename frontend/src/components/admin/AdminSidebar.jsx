@@ -66,7 +66,7 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
             </div>
             {!collapsed && (
               <div className="min-w-0">
-                <h1 className="truncate text-base font-black tracking-tight text-slate-900 dark:text-white">shopora.</h1>
+                <h1 className="truncate text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white">shopora.</h1>
                 <p className="truncate text-xs text-slate-400 dark:text-slate-500">Administration</p>
               </div>
             )}
@@ -107,7 +107,7 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                     className={({ isActive }) => {
                       const isSettingsGroup = name === "Settings" || name === "Notifications" || name === "Profile";
                       const active = isSettingsGroup ? (isActive && name === "Settings") : isActive;
-                      return `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-sm font-medium transition ${
+                      return `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-xs sm:text-sm font-medium transition ${
                         active
                           ? "bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400"
                           : "text-slate-500 dark:text-slate-400 hover:bg-white dark:bg-slate-800 hover:text-violet-700 dark:text-violet-400 hover:shadow-sm"

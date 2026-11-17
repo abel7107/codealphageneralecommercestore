@@ -44,11 +44,11 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-lg">
-        <Link to="/" className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+        <Link to="/" className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
           Shopora
         </Link>
 
-        <h1 className="mt-8 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+        <h1 className="mt-8 text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
           Create your account
         </h1>
 
@@ -57,14 +57,14 @@ export default function Register() {
         </p>
 
         {error && (
-          <div className="mt-5 rounded-lg bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-600 dark:text-red-400">
+          <div className="mt-5 rounded-lg bg-red-50 dark:bg-red-900/30 p-3 text-xs sm:text-sm text-red-600 dark:text-red-400">
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-5">
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+            <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
               Full name
             </label>
 
@@ -81,7 +81,7 @@ export default function Register() {
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+            <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
               Email address
             </label>
 
@@ -96,7 +96,7 @@ export default function Register() {
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+            <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
               Password
             </label>
 
@@ -112,7 +112,7 @@ export default function Register() {
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
+            <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">
               Confirm password
             </label>
 
@@ -135,7 +135,7 @@ export default function Register() {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-300">
+        <p className="mt-6 text-center text-xs sm:text-sm text-slate-600 dark:text-slate-300">
           Already have an account?{" "}
           <Link
             to="/login"
@@ -147,7 +147,7 @@ export default function Register() {
 
         <Link
           to="/"
-          className="mt-6 block text-center text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white"
+          className="mt-6 block text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white"
         >
           ← Back to Shopora
         </Link>

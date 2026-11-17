@@ -290,7 +290,7 @@ export default function Products() {
         actions={
           <button
             onClick={openCreateModal}
-            className="flex items-center justify-center gap-2 rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-800"
+            className="flex items-center justify-center gap-2 rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-violet-800"
           >
             <Plus size={18} />
             Add Product
@@ -300,7 +300,7 @@ export default function Products() {
 
       {/* Notifications */}
       {error && (
-        <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-sm text-red-700 dark:text-red-400">
+        <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-xs sm:text-sm text-red-700 dark:text-red-400">
           <p>{error}</p>
           <button onClick={() => setError("")} aria-label="Dismiss error">
             <X size={18} />
@@ -309,7 +309,7 @@ export default function Products() {
       )}
 
       {success && !modalOpen && (
-        <div className="flex items-center justify-between gap-3 rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-4 text-sm text-green-700 dark:text-green-400">
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-4 text-xs sm:text-sm text-green-700 dark:text-green-400">
           <p>{success}</p>
           <button onClick={() => setSuccess("")} aria-label="Dismiss success">
             <X size={18} />
@@ -325,8 +325,8 @@ export default function Products() {
               <Package size={22} />
             </div>
             <div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Products displayed</p>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Products displayed</p>
+              <h2 className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                 {filteredCount}
               </h2>
             </div>
@@ -339,8 +339,8 @@ export default function Products() {
               <Package size={22} />
             </div>
             <div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Stock in displayed products</p>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Stock in displayed products</p>
+              <h2 className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                 {totalStock.toLocaleString()}
               </h2>
             </div>
@@ -356,14 +356,14 @@ export default function Products() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Search product name or description..."
-            className="w-full bg-transparent text-sm outline-none"
+            className="w-full bg-transparent text-xs sm:text-sm outline-none"
           />
         </div>
 
         <select
           value={categoryFilter}
           onChange={(event) => setCategoryFilter(event.target.value)}
-          className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm outline-none"
+          className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-xs sm:text-sm outline-none"
         >
           <option value="all">All categories</option>
 
@@ -377,7 +377,7 @@ export default function Products() {
         <button
           onClick={fetchProducts}
           disabled={loading}
-          className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50"
+          className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50"
         >
           <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
           Refresh
@@ -396,7 +396,7 @@ export default function Products() {
         </div>
 
         {loading ? (
-          <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+          <div className="flex min-h-48 items-center justify-center gap-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             <LoaderCircle className="animate-spin" size={22} />
             Loading products...
           </div>
@@ -406,12 +406,12 @@ export default function Products() {
             <h3 className="mt-4 font-semibold text-slate-800 dark:text-slate-100">
               No products found
             </h3>
-            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+            <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
               Try another search or add your first product.
             </p>
             <button
               onClick={openCreateModal}
-              className="mt-5 rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-sm font-semibold text-white"
+              className="mt-5 rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-xs sm:text-sm font-semibold text-white"
             >
               Add Product
             </button>
@@ -458,11 +458,11 @@ export default function Products() {
                       </div>
                     </td>
 
-                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
+                    <td className="px-5 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                       {product.category?.name || "Uncategorized"}
                     </td>
 
-                    <td className="px-5 py-3 text-sm font-semibold text-slate-900 dark:text-white">
+                    <td className="px-5 py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
                       {formatMoney(product.price)}
                     </td>
 
@@ -517,10 +517,10 @@ export default function Products() {
           <div className="my-auto w-full max-w-2xl rounded-2xl bg-white dark:bg-slate-800 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 px-6 py-5">
               <div>
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                <h2 className="text-base sm:text-lg sm:text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                   {editingProduct ? "Edit Product" : "Add New Product"}
                 </h2>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   Enter the product information below.
                 </p>
               </div>
@@ -537,14 +537,14 @@ export default function Products() {
 
             <form onSubmit={handleSubmit} className="space-y-5 p-5">
               {error && (
-                <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-700 dark:text-red-400">
+                <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-xs sm:text-sm text-red-700 dark:text-red-400">
                   {error}
                 </div>
               )}
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Product Name *
                   </label>
                   <input
@@ -554,12 +554,12 @@ export default function Products() {
                     required
                     maxLength={120}
                     placeholder="e.g. Wireless Headphones"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Product Slug *
                   </label>
                   <input
@@ -570,7 +570,7 @@ export default function Products() {
                     pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
                     title="Use lowercase letters, numbers, and hyphens only."
                     placeholder="wireless-headphones"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   />
                   <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
                     Used in product URLs. Lowercase letters and hyphens only.
@@ -578,7 +578,7 @@ export default function Products() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Price (ETB) *
                   </label>
                   <input
@@ -590,12 +590,12 @@ export default function Products() {
                     step="0.01"
                     required
                     placeholder="1499.99"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Stock Quantity *
                   </label>
                   <input
@@ -606,12 +606,12 @@ export default function Products() {
                     min="0"
                     step="1"
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Category *
                   </label>
                   <select
@@ -619,7 +619,7 @@ export default function Products() {
                     value={form.categoryId}
                     onChange={updateField}
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   >
                     <option value="">Select a category</option>
                     {categories.map((category) => (
@@ -631,10 +631,10 @@ export default function Products() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Active
                   </label>
-                  <label className="flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm">
+                  <label className="flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm">
                     <input
                       type="checkbox"
                       checked={Boolean(form.isActive)}
@@ -647,14 +647,14 @@ export default function Products() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Upload image
                   </label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={(event) => setImageFile(event.target.files?.[0] || null)}
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
                   />
                   {imageFile && (
                     <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{imageFile.name}</p>
@@ -662,7 +662,7 @@ export default function Products() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Image URL
                   </label>
                   <input
@@ -671,12 +671,12 @@ export default function Products() {
                     value={form.imageUrl}
                     onChange={updateField}
                     placeholder="https://example.com/product.jpg"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                  <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                     Description
                   </label>
                   <textarea
@@ -685,7 +685,7 @@ export default function Products() {
                     onChange={updateField}
                     rows={4}
                     placeholder="Describe the product..."
-                    className="w-full resize-y rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm outline-none focus:border-violet-500"
+                    className="w-full resize-y rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
@@ -695,7 +695,7 @@ export default function Products() {
                   type="button"
                   onClick={closeModal}
                   disabled={saving}
-                  className="rounded-xl border border-slate-200 dark:border-slate-700 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50"
+                  className="rounded-xl border border-slate-200 dark:border-slate-700 px-5 py-3 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50"
                 >
                   Cancel
                 </button>
@@ -703,7 +703,7 @@ export default function Products() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-violet-700 dark:bg-violet-600 px-6 py-3 text-sm font-semibold text-white hover:bg-violet-800 disabled:opacity-60"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-violet-700 dark:bg-violet-600 px-6 py-3 text-xs sm:text-sm font-semibold text-white hover:bg-violet-800 disabled:opacity-60"
                 >
                   {saving && <LoaderCircle size={17} className="animate-spin" />}
                   {saving

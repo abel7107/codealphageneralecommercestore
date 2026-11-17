@@ -125,9 +125,9 @@ export default function Checkout() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Your cart is empty</h1>
+        <h1 className="text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Your cart is empty</h1>
         <p className="mt-3 text-slate-500 dark:text-slate-400">Add products before checking out.</p>
-        <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3 text-sm font-semibold text-white">
+        <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3 text-xs sm:text-sm font-semibold text-white">
           Continue shopping
         </Link>
       </div>
@@ -136,24 +136,24 @@ export default function Checkout() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Checkout</h1>
-      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Complete your shipping details to place your order.</p>
+      <h1 className="text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Checkout</h1>
+      <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">Complete your shipping details to place your order.</p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.8fr)]">
         <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
           <div>
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Customer information</h2>
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Customer information</h2>
           </div>
 
           {submitError && (
-            <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-700 dark:text-red-400">
+            <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-xs sm:text-sm text-red-700 dark:text-red-400">
               {submitError}
             </div>
           )}
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Full name *</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Full name *</label>
               <input
                 name="fullName"
                 value={form.fullName}
@@ -164,7 +164,7 @@ export default function Checkout() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Email *</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Email *</label>
               <input
                 type="email"
                 name="email"
@@ -176,7 +176,7 @@ export default function Checkout() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Phone *</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Phone *</label>
               <input
                 name="phone"
                 value={form.phone}
@@ -187,7 +187,7 @@ export default function Checkout() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">City *</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">City *</label>
               <input
                 name="city"
                 value={form.city}
@@ -198,7 +198,7 @@ export default function Checkout() {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Shipping address *</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Shipping address *</label>
               <input
                 name="address"
                 value={form.address}
@@ -209,7 +209,7 @@ export default function Checkout() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Postal code</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Postal code</label>
               <input
                 name="postalCode"
                 value={form.postalCode}
@@ -219,7 +219,7 @@ export default function Checkout() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Country</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Country</label>
               <input
                 name="country"
                 value={form.country}
@@ -229,7 +229,7 @@ export default function Checkout() {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Delivery instructions</label>
+              <label className="mb-2 block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200">Delivery instructions</label>
               <textarea
                 name="notes"
                 value={form.notes}
@@ -241,10 +241,10 @@ export default function Checkout() {
           </div>
 
           <div>
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Payment method</h2>
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Payment method</h2>
             <label className="mt-3 flex items-center gap-3 rounded-lg border border-slate-200 dark:border-slate-700 p-4">
               <input type="radio" checked readOnly />
-              <span className="text-sm font-medium text-slate-900 dark:text-white">Cash on Delivery</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-900 dark:text-white">Cash on Delivery</span>
             </label>
           </div>
 
@@ -258,7 +258,7 @@ export default function Checkout() {
         </form>
 
         <aside className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
-          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Order summary</h2>
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Order summary</h2>
           <div className="mt-4 space-y-4">
             {items.map((item) => (
               <div key={item.id} className="flex gap-3">
@@ -268,12 +268,12 @@ export default function Checkout() {
                   className="h-14 w-14 rounded-lg object-cover"
                 />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.name}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{item.name}</p>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
                     {item.quantity} × {money(item.price)}
                   </p>
                 </div>
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
                   {money(Number(item.price) * item.quantity)}
                 </p>
               </div>
@@ -281,13 +281,13 @@ export default function Checkout() {
           </div>
 
           <div className="mt-6 border-t border-slate-200 dark:border-slate-700 pt-4">
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-xs sm:text-sm">
               <span className="text-slate-500 dark:text-slate-400">Items</span>
               <span className="font-semibold">{cartCount}</span>
             </div>
-            <div className="mt-2 flex justify-between text-sm">
+            <div className="mt-2 flex justify-between text-xs sm:text-sm">
               <span className="text-slate-500 dark:text-slate-400">Total</span>
-              <span className="text-lg font-bold">{money(cartTotal)}</span>
+              <span className="text-base sm:text-lg font-bold">{money(cartTotal)}</span>
             </div>
           </div>
         </aside>

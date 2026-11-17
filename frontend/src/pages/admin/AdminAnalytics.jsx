@@ -22,7 +22,7 @@ function BarChart({ items, valueKey, labelKey, color = "bg-violet-700 dark:bg-vi
   const maxValue = Math.max(...items.map((item) => Number(item[valueKey]) || 0), 1);
 
   if (!items.length) {
-    return <p className="text-sm text-slate-500 dark:text-slate-400">No data available.</p>;
+    return <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">No data available.</p>;
   }
 
   return (
@@ -78,7 +78,7 @@ export default function AdminAnalytics() {
           <select
             value={range}
             onChange={(e) => setRange(e.target.value)}
-            className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm outline-none"
+            className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2.5 text-xs sm:text-sm outline-none"
           >
             {RANGES.map((item) => (
               <option key={item.value} value={item.value}>
@@ -90,11 +90,11 @@ export default function AdminAnalytics() {
       />
 
       {error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-sm text-red-700 dark:text-red-400">{error}</div>
+        <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-xs sm:text-sm text-red-700 dark:text-red-400">{error}</div>
       )}
 
       {loading ? (
-        <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+        <div className="flex min-h-48 items-center justify-center gap-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
           <LoaderCircle className="animate-spin" size={22} />
           Loading analytics...
         </div>
@@ -108,25 +108,25 @@ export default function AdminAnalytics() {
               { label: "Products", value: data?.summary?.totalProducts ?? 0 },
             ].map((item) => (
               <div key={item.label} className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-                <p className="text-sm text-slate-500 dark:text-slate-400">{item.label}</p>
-                <p className="mt-2 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{item.value}</p>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{item.label}</p>
+                <p className="mt-2 text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{item.value}</p>
               </div>
             ))}
           </section>
 
           <section className="grid gap-4 lg:grid-cols-2">
             <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Daily revenue</h2>
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Daily revenue</h2>
               <div className="mt-4">
                 <BarChart items={data?.dailyRevenue || []} valueKey="revenue" labelKey="date" />
               </div>
             </div>
 
             <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Orders over time</h2>
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Orders over time</h2>
               <div className="mt-4 space-y-3">
                 {(data?.dailyRevenue || []).length === 0 ? (
-                  <p className="text-sm text-slate-500 dark:text-slate-400">No data available.</p>
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">No data available.</p>
                 ) : (
                   (data?.dailyRevenue || []).map((item) => (
                     <div key={item.date} className="flex items-center gap-3">
@@ -147,14 +147,14 @@ export default function AdminAnalytics() {
 
           <section className="grid gap-4 lg:grid-cols-2">
             <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Monthly revenue</h2>
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Monthly revenue</h2>
               <div className="mt-4">
                 <BarChart items={data?.monthlyRevenue || []} valueKey="revenue" labelKey="month" color="bg-green-600" />
               </div>
             </div>
 
             <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Top categories</h2>
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Top categories</h2>
               <div className="mt-4">
                 <BarChart items={data?.topCategories || []} valueKey="revenue" labelKey="name" color="bg-violet-600" />
               </div>
@@ -162,9 +162,9 @@ export default function AdminAnalytics() {
           </section>
 
           <section className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Best-selling products</h2>
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Best-selling products</h2>
             {(data?.bestSellingProducts || []).length === 0 ? (
-              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">No sales data yet.</p>
+              <p className="mt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">No sales data yet.</p>
             ) : (
               <div className="mt-4 overflow-x-auto">
                 <table className="w-full text-left">
@@ -178,9 +178,9 @@ export default function AdminAnalytics() {
                   <tbody className="divide-y divide-slate-100">
                     {data.bestSellingProducts.map((product) => (
                       <tr key={product.productId}>
-                        <td className="px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white">{product.name}</td>
-                        <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-300">{product.quantity}</td>
-                        <td className="px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white">{money(product.revenue)}</td>
+                        <td className="px-4 py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{product.name}</td>
+                        <td className="px-4 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">{product.quantity}</td>
+                        <td className="px-4 py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{money(product.revenue)}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -48,7 +48,7 @@ export default function AdminDashboard() {
       />
 
       {error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-sm text-red-700 dark:text-red-400">{error}</div>
+        <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-xs sm:text-sm text-red-700 dark:text-red-400">{error}</div>
       )}
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -86,15 +86,15 @@ export default function AdminDashboard() {
         {/* Recent orders */}
         <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm lg:col-span-2">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recent orders</h2>
-            <a href="/admin/orders" className="text-sm font-semibold text-violet-700 dark:text-violet-400 hover:text-violet-800 dark:text-violet-300">
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Recent orders</h2>
+            <a href="/admin/orders" className="text-xs sm:text-sm font-semibold text-violet-700 dark:text-violet-400 hover:text-violet-800 dark:text-violet-300">
               View all
             </a>
           </div>
           {loading ? (
-            <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">Loading...</p>
+            <p className="mt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">Loading...</p>
           ) : (data?.recentOrders || []).length === 0 ? (
-            <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">No orders yet.</p>
+            <p className="mt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">No orders yet.</p>
           ) : (
             <div className="mt-4 overflow-x-auto">
               <table className="w-full min-w-[600px] text-left">
@@ -110,12 +110,12 @@ export default function AdminDashboard() {
                 <tbody className="divide-y divide-slate-100">
                   {data.recentOrders.map((order) => (
                     <tr key={order.id} className="transition hover:bg-slate-50 dark:hover:bg-slate-900">
-                      <td className="py-3 text-sm font-semibold text-slate-900 dark:text-white">{order.orderNumber}</td>
-                      <td className="py-3 text-sm text-slate-600 dark:text-slate-300">{order.customer}</td>
-                      <td className="py-3 text-sm text-slate-500 dark:text-slate-400">
+                      <td className="py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{order.orderNumber}</td>
+                      <td className="py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">{order.customer}</td>
+                      <td className="py-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                         {new Date(order.createdAt).toLocaleDateString()}
                       </td>
-                      <td className="py-3 text-sm font-semibold text-slate-900 dark:text-white">{money(order.total)}</td>
+                      <td className="py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{money(order.total)}</td>
                       <td className="py-3">
                         <StatusBadge status={order.status} />
                       </td>
@@ -130,20 +130,20 @@ export default function AdminDashboard() {
         {/* Right panel */}
         <div className="space-y-5">
           <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Best-selling products</h2>
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Best-selling products</h2>
             {loading ? (
-              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">Loading...</p>
+              <p className="mt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">Loading...</p>
             ) : (data?.bestSellingProducts || []).length === 0 ? (
-              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">No sales data yet.</p>
+              <p className="mt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">No sales data yet.</p>
             ) : (
               <ul className="mt-4 space-y-3">
                 {data.bestSellingProducts.slice(0, 5).map((product) => (
                   <li key={product.productId} className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
+                      <p className="truncate text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
                       <p className="text-xs text-slate-500 dark:text-slate-400">{product.quantity} sold</p>
                     </div>
-                    <p className="shrink-0 text-sm font-bold text-slate-900 dark:text-white">{money(product.revenue)}</p>
+                    <p className="shrink-0 text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{money(product.revenue)}</p>
                   </li>
                 ))}
               </ul>
@@ -151,8 +151,8 @@ export default function AdminDashboard() {
           </div>
 
           <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Quick info</h2>
-            <ul className="mt-4 space-y-3 text-sm">
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Quick info</h2>
+            <ul className="mt-4 space-y-3 text-xs sm:text-sm">
               <li className="flex items-center justify-between">
                 <span className="text-slate-500 dark:text-slate-400">Pending orders</span>
                 <span className="font-semibold text-slate-900 dark:text-white">{loading ? "…" : summary?.pendingOrders ?? 0}</span>

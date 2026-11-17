@@ -84,24 +84,24 @@ export default function Categories() {
         description="Organize your product catalog into categories."
       />
 
-      {error && <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>}
-      {success && <div className="rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-3 text-sm text-green-700 dark:text-green-400">{success}</div>}
+      {error && <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-xs sm:text-sm text-red-700 dark:text-red-400">{error}</div>}
+      {success && <div className="rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-3 text-xs sm:text-sm text-green-700 dark:text-green-400">{success}</div>}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Category name"
-          className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+          className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
         />
-        <button type="submit" className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-sm font-semibold text-white">
+        <button type="submit" className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-xs sm:text-sm font-semibold text-white">
           {editing ? "Update" : "Add"}
         </button>
         {editing && (
           <button
             type="button"
             onClick={() => { setEditing(null); setName(""); }}
-            className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           >
             Cancel
           </button>
@@ -112,7 +112,7 @@ export default function Categories() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search categories..."
-        className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm sm:max-w-sm"
+        className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm sm:max-w-sm"
       />
 
       {loading ? (
@@ -133,7 +133,7 @@ export default function Categories() {
               {filtered.map((category) => (
                 <tr key={category.id}>
                   <td className="px-5 py-3 font-semibold text-slate-900 dark:text-white">{category.name}</td>
-                  <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
+                  <td className="px-5 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                     {category._count?.products ?? 0}
                   </td>
                   <td className="px-5 py-3">

@@ -10,23 +10,23 @@ export default function ConfirmDialog({ open, title, description, confirmLabel =
             <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${danger ? "bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400" : "bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400"}`}>
               <AlertTriangle size={20} />
             </div>
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">{title}</h2>
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{title}</h2>
           </div>
           <button onClick={onCancel} className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700">
             <X size={18} />
           </button>
         </div>
         <div className="px-6 py-5">
-          <p className="text-sm text-slate-600 dark:text-slate-300">{description}</p>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">{description}</p>
         </div>
         <div className="flex justify-end gap-2 border-t border-slate-100 dark:border-slate-700 px-6 py-4">
-          <button onClick={onCancel} disabled={loading} className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50">
+          <button onClick={onCancel} disabled={loading} className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 disabled:opacity-50">
             {cancelLabel}
           </button>
           <button
             onClick={onConfirm}
             disabled={loading}
-            className={`rounded-xl px-4 py-2 text-sm font-semibold text-white disabled:opacity-50 ${danger ? "bg-red-600 hover:bg-red-700" : "bg-violet-700 dark:bg-violet-600 hover:bg-violet-800"}`}
+            className={`rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold text-white disabled:opacity-50 ${danger ? "bg-red-600 hover:bg-red-700" : "bg-violet-700 dark:bg-violet-600 hover:bg-violet-800"}`}
           >
             {loading ? "Processing..." : confirmLabel}
           </button>

@@ -24,8 +24,8 @@ export default function StatCard({ title, value, description, Icon, trend, trend
           </span>
         )}
       </div>
-      <p className="mt-3 text-sm font-medium text-slate-500 dark:text-slate-400">{title}</p>
-      <h2 className="mt-1 text-lg sm:text-xl font-bold text-slate-900 dark:text-white">{value}</h2>
+      <p className="mt-3 text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">{title}</p>
+      <h2 className="mt-1 text-base sm:text-lg sm:text-lg sm:text-xl font-bold text-slate-900 dark:text-white">{value}</h2>
       {description && <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">{description}</p>}
       {trendLabel && <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">{trendLabel}</p>}
     </article>

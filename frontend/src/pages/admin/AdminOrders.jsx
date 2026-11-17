@@ -142,7 +142,7 @@ export default function AdminOrders() {
       />
 
       {error && (
-        <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-sm text-red-700 dark:text-red-400">
+        <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-xs sm:text-sm text-red-700 dark:text-red-400">
           <p>{error}</p>
           <button onClick={() => setError("")} aria-label="Dismiss error">
             <X size={18} />
@@ -151,7 +151,7 @@ export default function AdminOrders() {
       )}
 
       {success && (
-        <div className="flex items-center justify-between gap-3 rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-4 text-sm text-green-700 dark:text-green-400">
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-4 text-xs sm:text-sm text-green-700 dark:text-green-400">
           <p>{success}</p>
           <button onClick={() => setSuccess("")} aria-label="Dismiss success">
             <X size={18} />
@@ -170,7 +170,7 @@ export default function AdminOrders() {
               setPage(1);
             }}
             placeholder="Search order or customer..."
-            className="w-full bg-transparent py-2 text-sm outline-none"
+            className="w-full bg-transparent py-2 text-xs sm:text-sm outline-none"
           />
         </div>
 
@@ -180,7 +180,7 @@ export default function AdminOrders() {
             setStatusFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm"
+          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs sm:text-sm"
         >
           <option value="">All statuses</option>
           {ORDER_STATUSES.map((status) => (
@@ -196,7 +196,7 @@ export default function AdminOrders() {
             setPaymentFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm"
+          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs sm:text-sm"
         >
           <option value="">All payments</option>
           {PAYMENT_STATUSES.map((status) => (
@@ -213,7 +213,7 @@ export default function AdminOrders() {
             setStartDate(e.target.value);
             setPage(1);
           }}
-          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm"
+          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs sm:text-sm"
         />
 
         <input
@@ -223,21 +223,21 @@ export default function AdminOrders() {
             setEndDate(e.target.value);
             setPage(1);
           }}
-          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm"
+          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs sm:text-sm"
         />
       </section>
 
       {/* Table */}
       <section className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
         {loading ? (
-          <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+          <div className="flex min-h-48 items-center justify-center gap-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             <LoaderCircle className="animate-spin" size={22} />
             Loading orders...
           </div>
         ) : orders.length === 0 ? (
           <div className="flex min-h-48 flex-col items-center justify-center px-5 text-center">
             <p className="font-semibold text-slate-800 dark:text-slate-100">No orders found</p>
-            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Try adjusting your filters.</p>
+            <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">Try adjusting your filters.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -258,15 +258,15 @@ export default function AdminOrders() {
                 {orders.map((order) => (
                   <tr key={order.id} className="transition hover:bg-slate-50 dark:hover:bg-slate-900">
                     <td className="px-5 py-3 font-semibold text-slate-900 dark:text-white">{shortOrderNumber(order.orderNumber)}</td>
-                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
+                    <td className="px-5 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                       {order.user?.name || "Unknown"}
                       <p className="text-xs text-slate-400 dark:text-slate-500">{order.user?.email}</p>
                     </td>
-                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
+                    <td className="px-5 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                       {new Date(order.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">{order.items?.length ?? 0}</td>
-                    <td className="px-5 py-3 text-sm font-semibold text-slate-900 dark:text-white">{money(order.total)}</td>
+                    <td className="px-5 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">{order.items?.length ?? 0}</td>
+                    <td className="px-5 py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{money(order.total)}</td>
                       <td className="px-5 py-3">
                         <StatusBadge status={order.paymentStatus} />
                       </td>
@@ -296,17 +296,17 @@ export default function AdminOrders() {
           <button
             onClick={() => setPage((current) => Math.max(1, current - 1))}
             disabled={page === 1}
-            className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold disabled:opacity-40"
+            className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-xs sm:text-sm font-semibold disabled:opacity-40"
           >
             Previous
           </button>
-          <span className="text-sm text-slate-600 dark:text-slate-300">
+          <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
             Page {page} of {totalPages}
           </span>
           <button
             onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
             disabled={page === totalPages}
-            className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold disabled:opacity-40"
+            className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-xs sm:text-sm font-semibold disabled:opacity-40"
           >
             Next
           </button>
@@ -319,8 +319,8 @@ export default function AdminOrders() {
           <div className="my-auto w-full max-w-4xl rounded-2xl bg-white dark:bg-slate-800 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 px-6 py-5">
               <div>
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Order {selectedOrder.orderNumber}</h2>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                <h2 className="text-base sm:text-lg sm:text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Order {selectedOrder.orderNumber}</h2>
+                <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   {selectedOrder.user?.name} · {new Date(selectedOrder.createdAt).toLocaleString()}
                 </p>
               </div>
@@ -339,27 +339,27 @@ export default function AdminOrders() {
                 <div className="space-y-5">
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-xl bg-slate-50 dark:bg-slate-900 p-4">
-                      <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Shipping address</h3>
-                      <p className="mt-2 text-sm text-slate-900 dark:text-white">{selectedOrder.shippingFullName}</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">{selectedOrder.shippingAddress}</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">
+                      <h3 className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Shipping address</h3>
+                      <p className="mt-2 text-xs sm:text-sm text-slate-900 dark:text-white">{selectedOrder.shippingFullName}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">{selectedOrder.shippingAddress}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                         {selectedOrder.shippingCity}
                         {selectedOrder.shippingPostalCode ? `, ${selectedOrder.shippingPostalCode}` : ""}
                       </p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">{selectedOrder.shippingCountry}</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">{selectedOrder.shippingPhone}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">{selectedOrder.shippingCountry}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">{selectedOrder.shippingPhone}</p>
                     </div>
 
                     <div className="rounded-xl bg-slate-50 dark:bg-slate-900 p-4">
-                      <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Payment</h3>
-                      <p className="mt-2 text-sm text-slate-900 dark:text-white">{selectedOrder.paymentMethod}</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">Status: {selectedOrder.paymentStatus}</p>
-                      <p className="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Total: {money(selectedOrder.total)}</p>
+                      <h3 className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Payment</h3>
+                      <p className="mt-2 text-xs sm:text-sm text-slate-900 dark:text-white">{selectedOrder.paymentMethod}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Status: {selectedOrder.paymentStatus}</p>
+                      <p className="mt-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Total: {money(selectedOrder.total)}</p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Items</h3>
+                    <h3 className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Items</h3>
                     <div className="mt-3 space-y-3">
                       {selectedOrder.items.map((item) => (
                         <div key={item.id} className="flex items-center gap-4 rounded-xl border border-slate-100 dark:border-slate-700 p-3">
@@ -375,12 +375,12 @@ export default function AdminOrders() {
                             )}
                           </div>
                           <div className="flex-1">
-                            <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.productName}</p>
+                            <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{item.productName}</p>
                             <p className="text-xs text-slate-500 dark:text-slate-400">
                               {item.quantity} × {money(item.unitPrice)}
                             </p>
                           </div>
-                          <p className="text-sm font-semibold text-slate-900 dark:text-white">{money(item.subtotal)}</p>
+                          <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">{money(item.subtotal)}</p>
                         </div>
                       ))}
                     </div>
@@ -390,14 +390,14 @@ export default function AdminOrders() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                       <div className="grid gap-3 sm:grid-cols-2">
                         <div>
-                          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                             Order status
                           </label>
                           <select
                             value={nextStatus}
                             onChange={(e) => setNextStatus(e.target.value)}
                             disabled={updating}
-                            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+                            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
                           >
                             <option value={selectedOrder.status}>{selectedOrder.status}</option>
                             {availableTransitions.map((status) => (
@@ -409,14 +409,14 @@ export default function AdminOrders() {
                         </div>
 
                         <div>
-                          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">
                             Payment status
                           </label>
                           <select
                             value={nextPaymentStatus}
                             onChange={(e) => setNextPaymentStatus(e.target.value)}
                             disabled={updating}
-                            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+                            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
                           >
                             {PAYMENT_STATUSES.map((status) => (
                               <option key={status} value={status}>
@@ -442,7 +442,7 @@ export default function AdminOrders() {
                           (nextStatus === selectedOrder.status &&
                             nextPaymentStatus === selectedOrder.paymentStatus)
                         }
-                        className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+                        className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-xs sm:text-sm font-semibold text-white disabled:opacity-50"
                       >
                         {updating ? "Updating..." : "Update order"}
                       </button>

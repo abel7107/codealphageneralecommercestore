@@ -32,7 +32,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
             </svg>
           </button>
           <div className="min-w-0">
-            <h2 className="truncate text-base font-bold text-slate-900 dark:text-white sm:text-lg">{title || "Admin workspace"}</h2>
+            <h2 className="truncate text-sm sm:text-base font-bold text-slate-900 dark:text-white sm:text-base sm:text-lg">{title || "Admin workspace"}</h2>
             {description && (
               <p className="hidden truncate text-xs text-slate-500 dark:text-slate-400 sm:block">{description}</p>
             )}
@@ -44,7 +44,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
           <Search size={16} className="text-slate-400 dark:text-slate-500" />
           <input
             placeholder="Search across admin..."
-            className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:text-slate-500"
+            className="w-full bg-transparent text-xs sm:text-sm outline-none placeholder:text-slate-400 dark:text-slate-500"
           />
         </div>
 
@@ -97,7 +97,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
                       setProfileOpen(false);
                       navigate("/admin/settings");
                     }}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
                   >
                     <Settings size={16} /> Settings
                   </button>
@@ -106,7 +106,7 @@ export default function AdminHeader({ title, description, onMenuClick }) {
                       setProfileOpen(false);
                       handleLogout();
                     }}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/30"
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs sm:text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/30"
                   >
                     <LogOut size={16} /> Logout
                   </button>

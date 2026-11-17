@@ -72,7 +72,7 @@ export default function Settings() {
 
   if (loading) {
     return (
-      <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+      <div className="flex min-h-48 items-center justify-center gap-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
         <LoaderCircle className="animate-spin" size={22} />
         Loading settings...
       </div>
@@ -87,66 +87,66 @@ export default function Settings() {
         description="Manage your store information and preferences."
       />
 
-      {error && <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>}
-      {success && <div className="rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-3 text-sm text-green-700 dark:text-green-400">{success}</div>}
+      {error && <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-xs sm:text-sm text-red-700 dark:text-red-400">{error}</div>}
+      {success && <div className="rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-3 text-xs sm:text-sm text-green-700 dark:text-green-400">{success}</div>}
 
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Store name</label>
+          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Store name</label>
           <input
             name="storeName"
             value={form.storeName}
             onChange={updateField}
             required
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Store description</label>
+          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Store description</label>
           <textarea
             name="storeDescription"
             value={form.storeDescription}
             onChange={updateField}
             rows={3}
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Contact email</label>
+          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Contact email</label>
           <input
             type="email"
             name="contactEmail"
             value={form.contactEmail}
             onChange={updateField}
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Contact phone</label>
+          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Contact phone</label>
           <input
             name="contactPhone"
             value={form.contactPhone}
             onChange={updateField}
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Currency</label>
+          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Currency</label>
           <input
             name="currency"
             value={form.currency}
             onChange={updateField}
             required
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Shipping fee</label>
+          <label className="mb-2 block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200">Shipping fee</label>
           <input
             type="number"
             name="shippingFee"
@@ -154,14 +154,14 @@ export default function Settings() {
             onChange={updateField}
             min="0"
             step="0.01"
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-xs sm:text-sm"
           />
         </div>
 
         <button
           type="submit"
           disabled={saving}
-          className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
+          className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-xs sm:text-sm font-semibold text-white disabled:opacity-60"
         >
           {saving ? "Saving..." : "Save settings"}
         </button>

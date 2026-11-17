@@ -151,12 +151,12 @@ function HomePage() {
 
           <a
             href="#home"
-            className="text-xl sm:text-2xl font-black tracking-tight sm:text-2xl sm:text-3xl"
+            className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-black tracking-tight sm:text-xl sm:text-2xl sm:text-2xl sm:text-3xl"
           >
             shopora<span className="text-slate-950 dark:text-white">.</span>
           </a>
 
-          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300 lg:flex">
+          <nav className="hidden items-center gap-8 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 lg:flex">
             <a href="#home" className="text-slate-950 dark:text-white">Home</a>
             <a href="#products" className="transition hover:text-violet-700 dark:text-violet-400">Shop</a>
             <a href="#categories" className="transition hover:text-violet-700 dark:text-violet-400">Categories</a>
@@ -170,7 +170,7 @@ function HomePage() {
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search products..."
-                className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:text-slate-500"
+                className="w-full bg-transparent text-xs sm:text-sm outline-none placeholder:text-slate-400 dark:text-slate-500"
                 aria-label="Search products"
               />
             </div>
@@ -211,7 +211,7 @@ function HomePage() {
         </div>
 
         {menuOpen && (
-          <nav className="flex flex-col gap-4 border-t border-slate-100 dark:border-slate-700 px-6 py-5 text-sm lg:hidden">
+          <nav className="flex flex-col gap-4 border-t border-slate-100 dark:border-slate-700 px-6 py-5 text-xs sm:text-sm lg:hidden">
             <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
             <a href="#products" onClick={() => setMenuOpen(false)}>Shop</a>
             <a href="#categories" onClick={() => setMenuOpen(false)}>Categories</a>
@@ -234,18 +234,18 @@ function HomePage() {
                 <span className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-slate-950 dark:text-white">
                   Discover your style
                 </span>
-                <h1 className="mt-6 max-w-xl text-3xl sm:text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+                <h1 className="mt-6 max-w-xl text-2xl sm:text-3xl sm:text-3xl sm:text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
                   Good finds.
                   <br />
                   <span className="text-slate-950 dark:text-white">Better living.</span>
                 </h1>
-                <p className="mt-5 max-w-md text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
+                <p className="mt-5 max-w-md text-sm sm:text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-base sm:text-lg">
                   Discover everyday essentials, thoughtful design, and things
                   you will love — all in one place.
                 </p>
                 <a
                   href="#products"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-100 dark:bg-slate-700"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white transition hover:bg-slate-100 dark:bg-slate-700"
                 >
                   Explore the collection <ArrowRight size={18} />
                 </a>
@@ -264,7 +264,7 @@ function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-slate-100/20 to-transparent md:bg-gradient-to-r md:from-slate-100/30 md:via-transparent md:to-transparent" />
                 <div className="absolute bottom-5 right-5 rounded-2xl bg-white dark:bg-slate-800/95 p-4 shadow-lg backdrop-blur sm:bottom-8 sm:right-8">
                   <p className="text-xs text-slate-500 dark:text-slate-400">Your everyday destination</p>
-                  <p className="mt-1 text-lg font-bold">Find your something.</p>
+                  <p className="mt-1 text-base sm:text-lg font-bold">Find your something.</p>
                 </div>
               </div>
             </div>
@@ -277,7 +277,7 @@ function HomePage() {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-950 dark:text-white">
                 Browse your way
               </p>
-              <h2 className="mt-2 text-xl sm:text-2xl font-bold tracking-tight sm:text-2xl sm:text-3xl">
+              <h2 className="mt-2 text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold tracking-tight sm:text-xl sm:text-2xl sm:text-2xl sm:text-3xl">
                 Shop by category
               </h2>
             </div>
@@ -286,7 +286,7 @@ function HomePage() {
                 setActiveCategory("All");
                 document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="hidden items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-violet-700 dark:text-violet-400 sm:flex"
+              className="hidden items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-violet-700 dark:text-violet-400 sm:flex"
             >
               All products <ArrowRight size={16} />
             </button>
@@ -324,10 +324,10 @@ function HomePage() {
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-950 dark:text-white">
                   The good stuff
                 </p>
-                <h2 className="mt-2 text-xl sm:text-2xl font-bold tracking-tight sm:text-2xl sm:text-3xl">
+                <h2 className="mt-2 text-lg sm:text-xl sm:text-xl sm:text-2xl font-bold tracking-tight sm:text-xl sm:text-2xl sm:text-2xl sm:text-3xl">
                   {search ? "Search results" : activeCategory === "All" ? "Featured products" : activeCategory}
                 </h2>
-                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   Thoughtful picks for everyday life.
                 </p>
               </div>
@@ -384,7 +384,7 @@ function HomePage() {
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                       {product.category?.name}
                     </p>
-                    <h3 className="mt-1 line-clamp-2 min-h-10 text-sm font-semibold leading-5 sm:text-[15px]">
+                    <h3 className="mt-1 line-clamp-2 min-h-10 text-xs sm:text-sm font-semibold leading-5 sm:text-[15px]">
                       {product.name}
                     </h3>
                     <div className="mt-2 flex items-center gap-1">
@@ -393,7 +393,7 @@ function HomePage() {
                       <span className="text-xs text-slate-400 dark:text-slate-500">(Customer rating)</span>
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <span className="text-sm font-bold">{money(Number(product.price))}</span>
+                      <span className="text-xs sm:text-sm font-bold">{money(Number(product.price))}</span>
                       {product.oldPrice && (
                         <span className="text-xs text-slate-400 dark:text-slate-500 line-through">
                           {money(product.oldPrice)}
@@ -414,8 +414,8 @@ function HomePage() {
             {filteredProducts.length === 0 && (
               <div className="py-16 text-center">
                 <Search className="mx-auto text-slate-300 dark:text-slate-600" size={36} />
-                <h3 className="mt-4 text-lg font-bold">No products found</h3>
-                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                <h3 className="mt-4 text-base sm:text-lg font-bold">No products found</h3>
+                <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                   Try another search or browse all products.
                 </p>
                 <button
@@ -423,7 +423,7 @@ function HomePage() {
                     setSearch("");
                     setActiveCategory("All");
                   }}
-                  className="mt-5 rounded-full bg-violet-700 dark:bg-violet-600 px-5 py-3 text-sm font-semibold text-white"
+                  className="mt-5 rounded-full bg-violet-700 dark:bg-violet-600 px-5 py-3 text-xs sm:text-sm font-semibold text-white"
                 >
                   Clear filters
                 </button>
@@ -444,7 +444,7 @@ function HomePage() {
               </div>
               <div>
                 <h3 className="font-bold">{title}</h3>
-                <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">{description}</p>
+                <p className="mt-1 text-xs sm:text-sm leading-6 text-slate-500 dark:text-slate-400">{description}</p>
               </div>
             </div>
           ))}
@@ -453,13 +453,13 @@ function HomePage() {
 
       <footer className="bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-9 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <a href="#home" className="text-xl sm:text-2xl font-black tracking-tight">
+          <a href="#home" className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-black tracking-tight">
             shopora<span className="text-slate-950 dark:text-white">.</span>
           </a>
-          <p className="text-sm text-slate-400 dark:text-slate-500">
+          <p className="text-xs sm:text-sm text-slate-400 dark:text-slate-500">
             Find your something. © {new Date().getFullYear()} Shopora.
           </p>
-          <a href="#products" className="text-sm text-slate-300 dark:text-slate-600 hover:text-white">
+          <a href="#products" className="text-xs sm:text-sm text-slate-300 dark:text-slate-600 hover:text-white">
             Explore products ↑
           </a>
         </div>
@@ -472,13 +472,13 @@ function HomePage() {
 
       {/* Cart Header */}
       <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-5">
-        <a href="#home" className="text-xl sm:text-2xl font-black tracking-tight">
+        <a href="#home" className="text-lg sm:text-xl sm:text-xl sm:text-2xl font-black tracking-tight">
           shopora<span className="text-slate-400 dark:text-slate-500">.</span>
         </a>
 
         <button
          onClick={continueShopping}
-          className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-medium transition hover:bg-slate-100 dark:bg-slate-700"
+          className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-xs sm:text-sm font-medium transition hover:bg-slate-100 dark:bg-slate-700"
         >
           <X size={16} />
           Continue shopping
@@ -491,11 +491,11 @@ function HomePage() {
           Your selection
         </p>
 
-        <h1 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight sm:text-3xl sm:text-4xl">
+        <h1 className="mt-2 text-xl sm:text-2xl sm:text-2xl sm:text-3xl font-bold tracking-tight sm:text-2xl sm:text-3xl sm:text-3xl sm:text-4xl">
           Shopping Cart
         </h1>
 
-        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+        <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
           {cartCount} {cartCount === 1 ? "item" : "items"} in your shopping bag
         </p>
       </div>
@@ -506,17 +506,17 @@ function HomePage() {
             <ShoppingBag size={34} className="text-slate-400 dark:text-slate-500" />
           </div>
 
-          <h2 className="mt-5 text-lg sm:text-xl font-bold">
+          <h2 className="mt-5 text-base sm:text-lg sm:text-lg sm:text-xl font-bold">
             Your shopping bag is empty
           </h2>
 
-          <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400">
+          <p className="mt-2 max-w-sm text-xs sm:text-sm leading-6 text-slate-500 dark:text-slate-400">
             Looks like you haven't discovered your next favorite item yet.
           </p>
 
           <button
             onClick={continueShopping}
-            className="mt-6 rounded-full bg-violet-700 dark:bg-violet-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-violet-800"
+            className="mt-6 rounded-full bg-violet-700 dark:bg-violet-600 px-7 py-3 text-xs sm:text-sm font-semibold text-white transition hover:bg-violet-800"
           >
             Start shopping
           </button>
@@ -555,7 +555,7 @@ function HomePage() {
                         {item.category?.name || item.category}
                       </p>
 
-                      <h3 className="mt-1 text-sm font-bold text-slate-900 dark:text-white">
+                      <h3 className="mt-1 text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
                         {item.name}
                       </h3>
 
@@ -601,7 +601,7 @@ function HomePage() {
                       Total
                     </span>
 
-                    <span className="text-sm font-bold">
+                    <span className="text-xs sm:text-sm font-bold">
                       {money(Number(item.price) * item.quantity)}
                     </span>
                   </div>
@@ -623,22 +623,22 @@ function HomePage() {
 
           {/* Order Summary */}
          <aside className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 sm:p-6 lg:sticky lg:top-6">
-            <h2 className="text-lg font-bold tracking-tight">
+            <h2 className="text-base sm:text-lg font-bold tracking-tight">
               Order Summary
             </h2>
 
             <div className="mt-6 space-y-4">
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm">
                 <span className="text-slate-500 dark:text-slate-400">Subtotal ({cartCount} items)</span>
                 <span className="font-semibold">{money(cartTotal)}</span>
               </div>
 
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm">
                 <span className="text-slate-500 dark:text-slate-400">Discount</span>
                 <span className="text-slate-400 dark:text-slate-500">Not applied</span>
               </div>
 
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm">
                 <span className="text-slate-500 dark:text-slate-400">Delivery fee</span>
                 <span className="text-slate-400 dark:text-slate-500">Calculated later</span>
               </div>
@@ -646,7 +646,7 @@ function HomePage() {
               <div className="border-t border-slate-200 dark:border-slate-700 pt-5">
                 <div className="flex items-center justify-between">
                   <span className="font-bold">Estimated Total</span>
-                  <span className="text-lg sm:text-xl font-bold">
+                  <span className="text-base sm:text-lg sm:text-lg sm:text-xl font-bold">
                     {money(cartTotal)}
                   </span>
                 </div>
@@ -675,7 +675,7 @@ function HomePage() {
                 setCartOpen(false);
                 navigate("/checkout");
               }}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-violet-700 dark:bg-violet-600 py-4 text-sm font-bold text-white transition hover:bg-violet-800 active:scale-[0.99]"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-violet-700 dark:bg-violet-600 py-4 text-xs sm:text-sm font-bold text-white transition hover:bg-violet-800 active:scale-[0.99]"
             >
               Checkout Now <ArrowRight size={17} />
             </button>

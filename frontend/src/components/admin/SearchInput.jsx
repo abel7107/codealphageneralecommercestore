@@ -8,7 +8,7 @@ export default function SearchInput({ value, onChange, placeholder = "Search..."
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:text-slate-500"
+        className="w-full bg-transparent text-xs sm:text-sm outline-none placeholder:text-slate-400 dark:text-slate-500"
       />
     </div>
   );

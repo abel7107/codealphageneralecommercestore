@@ -104,23 +104,27 @@ export default function AdminSidebar({ open, onClose, collapsed, onToggleCollaps
                     end={path === "/admin"}
                     onClick={onClose}
                     title={collapsed ? name : undefined}
-                    className={({ isActive }) =>
-                      `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-sm font-medium transition ${
-                        isActive
+                    className={({ isActive }) => {
+                      const active = isActive && name === "Settings";
+                      return `group flex items-center gap-3 rounded-xl px-2.5 py-2 text-sm font-medium transition ${
+                        active
                           ? "bg-violet-50 text-violet-700"
                           : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
-                      } ${collapsed ? "justify-center" : ""}`
-                    }
+                      } ${collapsed ? "justify-center" : ""}`;
+                    }}
                   >
-                    {({ isActive }) => (
-                      <>
-                        <Icon size={19} className={isActive ? "text-violet-700" : "text-slate-400 group-hover:text-slate-700"} />
-                        {!collapsed && <span className="truncate">{name}</span>}
-                        {isActive && !collapsed && (
-                          <span className="ml-auto h-1.5 w-1.5 rounded-full bg-violet-700" />
-                        )}
-                      </>
-                    )}
+                    {({ isActive }) => {
+                      const active = isActive && name === "Settings";
+                      return (
+                        <>
+                          <Icon size={19} className={active ? "text-violet-700" : "text-slate-400 group-hover:text-slate-700"} />
+                          {!collapsed && <span className="truncate">{name}</span>}
+                          {active && !collapsed && (
+                            <span className="ml-auto h-1.5 w-1.5 rounded-full bg-violet-700" />
+                          )}
+                        </>
+                      );
+                    }}
                   </NavLink>
                 ))}
               </nav>

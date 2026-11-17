@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "./context/CartContext";
 import { getImageUrl } from "./services/api";
 import { useAuth } from "./context/AuthContext";
+import { useTheme } from "./context/ThemeContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
@@ -40,6 +41,8 @@ import {
   Plus,
   Minus,
   Trash2,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 
@@ -50,6 +53,7 @@ const money = (amount) =>
 function HomePage() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const { items: cart, cartCount, cartTotal, addToCart: addToCartCtx, updateQuantity, removeItem } = useCart();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
@@ -174,6 +178,13 @@ function HomePage() {
           </div>
 
           <div className="flex items-center gap-1 sm:gap-3">
+            <button
+              onClick={toggleTheme}
+              className="rounded-full p-2.5 transition hover:bg-slate-100 dark:hover:bg-slate-700"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={21} /> : <Moon size={21} />}
+            </button>
             <button
               className="relative rounded-full p-2.5 transition hover:bg-slate-100 dark:bg-slate-700"
               onClick={() => setCartOpen(true)}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LoaderCircle } from "lucide-react";
 import { apiRequest } from "../../services/api";
+import PageHeader from "../../components/admin/PageHeader";
 
 export default function Settings() {
   const [form, setForm] = useState({
@@ -80,10 +81,11 @@ export default function Settings() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <p className="text-sm font-medium text-slate-500">Store configuration</p>
-        <h1 className="mt-1 text-3xl font-bold text-slate-900">Settings</h1>
-      </div>
+      <PageHeader
+        eyebrow="Store configuration"
+        title="Settings"
+        description="Manage your store information and preferences."
+      />
 
       {error && <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</div>}
       {success && <div className="rounded-xl border border-green-200 bg-green-50 p-3 text-sm text-green-700">{success}</div>}

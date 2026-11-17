@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Pencil, Trash2, LoaderCircle } from "lucide-react";
 import { apiRequest } from "../../services/api";
+import PageHeader from "../../components/admin/PageHeader";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -77,10 +78,11 @@ export default function Categories() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <p className="text-sm font-medium text-slate-500">Store management</p>
-        <h1 className="mt-1 text-3xl font-bold text-slate-900">Categories</h1>
-      </div>
+      <PageHeader
+        eyebrow="Store management"
+        title="Categories"
+        description="Organize your product catalog into categories."
+      />
 
       {error && <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</div>}
       {success && <div className="rounded-xl border border-green-200 bg-green-50 p-3 text-sm text-green-700">{success}</div>}
@@ -118,8 +120,8 @@ export default function Categories() {
           <LoaderCircle className="animate-spin" /> Loading...
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <table className="w-full text-left">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <table className="w-full min-w-[480px] text-left">
             <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
               <tr>
                 <th className="px-5 py-4">Name</th>

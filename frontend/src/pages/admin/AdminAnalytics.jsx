@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LoaderCircle } from "lucide-react";
 import { apiRequest } from "../../services/api";
+import PageHeader from "../../components/admin/PageHeader";
 
 const RANGES = [
   { value: "today", label: "Today" },
@@ -28,7 +29,7 @@ function BarChart({ items, valueKey, labelKey, color = "bg-slate-900" }) {
     <div className="space-y-3">
       {items.map((item) => (
         <div key={item[labelKey]} className="flex items-center gap-3">
-          <span className="w-24 shrink-0 text-xs text-slate-600">{item[labelKey]}</span>
+          <span className="w-20 shrink-0 truncate text-xs text-slate-600 sm:w-24">{item[labelKey]}</span>
           <div className="h-3 flex-1 rounded-full bg-slate-100">
             <div
               className={`h-3 rounded-full ${color}`}
@@ -69,24 +70,24 @@ export default function AdminAnalytics() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm font-medium text-slate-500">Store insights</p>
-          <h1 className="mt-1 text-3xl font-bold text-slate-900">Analytics</h1>
-        </div>
-
-        <select
-          value={range}
-          onChange={(e) => setRange(e.target.value)}
-          className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none"
-        >
-          {RANGES.map((item) => (
-            <option key={item.value} value={item.value}>
-              {item.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <PageHeader
+        eyebrow="Store insights"
+        title="Analytics"
+        description="Track revenue, orders, and product performance."
+        actions={
+          <select
+            value={range}
+            onChange={(e) => setRange(e.target.value)}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm outline-none"
+          >
+            {RANGES.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+        }
+      />
 
       {error && (
         <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">{error}</div>
@@ -129,7 +130,7 @@ export default function AdminAnalytics() {
                 ) : (
                   (data?.dailyRevenue || []).map((item) => (
                     <div key={item.date} className="flex items-center gap-3">
-                      <span className="w-24 shrink-0 text-xs text-slate-600">{item.date}</span>
+                      <span className="w-20 shrink-0 truncate text-xs text-slate-600 sm:w-24">{item.date}</span>
                       <div className="h-3 flex-1 rounded-full bg-slate-100">
                         <div
                           className="h-3 rounded-full bg-blue-600"

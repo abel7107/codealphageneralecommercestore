@@ -7,6 +7,8 @@ import {
   X,
 } from "lucide-react";
 import { apiRequest, getImageUrl } from "../../services/api";
+import PageHeader from "../../components/admin/PageHeader";
+import StatusBadge from "../../components/admin/StatusBadge";
 
 const ORDER_STATUSES = ["PENDING", "CONFIRMED", "PROCESSING", "SHIPPED", "DELIVERED", "CANCELLED"];
 const PAYMENT_STATUSES = ["PENDING", "PAID", "FAILED", "REFUNDED"];
@@ -18,6 +20,13 @@ const TRANSITIONS = {
   DELIVERED: [],
   CANCELLED: [],
 };
+
+function shortOrderNumber(value) {
+  if (!value) return "—";
+  const match = String(value).match(/^ORD-([a-f0-9]{8})/i);
+  if (match) return `ORD-${match[1].toUpperCase()}`;
+  return String(value).slice(0, 12);
+}
 
 function money(value) {
   return `ETB ${Number(value).toLocaleString("en-US", {
@@ -126,10 +135,11 @@ export default function AdminOrders() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <p className="text-sm font-medium text-slate-500">Store management</p>
-        <h1 className="mt-1 text-3xl font-bold text-slate-900">Orders</h1>
-      </div>
+      <PageHeader
+        eyebrow="Store management"
+        title="Orders"
+        description="Manage, track, and process customer orders."
+      />
 
       {error && (
         <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
@@ -247,7 +257,7 @@ export default function AdminOrders() {
               <tbody className="divide-y divide-slate-100">
                 {orders.map((order) => (
                   <tr key={order.id} className="transition hover:bg-slate-50">
-                    <td className="px-5 py-4 font-semibold text-slate-900">{order.orderNumber}</td>
+                    <td className="px-5 py-4 font-semibold text-slate-900">{shortOrderNumber(order.orderNumber)}</td>
                     <td className="px-5 py-4 text-sm text-slate-600">
                       {order.user?.name || "Unknown"}
                       <p className="text-xs text-slate-400">{order.user?.email}</p>
@@ -257,16 +267,12 @@ export default function AdminOrders() {
                     </td>
                     <td className="px-5 py-4 text-sm text-slate-600">{order.items?.length ?? 0}</td>
                     <td className="px-5 py-4 text-sm font-semibold text-slate-900">{money(order.total)}</td>
-                    <td className="px-5 py-4">
-                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                        {order.paymentStatus}
-                      </span>
-                    </td>
-                    <td className="px-5 py-4">
-                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                        {order.status}
-                      </span>
-                    </td>
+                      <td className="px-5 py-4">
+                        <StatusBadge status={order.paymentStatus} />
+                      </td>
+                      <td className="px-5 py-4">
+                        <StatusBadge status={order.status} />
+                      </td>
                     <td className="px-5 py-4 text-right">
                       <button
                         onClick={() => openDetails(order.id)}

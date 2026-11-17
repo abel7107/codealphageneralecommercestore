@@ -7,6 +7,8 @@ import {
   X,
 } from "lucide-react";
 import { apiRequest } from "../../services/api";
+import PageHeader from "../../components/admin/PageHeader";
+import StatusBadge from "../../components/admin/StatusBadge";
 
 function money(value) {
   return `ETB ${Number(value).toLocaleString("en-US", {
@@ -81,10 +83,11 @@ export default function AdminCustomers() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <p className="text-sm font-medium text-slate-500">Store management</p>
-        <h1 className="mt-1 text-3xl font-bold text-slate-900">Customers</h1>
-      </div>
+      <PageHeader
+        eyebrow="Store management"
+        title="Customers"
+        description="View and manage your customer base."
+      />
 
       {error && (
         <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
@@ -170,13 +173,7 @@ export default function AdminCustomers() {
                       {money(customer.totalSpending)}
                     </td>
                     <td className="px-5 py-4">
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                          customer.isActive ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
-                        }`}
-                      >
-                        {customer.isActive ? "Active" : "Disabled"}
-                      </span>
+                      <StatusBadge status={customer.isActive ? "Active" : "Disabled"} />
                     </td>
                     <td className="px-5 py-4 text-right">
                       <button

@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 
 import { apiRequest, getImageUrl } from "../../services/api";
+import PageHeader from "../../components/admin/PageHeader";
+import StatusBadge from "../../components/admin/StatusBadge";
 
 const emptyForm = {
   name: "",
@@ -281,29 +283,20 @@ export default function Products() {
   return (
     <div className="space-y-7">
       {/* Page heading */}
-      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-        <div>
-          <p className="text-sm font-medium text-slate-500">
-            Store management
-          </p>
-
-          <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900">
-            Products
-          </h1>
-
-          <p className="mt-2 text-sm text-slate-500">
-            Manage your store inventory, prices, and product information.
-          </p>
-        </div>
-
-        <button
-          onClick={openCreateModal}
-          className="flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-        >
-          <Plus size={19} />
-          Add Product
-        </button>
-      </div>
+      <PageHeader
+        eyebrow="Store management"
+        title="Products"
+        description="Manage your store inventory, prices, and product information."
+        actions={
+          <button
+            onClick={openCreateModal}
+            className="flex items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-800"
+          >
+            <Plus size={18} />
+            Add Product
+          </button>
+        }
+      />
 
       {/* Notifications */}
       {error && (
@@ -432,6 +425,7 @@ export default function Products() {
                   <th className="px-5 py-4 font-semibold">Category</th>
                   <th className="px-5 py-4 font-semibold">Price</th>
                   <th className="px-5 py-4 font-semibold">Stock</th>
+                  <th className="px-5 py-4 font-semibold">Status</th>
                   <th className="px-5 py-4 text-right font-semibold">Actions</th>
                 </tr>
               </thead>
@@ -484,6 +478,10 @@ export default function Products() {
                       >
                         {product.stock} in stock
                       </span>
+                    </td>
+
+                    <td className="px-5 py-4">
+                      <StatusBadge status={product.isActive ? "Active" : "Inactive"} />
                     </td>
 
                     <td className="px-5 py-4">

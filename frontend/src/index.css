@@ -4,8 +4,20 @@
 :root {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  color: #111827;
-  background: #ffffff;
+  color: #171923;
+  background: #f5f6fa;
+  --sc-primary: #6d28d9;
+  --sc-primary-light: #7c3aed;
+  --sc-primary-soft: #f3e8ff;
+  --sc-bg: #f5f6fa;
+  --sc-card: #ffffff;
+  --sc-text: #171923;
+  --sc-text-muted: #64748b;
+  --sc-border: #e5e7eb;
+  --sc-success: #16a34a;
+  --sc-warning: #f59e0b;
+  --sc-danger: #ef4444;
+  --sc-info: #2563eb;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

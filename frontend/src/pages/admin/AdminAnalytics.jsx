@@ -18,7 +18,7 @@ function money(value) {
   })}`;
 }
 
-function BarChart({ items, valueKey, labelKey, color = "bg-slate-900" }) {
+function BarChart({ items, valueKey, labelKey, color = "bg-violet-700" }) {
   const maxValue = Math.max(...items.map((item) => Number(item[valueKey]) || 0), 1);
 
   if (!items.length) {

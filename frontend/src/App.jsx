@@ -365,7 +365,7 @@ function HomePage() {
                     </button>
                     <button
                       onClick={() => addToCart(product)}
-                      className="absolute bottom-3 left-3 right-3 flex items-center justify-center gap-2 rounded-full bg-white py-3 text-xs font-bold shadow-sm transition hover:bg-slate-950 hover:text-white sm:translate-y-16 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100"
+                      className="absolute bottom-3 left-3 right-3 flex items-center justify-center gap-2 rounded-full bg-white py-3 text-xs font-bold shadow-sm transition hover:bg-violet-700 hover:text-white sm:translate-y-16 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100"
                     >
                       <ShoppingBag size={15} /> Add to bag
                     </button>
@@ -392,7 +392,7 @@ function HomePage() {
                     </div>
                     <button
                       onClick={() => addToCart(product)}
-                      className="mt-3 w-full rounded-full border border-slate-200 bg-white py-2.5 text-xs font-semibold transition hover:border-slate-950 hover:bg-slate-950 hover:text-white sm:hidden"
+                      className="mt-3 w-full rounded-full border border-slate-200 bg-white py-2.5 text-xs font-semibold transition hover:border-slate-950 hover:bg-violet-700 hover:text-white sm:hidden"
                     >
                       Add to bag
                     </button>

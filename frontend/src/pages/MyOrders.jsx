@@ -14,7 +14,7 @@ function money(value) {
 
 function SkeletonRow() {
   return (
-    <div className="animate-pulse rounded-2xl border border-slate-200 bg-white p-5">
+    <div className="animate-pulse rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5">
       <div className="h-4 w-40 rounded bg-slate-200" />
       <div className="mt-3 h-3 w-24 rounded bg-slate-200" />
       <div className="mt-4 h-3 w-full rounded bg-slate-200" />
@@ -70,8 +70,8 @@ export default function MyOrders() {
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">My orders</h1>
-          <p className="mt-2 text-sm text-slate-500">Track and review your previous orders.</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">My orders</h1>
+          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Track and review your previous orders.</p>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ export default function MyOrders() {
             setPage(1);
           }}
           placeholder="Search by order number..."
-          className="flex-1 rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="flex-1 rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-3 text-sm outline-none focus:border-slate-900"
         />
         <select
           value={statusFilter}
@@ -91,7 +91,7 @@ export default function MyOrders() {
             setStatusFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-3 text-sm outline-none focus:border-slate-900"
         >
           {STATUSES.map((status) => (
             <option key={status} value={status}>
@@ -102,7 +102,7 @@ export default function MyOrders() {
       </div>
 
       {error && (
-        <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div className="mt-6 rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-sm text-red-700 dark:text-red-400">
           {error}
         </div>
       )}
@@ -111,39 +111,39 @@ export default function MyOrders() {
         {loading ? (
           Array.from({ length: 3 }).map((_, index) => <SkeletonRow key={index} />)
         ) : pagedOrders.length === 0 ? (
-          <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
-            <h2 className="text-xl font-bold text-slate-900">No orders found</h2>
-            <p className="mt-2 text-sm text-slate-500">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-10 text-center">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white">No orders found</h2>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
               {orders.length === 0
                 ? "You have not placed any orders yet."
                 : "Try another search or status filter."}
             </p>
-            <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 px-6 py-3 text-sm font-semibold text-white">
+            <Link to="/" className="mt-6 inline-block rounded-full bg-violet-700 dark:bg-violet-600 px-6 py-3 text-sm font-semibold text-white">
               Start shopping
             </Link>
           </div>
         ) : (
           pagedOrders.map((order) => (
-            <article key={order.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <article key={order.id} className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-slate-900">{order.orderNumber}</p>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{order.orderNumber}</p>
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     {new Date(order.createdAt).toLocaleString()}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                  <span className="rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
                     {order.status}
                   </span>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                  <span className="rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
                     {order.paymentStatus}
                   </span>
-                  <span className="text-sm font-bold text-slate-900">{money(order.total)}</span>
+                  <span className="text-sm font-bold text-slate-900 dark:text-white">{money(order.total)}</span>
                   <Link
                     to={`/orders/${order.id}`}
-                    className="rounded-lg border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-900 transition hover:bg-slate-50"
+                    className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2 text-xs font-semibold text-slate-900 dark:text-white transition hover:bg-slate-50 dark:bg-slate-900"
                   >
                     View details
                   </Link>
@@ -159,17 +159,17 @@ export default function MyOrders() {
           <button
             onClick={() => setPage((current) => Math.max(1, current - 1))}
             disabled={currentPage === 1}
-            className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold disabled:opacity-40"
+            className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2 text-sm font-semibold disabled:opacity-40"
           >
             Previous
           </button>
-          <span className="text-sm text-slate-600">
+          <span className="text-sm text-slate-600 dark:text-slate-300">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
             disabled={currentPage === totalPages}
-            className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold disabled:opacity-40"
+            className="rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-2 text-sm font-semibold disabled:opacity-40"
           >
             Next
           </button>

@@ -42,29 +42,29 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
-        <Link to="/" className="text-2xl font-bold text-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-lg">
+        <Link to="/" className="text-2xl font-bold text-slate-900 dark:text-white">
           Shopora
         </Link>
 
-        <h1 className="mt-8 text-3xl font-bold text-slate-900">
+        <h1 className="mt-8 text-3xl font-bold text-slate-900 dark:text-white">
           Create your account
         </h1>
 
-        <p className="mt-2 text-slate-500">
+        <p className="mt-2 text-slate-500 dark:text-slate-400">
           Join Shopora and start shopping.
         </p>
 
         {error && (
-          <div className="mt-5 rounded-lg bg-red-50 p-3 text-sm text-red-600">
+          <div className="mt-5 rounded-lg bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-600 dark:text-red-400">
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-5">
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700">
+            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
               Full name
             </label>
 
@@ -76,12 +76,12 @@ export default function Register() {
               minLength={2}
               maxLength={100}
               required
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-3 outline-none focus:border-slate-900"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700">
+            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
               Email address
             </label>
 
@@ -91,12 +91,12 @@ export default function Register() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-3 outline-none focus:border-slate-900"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700">
+            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
               Password
             </label>
 
@@ -107,12 +107,12 @@ export default function Register() {
               placeholder="At least 8 characters"
               minLength={8}
               required
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-3 outline-none focus:border-slate-900"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700">
+            <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">
               Confirm password
             </label>
 
@@ -122,24 +122,24 @@ export default function Register() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Enter your password again"
               required
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-slate-900"
+              className="w-full rounded-lg border border-slate-300 dark:border-slate-600 px-4 py-3 outline-none focus:border-slate-900"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-violet-700 py-3 font-semibold text-white transition hover:bg-violet-800 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-lg bg-violet-700 dark:bg-violet-600 py-3 font-semibold text-white transition hover:bg-violet-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? "Creating account..." : "Create Account"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-600">
+        <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-300">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="font-semibold text-slate-900 hover:underline"
+            className="font-semibold text-slate-900 dark:text-white hover:underline"
           >
             Sign in
           </Link>
@@ -147,7 +147,7 @@ export default function Register() {
 
         <Link
           to="/"
-          className="mt-6 block text-center text-sm text-slate-500 hover:text-slate-900"
+          className="mt-6 block text-center text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white"
         >
           ← Back to Shopora
         </Link>

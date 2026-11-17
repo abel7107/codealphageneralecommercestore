@@ -90,7 +90,7 @@ export default function AdminCustomers() {
       />
 
       {error && (
-        <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-4 text-sm text-red-700 dark:text-red-400">
           <p>{error}</p>
           <button onClick={() => setError("")} aria-label="Dismiss error">
             <X size={18} />
@@ -99,7 +99,7 @@ export default function AdminCustomers() {
       )}
 
       {success && (
-        <div className="flex items-center justify-between gap-3 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-700">
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-4 text-sm text-green-700 dark:text-green-400">
           <p>{success}</p>
           <button onClick={() => setSuccess("")} aria-label="Dismiss success">
             <X size={18} />
@@ -107,9 +107,9 @@ export default function AdminCustomers() {
         </div>
       )}
 
-      <section className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:grid-cols-3">
-        <div className="flex items-center gap-2 rounded-xl border border-slate-200 px-3">
-          <Search size={18} className="text-slate-400" />
+      <section className="grid gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm md:grid-cols-3">
+        <div className="flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 px-3">
+          <Search size={18} className="text-slate-400 dark:text-slate-500" />
           <input
             value={search}
             onChange={(e) => {
@@ -127,7 +127,7 @@ export default function AdminCustomers() {
             setStatusFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-xl border border-slate-200 px-3 py-2 text-sm"
+          className="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm"
         >
           <option value="">All customers</option>
           <option value="active">Active</option>
@@ -135,21 +135,21 @@ export default function AdminCustomers() {
         </select>
       </section>
 
-      <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <section className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
         {loading ? (
-          <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500">
+          <div className="flex min-h-48 items-center justify-center gap-3 text-sm text-slate-500 dark:text-slate-400">
             <LoaderCircle className="animate-spin" size={22} />
             Loading customers...
           </div>
         ) : customers.length === 0 ? (
           <div className="flex min-h-48 flex-col items-center justify-center px-5 text-center">
-            <p className="font-semibold text-slate-800">No customers found</p>
-            <p className="mt-2 text-sm text-slate-500">Try adjusting your search or filters.</p>
+            <p className="font-semibold text-slate-800 dark:text-slate-100">No customers found</p>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Try adjusting your search or filters.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[800px] text-left">
-              <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
+              <thead className="bg-slate-50 dark:bg-slate-900 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 <tr>
                   <th className="px-5 py-3 font-semibold">Customer</th>
                   <th className="px-5 py-3 font-semibold">Email</th>
@@ -162,14 +162,14 @@ export default function AdminCustomers() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {customers.map((customer) => (
-                  <tr key={customer.id} className="transition hover:bg-slate-50">
-                    <td className="px-5 py-3 font-semibold text-slate-900">{customer.name}</td>
-                    <td className="px-5 py-3 text-sm text-slate-600">{customer.email}</td>
-                    <td className="px-5 py-3 text-sm text-slate-600">
+                  <tr key={customer.id} className="transition hover:bg-slate-50 dark:bg-slate-900">
+                    <td className="px-5 py-3 font-semibold text-slate-900 dark:text-white">{customer.name}</td>
+                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">{customer.email}</td>
+                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
                       {new Date(customer.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-5 py-3 text-sm text-slate-600">{customer._count?.orders ?? 0}</td>
-                    <td className="px-5 py-3 text-sm font-semibold text-slate-900">
+                    <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">{customer._count?.orders ?? 0}</td>
+                    <td className="px-5 py-3 text-sm font-semibold text-slate-900 dark:text-white">
                       {money(customer.totalSpending)}
                     </td>
                     <td className="px-5 py-3">
@@ -178,7 +178,7 @@ export default function AdminCustomers() {
                     <td className="px-5 py-3 text-right">
                       <button
                         onClick={() => openDetails(customer.id)}
-                        className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950"
+                        className="rounded-lg p-2 text-slate-500 dark:text-slate-400 transition hover:bg-slate-100 dark:bg-slate-700 hover:text-slate-950 dark:text-white"
                         title="View details"
                       >
                         <Eye size={18} />
@@ -197,17 +197,17 @@ export default function AdminCustomers() {
           <button
             onClick={() => setPage((current) => Math.max(1, current - 1))}
             disabled={page === 1}
-            className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold disabled:opacity-40"
+            className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold disabled:opacity-40"
           >
             Previous
           </button>
-          <span className="text-sm text-slate-600">
+          <span className="text-sm text-slate-600 dark:text-slate-300">
             Page {page} of {totalPages}
           </span>
           <button
             onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
             disabled={page === totalPages}
-            className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold disabled:opacity-40"
+            className="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2 text-sm font-semibold disabled:opacity-40"
           >
             Next
           </button>
@@ -215,74 +215,74 @@ export default function AdminCustomers() {
       )}
 
       {selectedCustomer && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-slate-950/60 p-4">
-          <div className="my-auto w-full max-w-4xl rounded-2xl bg-white shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-slate-950/60 dark:bg-black/60 p-4">
+          <div className="my-auto w-full max-w-4xl rounded-2xl bg-white dark:bg-slate-800 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 px-6 py-5">
               <div>
-                <h2 className="text-xl font-bold text-slate-900">{selectedCustomer.name}</h2>
-                <p className="mt-1 text-sm text-slate-500">{selectedCustomer.email}</p>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">{selectedCustomer.name}</h2>
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{selectedCustomer.email}</p>
               </div>
-              <button onClick={closeDetails} className="rounded-lg p-2 text-slate-500 hover:bg-slate-100">
+              <button onClick={closeDetails} className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700">
                 <X size={21} />
               </button>
             </div>
 
             <div className="max-h-[75vh] overflow-y-auto p-5">
               {detailsLoading ? (
-                <div className="flex items-center gap-2 text-slate-500">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
                   <LoaderCircle className="animate-spin" size={20} />
                   Loading details...
                 </div>
               ) : (
                 <div className="space-y-5">
                   <div className="grid gap-4 md:grid-cols-3">
-                    <div className="rounded-xl bg-slate-50 p-4">
-                      <h3 className="text-sm font-semibold text-slate-700">Contact</h3>
-                      <p className="mt-2 text-sm text-slate-900">{selectedCustomer.phone || "Not available"}</p>
-                      <p className="text-sm text-slate-600">{selectedCustomer.contactEmail}</p>
+                    <div className="rounded-xl bg-slate-50 dark:bg-slate-900 p-4">
+                      <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Contact</h3>
+                      <p className="mt-2 text-sm text-slate-900 dark:text-white">{selectedCustomer.phone || "Not available"}</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">{selectedCustomer.contactEmail}</p>
                     </div>
 
-                    <div className="rounded-xl bg-slate-50 p-4">
-                      <h3 className="text-sm font-semibold text-slate-700">Registration</h3>
-                      <p className="mt-2 text-sm text-slate-900">
+                    <div className="rounded-xl bg-slate-50 dark:bg-slate-900 p-4">
+                      <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Registration</h3>
+                      <p className="mt-2 text-sm text-slate-900 dark:text-white">
                         {new Date(selectedCustomer.createdAt).toLocaleString()}
                       </p>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-slate-600 dark:text-slate-300">
                         {selectedCustomer.isActive ? "Active account" : "Disabled account"}
                       </p>
                     </div>
 
-                    <div className="rounded-xl bg-slate-50 p-4">
-                      <h3 className="text-sm font-semibold text-slate-700">Spending</h3>
-                      <p className="mt-2 text-sm text-slate-900">
+                    <div className="rounded-xl bg-slate-50 dark:bg-slate-900 p-4">
+                      <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Spending</h3>
+                      <p className="mt-2 text-sm text-slate-900 dark:text-white">
                         {selectedCustomer._count?.orders ?? 0} orders
                       </p>
-                      <p className="text-sm font-semibold text-slate-900">
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white">
                         {money(selectedCustomer.totalSpending)}
                       </p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-700">Order history</h3>
+                    <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200">Order history</h3>
                     {ordersLoading ? (
-                      <div className="mt-3 flex items-center gap-2 text-slate-500">
+                      <div className="mt-3 flex items-center gap-2 text-slate-500 dark:text-slate-400">
                         <LoaderCircle className="animate-spin" size={18} />
                         Loading orders...
                       </div>
                     ) : customerOrders.length === 0 ? (
-                      <p className="mt-3 text-sm text-slate-500">No orders found.</p>
+                      <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">No orders found.</p>
                     ) : (
                       <div className="mt-3 space-y-3">
                         {customerOrders.map((order) => (
-                          <div key={order.id} className="flex items-center justify-between rounded-xl border border-slate-100 p-4">
+                          <div key={order.id} className="flex items-center justify-between rounded-xl border border-slate-100 dark:border-slate-700 p-4">
                             <div>
-                              <p className="text-sm font-semibold text-slate-900">{order.orderNumber}</p>
-                              <p className="text-xs text-slate-500">
+                              <p className="text-sm font-semibold text-slate-900 dark:text-white">{order.orderNumber}</p>
+                              <p className="text-xs text-slate-500 dark:text-slate-400">
                                 {new Date(order.createdAt).toLocaleDateString()} · {order.status}
                               </p>
                             </div>
-                            <p className="text-sm font-semibold text-slate-900">{money(order.total)}</p>
+                            <p className="text-sm font-semibold text-slate-900 dark:text-white">{money(order.total)}</p>
                           </div>
                         ))}
                       </div>

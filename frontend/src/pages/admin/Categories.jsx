@@ -84,24 +84,24 @@ export default function Categories() {
         description="Organize your product catalog into categories."
       />
 
-      {error && <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</div>}
-      {success && <div className="rounded-xl border border-green-200 bg-green-50 p-3 text-sm text-green-700">{success}</div>}
+      {error && <div className="rounded-xl border border-red-200 bg-red-50 dark:bg-red-900/30 p-3 text-sm text-red-700 dark:text-red-400">{error}</div>}
+      {success && <div className="rounded-xl border border-green-200 bg-green-50 dark:bg-green-900/30 p-3 text-sm text-green-700 dark:text-green-400">{success}</div>}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Category name"
-          className="flex-1 rounded-xl border border-slate-200 px-4 py-3 text-sm"
+          className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
         />
-        <button type="submit" className="rounded-xl bg-violet-700 px-5 py-3 text-sm font-semibold text-white">
+        <button type="submit" className="rounded-xl bg-violet-700 dark:bg-violet-600 px-5 py-3 text-sm font-semibold text-white">
           {editing ? "Update" : "Add"}
         </button>
         {editing && (
           <button
             type="button"
             onClick={() => { setEditing(null); setName(""); }}
-            className="rounded-xl border border-slate-200 px-4 py-3 text-sm"
+            className="rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm"
           >
             Cancel
           </button>
@@ -112,17 +112,17 @@ export default function Categories() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search categories..."
-        className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm sm:max-w-sm"
+        className="w-full rounded-xl border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm sm:max-w-sm"
       />
 
       {loading ? (
-        <div className="flex items-center gap-2 text-slate-500">
+        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
           <LoaderCircle className="animate-spin" /> Loading...
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
           <table className="w-full min-w-[480px] text-left">
-            <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
+            <thead className="bg-slate-50 dark:bg-slate-900 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
               <tr>
                 <th className="px-5 py-3">Name</th>
                 <th className="px-5 py-3">Products</th>
@@ -132,21 +132,21 @@ export default function Categories() {
             <tbody className="divide-y divide-slate-100">
               {filtered.map((category) => (
                 <tr key={category.id}>
-                  <td className="px-5 py-3 font-semibold text-slate-900">{category.name}</td>
-                  <td className="px-5 py-3 text-sm text-slate-600">
+                  <td className="px-5 py-3 font-semibold text-slate-900 dark:text-white">{category.name}</td>
+                  <td className="px-5 py-3 text-sm text-slate-600 dark:text-slate-300">
                     {category._count?.products ?? 0}
                   </td>
                   <td className="px-5 py-3">
                     <div className="flex justify-end gap-2">
                       <button
                         onClick={() => { setEditing(category); setName(category.name); }}
-                        className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+                        className="rounded-lg p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-700"
                       >
                         <Pencil size={18} />
                       </button>
                       <button
                         onClick={() => handleDelete(category)}
-                        className="rounded-lg p-2 text-red-500 hover:bg-red-50"
+                        className="rounded-lg p-2 text-red-500 hover:bg-red-50 dark:bg-red-900/30"
                       >
                         <Trash2 size={18} />
                       </button>

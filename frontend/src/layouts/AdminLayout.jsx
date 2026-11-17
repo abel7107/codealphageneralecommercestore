@@ -8,7 +8,7 @@ export default function AdminLayout() {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="h-screen overflow-hidden bg-slate-50">
+    <div className="h-screen overflow-hidden bg-slate-50 dark:bg-slate-900">
       <AdminSidebar
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}

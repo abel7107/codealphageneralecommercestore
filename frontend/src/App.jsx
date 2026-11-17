@@ -132,7 +132,7 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <div className="bg-slate-950 px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
+      <div className="bg-violet-700 px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
         Your next favorite find is waiting. Discover something special.
       </div>
 
@@ -235,7 +235,7 @@ function HomePage() {
                 </p>
                 <a
                   href="#products"
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-1000"
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-violet-700 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-slate-1000"
                 >
                   Explore the collection <ArrowRight size={18} />
                 </a>
@@ -329,7 +329,7 @@ function HomePage() {
                     onClick={() => setActiveCategory(category)}
                     className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
                       activeCategory === category
-                        ? "bg-slate-950 text-white"
+                        ? "bg-violet-700 text-white"
                         : "border border-slate-200 bg-white text-slate-600 hover:border-slate-400"
                     }`}
                   >
@@ -413,7 +413,7 @@ function HomePage() {
                     setSearch("");
                     setActiveCategory("All");
                   }}
-                  className="mt-5 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white"
+                  className="mt-5 rounded-full bg-violet-700 px-5 py-3 text-sm font-semibold text-white"
                 >
                   Clear filters
                 </button>
@@ -506,7 +506,7 @@ function HomePage() {
 
           <button
             onClick={continueShopping}
-            className="mt-6 rounded-full bg-slate-950 px-7 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="mt-6 rounded-full bg-violet-700 px-7 py-3 text-sm font-semibold text-white transition hover:bg-violet-800"
           >
             Start shopping
           </button>
@@ -665,7 +665,7 @@ function HomePage() {
                 setCartOpen(false);
                 navigate("/checkout");
               }}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 py-4 text-sm font-bold text-white transition hover:bg-slate-800 active:scale-[0.99]"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-violet-700 py-4 text-sm font-bold text-white transition hover:bg-violet-800 active:scale-[0.99]"
             >
               Checkout Now <ArrowRight size={17} />
             </button>
